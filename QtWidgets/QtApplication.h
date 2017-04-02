@@ -7,7 +7,7 @@
 @property bool autoSipEnabled;
 @property int cursorFlashTime;
 @property int doubleClickInterval;
-@property QSize globalStrut;
+@property of_dimension_t globalStrut;
 @property int keyboardInputInterval;
 @property int startDragDistance;
 @property int startDragTime;

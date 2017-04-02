@@ -48,14 +48,14 @@
 	[self qApplication]->setDoubleClickInterval(doubleClickInterval);
 }
 
-- (QSize)globalStrut
+- (of_dimension_t)globalStrut
 {
-	return [self qApplication]->globalStrut();
+	return QToOFDimension([self qApplication]->globalStrut());
 }
 
-- (void)setGlobalStrut: (QSize)globalStrut
+- (void)setGlobalStrut: (of_dimension_t)globalStrut
 {
-	[self qApplication]->setGlobalStrut(globalStrut);
+	[self qApplication]->setGlobalStrut(OFToQSize(globalStrut));
 }
 
 - (int)keyboardInputInterval

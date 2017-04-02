@@ -17,7 +17,9 @@ HEADERS += common/helpers.h		\
 	   QtCore/QtObject.h		\
 	   QtCore/QtThread.h		\
 	   QtGui/QtGuiApplication.h	\
-	   QtWidgets/QtApplication.h
+	   QtGui/QtPaintDevice.h	\
+	   QtWidgets/QtApplication.h	\
+	   QtWidgets/QtWidget.h
 
 SOURCES += QtCore/QtChildEvent.mm	\
            QtCore/QtCoreApplication.mm	\
@@ -25,7 +27,9 @@ SOURCES += QtCore/QtChildEvent.mm	\
 	   QtCore/QtObject.mm		\
 	   QtCore/QtThread.mm		\
 	   QtGui/QtGuiApplication.mm	\
-	   QtWidgets/QtApplication.mm
+	   QtGui/QtPaintDevice.mm	\
+	   QtWidgets/QtApplication.mm	\
+	   QtWidgets/QtWidget.mm
 
 QMAKE_CXXFLAGS += $$system("objfw-config --cppflags --objcflags --cxxflags")
 QMAKE_CXXFLAGS_WARN_ON = -Wall					\
