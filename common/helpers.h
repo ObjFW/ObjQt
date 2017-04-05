@@ -4,51 +4,51 @@
 #include <QSize>
 #include <QRect>
 
-inline OFString*
-QToOFString(const QString &qString)
+static OF_INLINE OFString*
+toOF(const QString &qString)
 {
 	return [OFString stringWithUTF8String: qString.toUtf8()];
 }
 
-inline QString
-OFToQString(OFString *string)
+static OF_INLINE QString
+toQt(OFString *string)
 {
 	return QString::fromUtf8([string UTF8String]);
 }
 
-inline of_dimension_t
-QToOFDimension(const QSize &qSize)
-{
-	return of_dimension(qSize.width(), qSize.height());
-}
-
-inline of_point_t
-QToOFPoint(const QPoint &qPoint)
+static OF_INLINE of_point_t
+toOF(const QPoint &qPoint)
 {
 	return of_point(qPoint.x(), qPoint.y());
 }
 
-inline QPoint
-OFToQPoint(of_point_t point)
+static OF_INLINE QPoint
+toQt(of_point_t point)
 {
 	return QPoint(point.x, point.y);
 }
 
-inline QSize
-OFToQSize(of_dimension_t dimension)
+static OF_INLINE of_dimension_t
+toOF(const QSize &qSize)
+{
+	return of_dimension(qSize.width(), qSize.height());
+}
+
+static OF_INLINE QSize
+toQt(of_dimension_t dimension)
 {
 	return QSize(dimension.width, dimension.height);
 }
 
-inline of_rectangle_t
-QToOFRectangle(const QRect &qRect)
+static OF_INLINE of_rectangle_t
+toOF(const QRect &qRect)
 {
 	return of_rectangle(qRect.x(), qRect.y(),
 	    qRect.width(), qRect.height());
 }
 
-inline QRect
-OFToQRect(of_rectangle_t rectangle)
+static OF_INLINE QRect
+toQt(of_rectangle_t rectangle)
 {
 	return QRect(rectangle.origin.x, rectangle.origin.y,
 	    rectangle.size.width, rectangle.size.height);

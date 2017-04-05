@@ -21,18 +21,17 @@
 
 - (OFString*)applicationName
 {
-	return QToOFString([self qCoreApplication]->applicationName());
+	return toOF([self qCoreApplication]->applicationName());
 }
 
 - (void)setApplicationName: (OFString*)applicationName
 {
-	[self qCoreApplication]->setApplicationName(
-	    OFToQString(applicationName));
+	[self qCoreApplication]->setApplicationName(toQt(applicationName));
 }
 
 - (OFString*)applicationVersion
 {
-	return QToOFString([self qCoreApplication]->applicationVersion());
+	return toOF([self qCoreApplication]->applicationVersion());
 }
 
 - (void)installNativeEventFilter: (QAbstractNativeEventFilter*)filterObject
@@ -43,29 +42,28 @@
 - (void)setApplicationVersion: (OFString*)applicationVersion
 {
 	[self qCoreApplication]->setApplicationVersion(
-	    OFToQString(applicationVersion));
+	    toQt(applicationVersion));
 }
 
 - (OFString*)organizationDomain
 {
-	return QToOFString([self qCoreApplication]->organizationDomain());
+	return toOF([self qCoreApplication]->organizationDomain());
 }
 
 - (void)setOrganizationDomain: (OFString*)organizationDomain
 {
 	[self qCoreApplication]->setOrganizationDomain(
-	    OFToQString(organizationDomain));
+	    toQt(organizationDomain));
 }
 
 - (OFString*)organizationName
 {
-	return QToOFString([self qCoreApplication]->organizationName());
+	return toOF([self qCoreApplication]->organizationName());
 }
 
 - (void)setOrganizationName: (OFString*)organizationName
 {
-	[self qCoreApplication]->setOrganizationName(
-	    OFToQString(organizationName));
+	[self qCoreApplication]->setOrganizationName(toQt(organizationName));
 }
 
 - (void)quit

@@ -50,12 +50,12 @@
 
 - (of_dimension_t)globalStrut
 {
-	return QToOFDimension([self qApplication]->globalStrut());
+	return toOF([self qApplication]->globalStrut());
 }
 
 - (void)setGlobalStrut: (of_dimension_t)globalStrut
 {
-	[self qApplication]->setGlobalStrut(OFToQSize(globalStrut));
+	[self qApplication]->setGlobalStrut(toQt(globalStrut));
 }
 
 - (int)keyboardInputInterval
@@ -90,12 +90,12 @@
 
 - (OFString*)styleSheet
 {
-	return QToOFString([self qApplication]->styleSheet());
+	return toOF([self qApplication]->styleSheet());
 }
 
 - (void)setStyleSheet: (OFString*)styleSheet
 {
-	[self qApplication]->setStyleSheet(OFToQString(styleSheet));
+	[self qApplication]->setStyleSheet(toQt(styleSheet));
 }
 
 - (int)wheelScrollLines

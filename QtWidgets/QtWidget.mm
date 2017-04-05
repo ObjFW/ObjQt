@@ -34,23 +34,22 @@
 
 - (OFString*)accessibleDescription
 {
-	return QToOFString([self qWidget]->accessibleDescription());
+	return toOF([self qWidget]->accessibleDescription());
 }
 
 - (void)setAccessibleDescription: (OFString*)accessibleDescription
 {
-	[self qWidget]->setAccessibleDescription(
-	    OFToQString(accessibleDescription));
+	[self qWidget]->setAccessibleDescription(toQt(accessibleDescription));
 }
 
 - (OFString*)accessibleName
 {
-	return QToOFString([self qWidget]->accessibleName());
+	return toOF([self qWidget]->accessibleName());
 }
 
 - (void)setAccessibleName: (OFString*)accessibleName
 {
-	[self qWidget]->setAccessibleName(OFToQString(accessibleName));
+	[self qWidget]->setAccessibleName(toQt(accessibleName));
 }
 
 - (bool)autoFillBackground
@@ -65,17 +64,17 @@
 
 - (of_dimension_t)baseSize
 {
-	return QToOFDimension([self qWidget]->baseSize());
+	return toOF([self qWidget]->baseSize());
 }
 
 - (void)setBaseSize: (of_dimension_t)baseSize
 {
-	[self qWidget]->setBaseSize(OFToQSize(baseSize));
+	[self qWidget]->setBaseSize(toQt(baseSize));
 }
 
 - (of_rectangle_t)childrenRect
 {
-	return QToOFRectangle([self qWidget]->childrenRect());
+	return toOF([self qWidget]->childrenRect());
 }
 
 - (QRegion)childrenRegion
@@ -145,12 +144,12 @@
 
 - (of_rectangle_t)frameGeometry
 {
-	return QToOFRectangle([self qWidget]->frameGeometry());
+	return toOF([self qWidget]->frameGeometry());
 }
 
 - (of_dimension_t)frameSize
 {
-	return QToOFDimension([self qWidget]->frameSize());
+	return toOF([self qWidget]->frameSize());
 }
 
 - (bool)isFullScreen
@@ -160,12 +159,12 @@
 
 - (of_rectangle_t)geometry
 {
-	return QToOFRectangle([self qWidget]->geometry());
+	return toOF([self qWidget]->geometry());
 }
 
 - (void)setGeometry: (of_rectangle_t)geometry
 {
-	[self qWidget]->setGeometry(OFToQRect(geometry));
+	[self qWidget]->setGeometry(toQt(geometry));
 }
 
 - (int)height
@@ -235,12 +234,12 @@
 
 - (of_dimension_t)maximumSize
 {
-	return QToOFDimension([self qWidget]->maximumSize());
+	return toOF([self qWidget]->maximumSize());
 }
 
 - (void)setMaximumSize: (of_dimension_t)maximumSize
 {
-	[self qWidget]->setMaximumSize(OFToQSize(maximumSize));
+	[self qWidget]->setMaximumSize(toQt(maximumSize));
 }
 
 - (int)maximumWidth
@@ -270,17 +269,17 @@
 
 - (of_dimension_t)minimumSize
 {
-	return QToOFDimension([self qWidget]->minimumSize());
+	return toOF([self qWidget]->minimumSize());
 }
 
 - (void)setMinimumSize: (of_dimension_t)minimumSize
 {
-	[self qWidget]->setMinimumSize(OFToQSize(minimumSize));
+	[self qWidget]->setMinimumSize(toQt(minimumSize));
 }
 
 - (of_dimension_t)minimumSizeHint
 {
-	return QToOFDimension([self qWidget]->minimumSizeHint());
+	return toOF([self qWidget]->minimumSizeHint());
 }
 
 - (int)minimumWidth
@@ -310,7 +309,7 @@
 
 - (of_rectangle_t)normalGeometry
 {
-	return QToOFRectangle([self qWidget]->normalGeometry());
+	return toOF([self qWidget]->normalGeometry());
 }
 
 - (const QPalette&)palette
@@ -325,42 +324,42 @@
 
 - (of_point_t)pos
 {
-	return QToOFPoint([self qWidget]->pos());
+	return toOF([self qWidget]->pos());
 }
 
 - (void)moveToPosition: (of_point_t)pos
 {
-	[self qWidget]->move(OFToQPoint(pos));
+	[self qWidget]->move(toQt(pos));
 }
 
 - (of_rectangle_t)rect
 {
-	return QToOFRectangle([self qWidget]->rect());
+	return toOF([self qWidget]->rect());
 }
 
 - (of_dimension_t)size
 {
-	return QToOFDimension([self qWidget]->size());
+	return toOF([self qWidget]->size());
 }
 
 - (void)resizeTo: (of_dimension_t)size
 {
-	[self qWidget]->resize(OFToQSize(size));
+	[self qWidget]->resize(toQt(size));
 }
 
 - (of_dimension_t)sizeHint
 {
-	return QToOFDimension([self qWidget]->sizeHint());
+	return toOF([self qWidget]->sizeHint());
 }
 
 - (of_dimension_t)sizeIncrement
 {
-	return QToOFDimension([self qWidget]->sizeIncrement());
+	return toOF([self qWidget]->sizeIncrement());
 }
 
 - (void)setSizeIncrement: (of_dimension_t)sizeIncrement
 {
-	[self qWidget]->setSizeIncrement(OFToQSize(sizeIncrement));
+	[self qWidget]->setSizeIncrement(toQt(sizeIncrement));
 }
 
 - (QSizePolicy)sizePolicy
@@ -375,32 +374,32 @@
 
 - (OFString*)statusTip
 {
-	return QToOFString([self qWidget]->statusTip());
+	return toOF([self qWidget]->statusTip());
 }
 
 - (void)setStatusTip: (OFString*)statusTip
 {
-	[self qWidget]->setStatusTip(OFToQString(statusTip));
+	[self qWidget]->setStatusTip(toQt(statusTip));
 }
 
 - (OFString*)styleSheet
 {
-	return QToOFString([self qWidget]->styleSheet());
+	return toOF([self qWidget]->styleSheet());
 }
 
 - (void)setStyleSheet: (OFString*)styleSheet
 {
-	[self qWidget]->setStyleSheet(OFToQString(styleSheet));
+	[self qWidget]->setStyleSheet(toQt(styleSheet));
 }
 
 - (OFString*)toolTip
 {
-	return QToOFString([self qWidget]->toolTip());
+	return toOF([self qWidget]->toolTip());
 }
 
 - (void)setToolTip: (OFString*)toolTip
 {
-	[self qWidget]->setToolTip(OFToQString(toolTip));
+	[self qWidget]->setToolTip(toQt(toolTip));
 }
 
 - (int)toolTipDuration
@@ -435,12 +434,12 @@
 
 - (OFString*)whatsThis
 {
-	return QToOFString([self qWidget]->whatsThis());
+	return toOF([self qWidget]->whatsThis());
 }
 
 - (void)setWhatsThis: (OFString*)whatsThis
 {
-	[self qWidget]->setWhatsThis(OFToQString(whatsThis));
+	[self qWidget]->setWhatsThis(toQt(whatsThis));
 }
 
 - (int)width
@@ -450,12 +449,12 @@
 
 - (OFString*)windowFilePath
 {
-	return QToOFString([self qWidget]->windowFilePath());
+	return toOF([self qWidget]->windowFilePath());
 }
 
 - (void)setWindowFilePath: (OFString*)windowFilePath
 {
-	[self qWidget]->setWindowFilePath(OFToQString(windowFilePath));
+	[self qWidget]->setWindowFilePath(toQt(windowFilePath));
 }
 
 - (Qt::WindowFlags)windowFlags
@@ -510,12 +509,12 @@
 
 - (OFString*)windowTitle
 {
-	return QToOFString([self qWidget]->windowTitle());
+	return toOF([self qWidget]->windowTitle());
 }
 
 - (void)setWindowTitle: (OFString*)windowTitle
 {
-	[self qWidget]->setWindowTitle(OFToQString(windowTitle));
+	[self qWidget]->setWindowTitle(toQt(windowTitle));
 }
 
 - (int)x

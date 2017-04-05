@@ -45,12 +45,12 @@
 
 - (OFString*)objectName
 {
-	return QToOFString(_qObject->objectName());
+	return toOF(_qObject->objectName());
 }
 
 - (void)setObjectName: (OFString*)objectName
 {
-	_qObject->setObjectName(OFToQString(objectName));
+	_qObject->setObjectName(toQt(objectName));
 }
 
 - (bool)setBlockSignals: (bool)block

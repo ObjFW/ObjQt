@@ -22,24 +22,23 @@
 
 - (OFString*)applicationDisplayName
 {
-	return QToOFString([self qGuiApplication]->applicationDisplayName());
+	return toOF([self qGuiApplication]->applicationDisplayName());
 }
 
 - (void)setApplicationDisplayName: (OFString*)applicationDisplayName
 {
 	[self qGuiApplication]->setApplicationDisplayName(
-	    OFToQString(applicationDisplayName));
+	    toQt(applicationDisplayName));
 }
 
 - (OFString*)desktopFileName
 {
-	return QToOFString([self qGuiApplication]->desktopFileName());
+	return toOF([self qGuiApplication]->desktopFileName());
 }
 
 - (void)setDesktopFileName: (OFString*)desktopFileName
 {
-	[self qGuiApplication]->setDesktopFileName(
-	    OFToQString(desktopFileName));
+	[self qGuiApplication]->setDesktopFileName(toQt(desktopFileName));
 }
 
 - (double)devicePixelRatio
@@ -69,7 +68,7 @@
 
 - (OFString*)platformName
 {
-	return QToOFString([self qGuiApplication]->platformName());
+	return toOF([self qGuiApplication]->platformName());
 }
 
 - (QScreen*)primaryScreen
@@ -90,12 +89,12 @@
 
 - (OFString*)sessionID
 {
-	return QToOFString([self qGuiApplication]->sessionId());
+	return toOF([self qGuiApplication]->sessionId());
 }
 
 - (OFString*)sessionKey
 {
-	return QToOFString([self qGuiApplication]->sessionKey());
+	return toOF([self qGuiApplication]->sessionKey());
 }
 
 - (QIcon)windowIcon
