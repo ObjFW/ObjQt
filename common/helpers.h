@@ -4,16 +4,18 @@
 #include <QSize>
 #include <QRect>
 
+#import "OFString+QString.h"
+
 static OF_INLINE OFString*
 toOF(const QString &qString)
 {
-	return [OFString stringWithUTF8String: qString.toUtf8()];
+	return [OFString stringWithQString: qString];
 }
 
 static OF_INLINE QString
 toQt(OFString *string)
 {
-	return QString::fromUtf8([string UTF8String]);
+	return [string qString];
 }
 
 static OF_INLINE of_point_t

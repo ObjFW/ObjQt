@@ -10,6 +10,7 @@ INCLUDEPATH += common	\
 	       QtWidgets
 
 HEADERS += common/helpers.h		\
+	   common/OFString+QString.h	\
 	   common/QtOwnershipManaging.h	\
 	   QtCore/QtChildEvent.h	\
 	   QtCore/QtCoreApplication.h	\
@@ -21,7 +22,8 @@ HEADERS += common/helpers.h		\
 	   QtWidgets/QtApplication.h	\
 	   QtWidgets/QtWidget.h
 
-SOURCES += QtCore/QtChildEvent.mm	\
+SOURCES += common/OFString+QString.mm	\
+	   QtCore/QtChildEvent.mm	\
            QtCore/QtCoreApplication.mm	\
 	   QtCore/QtEvent.mm  		\
 	   QtCore/QtObject.mm		\
