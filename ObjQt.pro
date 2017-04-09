@@ -24,7 +24,7 @@ HEADERS += common/helpers.h		\
 
 SOURCES += common/OFString+QString.mm	\
 	   QtCore/QtChildEvent.mm	\
-           QtCore/QtCoreApplication.mm	\
+	   QtCore/QtCoreApplication.mm	\
 	   QtCore/QtEvent.mm  		\
 	   QtCore/QtObject.mm		\
 	   QtCore/QtThread.mm		\

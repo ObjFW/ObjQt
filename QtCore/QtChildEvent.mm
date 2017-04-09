@@ -16,8 +16,12 @@
 	 child: (QtObject*)child
 {
 	try {
-		return [self initWithQChildEvent:
+		self = [self initWithQChildEvent:
 		    new QChildEvent(type, [child qObject])];
+
+		[self takeOwnership];
+
+		return self;
 	} catch (const std::bad_alloc &e) {
 		self = [super initWithQEvent: NULL];
 		[self release];
