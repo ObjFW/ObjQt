@@ -19,6 +19,7 @@ HEADERS += common/helpers.h		\
 	   QtCore/QtThread.h		\
 	   QtGui/QtGuiApplication.h	\
 	   QtGui/QtPaintDevice.h	\
+	   QtWidgets/QtAction.h		\
 	   QtWidgets/QtApplication.h	\
 	   QtWidgets/QtWidget.h
 
@@ -30,6 +31,7 @@ SOURCES += common/OFString+QString.mm	\
 	   QtCore/QtThread.mm		\
 	   QtGui/QtGuiApplication.mm	\
 	   QtGui/QtPaintDevice.mm	\
+	   QtWidgets/QtAction.mm	\
 	   QtWidgets/QtApplication.mm	\
 	   QtWidgets/QtWidget.mm
 

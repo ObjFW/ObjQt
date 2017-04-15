@@ -23,7 +23,7 @@
 #import "QtEvent.h"
 
 @implementation QtEvent
-@synthesize qEvent = _eEvent;
+@synthesize qEvent = _qEvent;
 
 + (int)registerEventType: (int)hint
 {

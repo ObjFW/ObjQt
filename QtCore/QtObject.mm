@@ -91,6 +91,8 @@
 		[children addObject:
 		    [[[QtObject alloc] initWithQObject: qChild] autorelease]];
 
+	[children makeImmutable];
+
 	objc_autoreleasePoolPop(pool);
 
 	return children;
@@ -143,6 +145,8 @@
 					count: qDynamicPropertyName.count()];
 		[dynamicPropertyNames addObject: dynamicPropertyName];
 	}
+
+	[dynamicPropertyNames makeImmutable];
 
 	objc_autoreleasePoolPop(pool);
 

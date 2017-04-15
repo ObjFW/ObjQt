@@ -25,6 +25,8 @@
 
 #include <QWidget>
 
+@class QtAction;
+
 @interface QtWidget: QtObject
 @property (readonly) QWidget *qWidget;
 @property bool acceptDrops;
@@ -86,9 +88,62 @@
 @property (readonly) int x;
 @property (readonly) int y;
 
-// TODO: Member functions
-
 - initWithQWidget: (QWidget*)qWidget;
+- (OFArray OF_GENERIC(QtAction*)*)actions;
+- (void)activateWindow;
+- (void)addAction: (QtAction*)action;
+- (void)addActions: (OFArray OF_GENERIC(QtAction*)*)actions;
+- (void)adjustSize;
+- (QPalette::ColorRole)backgroundRole;
+- (QBackingStore*)backingStore;
+- (QtWidget*)childAt: (of_point_t)point;
+- (void)clearFocus;
+- (void)clearMask;
+- (QMargins)contentsMargins;
+- (of_rectangle_t)contentsRect;
+- (WId)effectiveWinId;
+- (void)ensurePolished;
+- (QtWidget*)focusProxy;
+- (QtWidget*)focusWidget;
+- (QFontInfo)fontInfo;
+- (QFontMetrics)fontMetrics;
+- (QPalette::ColorRole)foregroundRole;
+- (QPixmap)grabRectangle: (of_rectangle_t)rectangle;
+- (void)grabGesture: (Qt::GestureType)gesture;
+- (void)grabGesture: (Qt::GestureType)gesture
+	      flags: (Qt::GestureFlags)flags;
+- (void)grabKeyboard;
+- (void)grabMouse;
+- (void)grabMouseWithCursor: (const QCursor&)cursor;
+- (int)grabShortcutWithKey: (const QKeySequence&)key;
+- (int)grabShortcutWithKey: (const QKeySequence&)key
+		   context: (Qt::ShortcutContext)context;
+- (QGraphicsEffect*)graphicsEffect;
+- (QGraphicsProxyWidget*)graphicsProxyWidget;
+#ifdef QT_KEYPAD_NAVIGATION
+- (bool)hasEditFocus;
+#endif
+- (bool)hasHeightForWidth;
+- (int)heightForWidth: (int)w;
+- (QVariant)queryInputMethod: (Qt::InputMethodQuery)query;
+- (void)insertAction: (QtAction*)action
+	      before: (QtAction*)before;
+- (void)insertActions: (OFArray OF_GENERIC(QtAction*)*)actions
+	       before: (QtAction*)before;
+- (bool)isAncestorOf: (QtWidget*)child;
+- (bool)isEnabledTo: (QtWidget*)ancestor;
+- (bool)isHidden;
+- (bool)isVisibleTo: (QtWidget*)ancestor;
+- (bool)isWindow;
+// QPoint mapFrom(const QWidget *parent, const QPoint &pos) const
+// QPoint mapFromGlobal(const QPoint &pos) const
+// QPoint mapFromParent(const QPoint &pos) const
+// QPoint mapTo(const QWidget *parent, const QPoint &pos) const
+// QPoint mapToGlobal(const QPoint &pos) const
+// QPoint mapToParent(const QPoint &pos) const
+// QRegion mask() const
+// ...
+
 - (void)unsetCursor;
 - (void)unsetLayoutDirection;
 - (void)unsetLocale;

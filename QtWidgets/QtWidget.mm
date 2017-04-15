@@ -21,6 +21,7 @@
  */
 
 #import "QtWidget.h"
+#import "QtAction.h"
 
 #import "helpers.h"
 
@@ -32,6 +33,11 @@
 {
 	if (self == [QtWidget class])
 		[self inheritMethodsFromClass: [QtPaintDevice class]];
+}
+
+- initWithQObject: (QObject*)qObject
+{
+	OF_INVALID_INIT_METHOD
 }
 
 - initWithQWidget: (QWidget*)qWidget
@@ -547,5 +553,237 @@
 - (int)y
 {
 	return [self qWidget]->y();
+}
+
+- (OFArray OF_GENERIC(QtAction*)*)actions
+{
+	const QList<QAction*> &actions = [self qWidget]->actions();
+	OFMutableArray *ret =
+	    [OFMutableArray arrayWithCapacity: actions.count()];
+	void *pool = objc_autoreleasePoolPush();
+
+	for (QAction *action: actions)
+		[ret addObject:
+		    [[[QtAction alloc] initWithQAction: action] autorelease]];
+
+	[ret makeImmutable];
+
+	objc_autoreleasePoolPop(pool);
+
+	return ret;
+}
+
+- (void)activateWindow
+{
+	[self qWidget]->activateWindow();
+}
+
+- (void)addAction: (QtAction*)action
+{
+	[self qWidget]->addAction([action qAction]);
+}
+
+- (void)addActions: (OFArray OF_GENERIC(QtAction*)*)actions
+{
+	QList<QAction*> list;
+
+	for (QtAction *action in actions)
+		list.append([action qAction]);
+
+	[self qWidget]->addActions(list);
+}
+
+- (void)adjustSize
+{
+	[self qWidget]->adjustSize();
+}
+
+- (QPalette::ColorRole)backgroundRole
+{
+	return [self qWidget]->backgroundRole();
+}
+
+- (QBackingStore*)backingStore
+{
+	return [self qWidget]->backingStore();
+}
+
+- (QtWidget*)childAt: (of_point_t)point
+{
+	return [[[QtWidget alloc] initWithQWidget:
+	    [self qWidget]->childAt(toQt(point))] autorelease];
+}
+
+- (void)clearFocus
+{
+	return [self qWidget]->clearFocus();
+}
+
+- (void)clearMask
+{
+	[self qWidget]->clearMask();
+}
+
+- (QMargins)contentsMargins
+{
+	return [self qWidget]->contentsMargins();
+}
+
+- (of_rectangle_t)contentsRect
+{
+	return toOF([self qWidget]->contentsRect());
+}
+
+- (WId)effectiveWinId
+{
+	return [self qWidget]->effectiveWinId();
+}
+
+- (void)ensurePolished
+{
+	[self qWidget]->ensurePolished();
+}
+
+- (QtWidget*)focusProxy
+{
+	return [[[QtWidget alloc] initWithQWidget:
+	    [self qWidget]->focusProxy()] autorelease];
+}
+
+- (QtWidget*)focusWidget
+{
+	return [[[QtWidget alloc] initWithQWidget:
+	    [self qWidget]->focusWidget()] autorelease];
+}
+
+- (QFontInfo)fontInfo
+{
+	return [self qWidget]->fontInfo();
+}
+
+- (QFontMetrics)fontMetrics
+{
+	return [self qWidget]->fontMetrics();
+}
+
+- (QPalette::ColorRole)foregroundRole
+{
+	return [self qWidget]->foregroundRole();
+}
+
+- (QPixmap)grabRectangle: (of_rectangle_t)rectangle
+{
+	return [self qWidget]->grab(toQt(rectangle));
+}
+
+- (void)grabGesture: (Qt::GestureType)gesture
+{
+	[self qWidget]->grabGesture(gesture);
+}
+
+- (void)grabGesture: (Qt::GestureType)gesture
+	      flags: (Qt::GestureFlags)flags
+{
+	[self qWidget]->grabGesture(gesture, flags);
+}
+
+- (void)grabKeyboard
+{
+	[self qWidget]->grabKeyboard();
+}
+
+- (void)grabMouse
+{
+	[self qWidget]->grabMouse();
+}
+
+- (void)grabMouseWithCursor: (const QCursor&)cursor
+{
+	[self qWidget]->grabMouse(cursor);
+}
+
+- (int)grabShortcutWithKey: (const QKeySequence&)key
+{
+	return [self qWidget]->grabShortcut(key);
+}
+
+- (int)grabShortcutWithKey: (const QKeySequence&)key
+		   context: (Qt::ShortcutContext)context
+{
+	return [self qWidget]->grabShortcut(key, context);
+}
+
+- (QGraphicsEffect*)graphicsEffect
+{
+	return [self qWidget]->graphicsEffect();
+}
+
+- (QGraphicsProxyWidget*)graphicsProxyWidget
+{
+	return [self qWidget]->graphicsProxyWidget();
+}
+
+#ifdef QT_KEYPAD_NAVIGATION
+- (bool)hasEditFocus
+{
+	return [self qWidget]->hasEditFocus();
+}
+#endif
+
+- (bool)hasHeightForWidth
+{
+	return [self qWidget]->hasHeightForWidth();
+}
+
+- (int)heightForWidth: (int)w
+{
+	return [self qWidget]->heightForWidth(w);
+}
+
+- (QVariant)queryInputMethod: (Qt::InputMethodQuery)query
+{
+	return [self qWidget]->inputMethodQuery(query);
+}
+
+- (void)insertAction: (QtAction*)action
+	      before: (QtAction*)before
+{
+	[self qWidget]->insertAction([before qAction], [action qAction]);
+}
+
+- (void)insertActions: (OFArray OF_GENERIC(QtAction*)*)actions
+	       before: (QtAction*)before
+{
+	QList<QAction*> list;
+
+	for (QtAction *action in actions)
+		list.append([action qAction]);
+
+	[self qWidget]->insertActions([before qAction], list);
+}
+
+- (bool)isAncestorOf: (QtWidget*)child
+{
+	return [self qWidget]->isAncestorOf([child qWidget]);
+}
+
+- (bool)isEnabledTo: (QtWidget*)ancestor
+{
+	return [self qWidget]->isEnabledTo([ancestor qWidget]);
+}
+
+- (bool)isHidden
+{
+	return [self qWidget]->isHidden();
+}
+
+- (bool)isVisibleTo: (QtWidget*)ancestor
+{
+	return [self qWidget]->isVisibleTo([ancestor qWidget]);
+}
+
+- (bool)isWindow
+{
+	return [self qWidget]->isWindow();
 }
 @end
