@@ -56,6 +56,7 @@
 - (QMenu*)menu;
 - (QtWidget*)parentWidget;
 - (void)setActionGroup: (QActionGroup*)group;
+- (void)setData: (const QVariant&)data;
 - (void)setMenu: (QMenu*)menu;
 - (void)setSeparator: (bool)isSeparator;
 - (void)setShortcuts: (const QList<QKeySequence>&)shortcuts;
@@ -63,3 +64,19 @@
 - (QList<QKeySequence>)shortcuts;
 - (bool)showStatusText: (QtWidget*)widget;
 @end
+
+namespace ObjQt {
+
+static OF_INLINE QtAction*
+toOF(QAction *qAction)
+{
+	return [[[QtAction alloc] initWithQAction: qAction] autorelease];
+}
+
+static OF_INLINE QAction*
+toQt(QtAction *action)
+{
+	return [action qAction];
+}
+
+}

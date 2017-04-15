@@ -22,23 +22,17 @@
 
 #import <ObjFW/ObjFW.h>
 
-#include <QString>
 #include <QSize>
 #include <QRect>
 
-#import "OFString+QString.h"
+#import "QtObject.h"
+#import "QtAction.h"
+#import "QtEvent.h"
+#import "QtChildEvent.h"
+#import "QtThread.h"
+#import "QtWidget.h"
 
-static OF_INLINE OFString*
-toOF(const QString &qString)
-{
-	return [OFString stringWithQString: qString];
-}
-
-static OF_INLINE QString
-toQt(OFString *string)
-{
-	return [string qString];
-}
+namespace ObjQt {
 
 static OF_INLINE of_point_t
 toOF(const QPoint &qPoint)
@@ -76,4 +70,6 @@ toQt(of_rectangle_t rectangle)
 {
 	return QRect(rectangle.origin.x, rectangle.origin.y,
 	    rectangle.size.width, rectangle.size.height);
+}
+
 }

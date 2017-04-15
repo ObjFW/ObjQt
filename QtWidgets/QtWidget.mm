@@ -22,11 +22,16 @@
 
 #import "QtWidget.h"
 #import "QtAction.h"
+#import "OFString+QString.h"
+#import "OFDataArray+QByteArray.h"
 
 #import "helpers.h"
 
 #include <QIcon>
 #include <QLocale>
+
+using ObjQt::toOF;
+using ObjQt::toQt;
 
 @implementation QtWidget
 + (void)initialize
@@ -52,519 +57,518 @@
 
 - (bool)acceptDrops
 {
-	return [self qWidget]->acceptDrops();
+	return toQt(self)->acceptDrops();
 }
 
 - (void)setAcceptDrops: (bool)acceptDrops
 {
-	[self qWidget]->setAcceptDrops(acceptDrops);
+	toQt(self)->setAcceptDrops(acceptDrops);
 }
 
 - (OFString*)accessibleDescription
 {
-	return toOF([self qWidget]->accessibleDescription());
+	return toOF(toQt(self)->accessibleDescription());
 }
 
 - (void)setAccessibleDescription: (OFString*)accessibleDescription
 {
-	[self qWidget]->setAccessibleDescription(toQt(accessibleDescription));
+	toQt(self)->setAccessibleDescription(toQt(accessibleDescription));
 }
 
 - (OFString*)accessibleName
 {
-	return toOF([self qWidget]->accessibleName());
+	return toOF(toQt(self)->accessibleName());
 }
 
 - (void)setAccessibleName: (OFString*)accessibleName
 {
-	[self qWidget]->setAccessibleName(toQt(accessibleName));
+	toQt(self)->setAccessibleName(toQt(accessibleName));
 }
 
 - (bool)autoFillBackground
 {
-	return [self qWidget]->autoFillBackground();
+	return toQt(self)->autoFillBackground();
 }
 
 - (void)setAutoFillBackground: (bool)autoFillBackground
 {
-	[self qWidget]->setAutoFillBackground(autoFillBackground);
+	toQt(self)->setAutoFillBackground(autoFillBackground);
 }
 
 - (of_dimension_t)baseSize
 {
-	return toOF([self qWidget]->baseSize());
+	return toOF(toQt(self)->baseSize());
 }
 
 - (void)setBaseSize: (of_dimension_t)baseSize
 {
-	[self qWidget]->setBaseSize(toQt(baseSize));
+	toQt(self)->setBaseSize(toQt(baseSize));
 }
 
 - (of_rectangle_t)childrenRect
 {
-	return toOF([self qWidget]->childrenRect());
+	return toOF(toQt(self)->childrenRect());
 }
 
 - (QRegion)childrenRegion
 {
-	return [self qWidget]->childrenRegion();
+	return toQt(self)->childrenRegion();
 }
 
 - (Qt::ContextMenuPolicy)contextMenuPolicy
 {
-	return [self qWidget]->contextMenuPolicy();
+	return toQt(self)->contextMenuPolicy();
 }
 
 - (void)setContextMenuPolicy: (Qt::ContextMenuPolicy)contextMenuPolicy
 {
-	[self qWidget]->setContextMenuPolicy(contextMenuPolicy);
+	toQt(self)->setContextMenuPolicy(contextMenuPolicy);
 }
 
 - (QCursor)cursor
 {
-	return [self qWidget]->cursor();
+	return toQt(self)->cursor();
 }
 
 - (void)setCursor: (QCursor)cursor
 {
-	[self qWidget]->setCursor(cursor);
+	toQt(self)->setCursor(cursor);
 }
 
 - (void)unsetCursor
 {
-	[self qWidget]->unsetCursor();
+	toQt(self)->unsetCursor();
 }
 
 - (bool)isEnabled
 {
-	return [self qWidget]->isEnabled();
+	return toQt(self)->isEnabled();
 }
 
 - (void)setEnabled: (bool)enabled
 {
-	[self qWidget]->setEnabled(enabled);
+	toQt(self)->setEnabled(enabled);
 }
 
 - (bool)hasFocus
 {
-	return [self qWidget]->hasFocus();
+	return toQt(self)->hasFocus();
 }
 
 - (Qt::FocusPolicy)focusPolicy
 {
-	return [self qWidget]->focusPolicy();
+	return toQt(self)->focusPolicy();
 }
 
 - (void)setFocusPolicy: (Qt::FocusPolicy)focusPolicy
 {
-	[self qWidget]->setFocusPolicy(focusPolicy);
+	toQt(self)->setFocusPolicy(focusPolicy);
 }
 
 - (const QFont&)font
 {
-	return [self qWidget]->font();
+	return toQt(self)->font();
 }
 
 - (void)setFont: (const QFont&)font
 {
-	[self qWidget]->setFont(font);
+	toQt(self)->setFont(font);
 }
 
 - (of_rectangle_t)frameGeometry
 {
-	return toOF([self qWidget]->frameGeometry());
+	return toOF(toQt(self)->frameGeometry());
 }
 
 - (of_dimension_t)frameSize
 {
-	return toOF([self qWidget]->frameSize());
+	return toOF(toQt(self)->frameSize());
 }
 
 - (bool)isFullScreen
 {
-	return [self qWidget]->isFullScreen();
+	return toQt(self)->isFullScreen();
 }
 
 - (of_rectangle_t)geometry
 {
-	return toOF([self qWidget]->geometry());
+	return toOF(toQt(self)->geometry());
 }
 
 - (void)setGeometry: (of_rectangle_t)geometry
 {
-	[self qWidget]->setGeometry(toQt(geometry));
+	toQt(self)->setGeometry(toQt(geometry));
 }
 
 - (int)height
 {
-	return [self qWidget]->height();
+	return toQt(self)->height();
 }
 
 - (Qt::InputMethodHints)inputMethodHints
 {
-	return [self qWidget]->inputMethodHints();
+	return toQt(self)->inputMethodHints();
 }
 
 - (void)setInputMethodHints: (Qt::InputMethodHints)inputMethodHints
 {
-	[self qWidget]->setInputMethodHints(inputMethodHints);
+	toQt(self)->setInputMethodHints(inputMethodHints);
 }
 
 - (bool)isActiveWindow
 {
-	return [self qWidget]->isActiveWindow();
+	return toQt(self)->isActiveWindow();
 }
 
 - (Qt::LayoutDirection)layoutDirection
 {
-	return [self qWidget]->layoutDirection();
+	return toQt(self)->layoutDirection();
 }
 
 - (void)setLayoutDirection: (Qt::LayoutDirection)layoutDirection
 {
-	[self qWidget]->setLayoutDirection(layoutDirection);
+	toQt(self)->setLayoutDirection(layoutDirection);
 }
 
 - (void)unsetLayoutDirection
 {
-	[self qWidget]->unsetLayoutDirection();
+	toQt(self)->unsetLayoutDirection();
 }
 
 - (QLocale)locale
 {
-	return [self qWidget]->locale();
+	return toQt(self)->locale();
 }
 
 - (void)setLocale: (QLocale)locale
 {
-	[self qWidget]->setLocale(locale);
+	toQt(self)->setLocale(locale);
 }
 
 - (void)unsetLocale
 {
-	[self qWidget]->unsetLocale();
+	toQt(self)->unsetLocale();
 }
 
 - (bool)isMaximized
 {
-	return [self qWidget]->isMaximized();
+	return toQt(self)->isMaximized();
 }
 
 - (int)maximumHeight
 {
-	return [self qWidget]->maximumHeight();
+	return toQt(self)->maximumHeight();
 }
 
 - (void)setMaximumHeight: (int)maximumHeight
 {
-	[self qWidget]->setMaximumHeight(maximumHeight);
+	toQt(self)->setMaximumHeight(maximumHeight);
 }
 
 - (of_dimension_t)maximumSize
 {
-	return toOF([self qWidget]->maximumSize());
+	return toOF(toQt(self)->maximumSize());
 }
 
 - (void)setMaximumSize: (of_dimension_t)maximumSize
 {
-	[self qWidget]->setMaximumSize(toQt(maximumSize));
+	toQt(self)->setMaximumSize(toQt(maximumSize));
 }
 
 - (int)maximumWidth
 {
-	return [self qWidget]->maximumWidth();
+	return toQt(self)->maximumWidth();
 }
 
 - (void)setMaximumWidth: (int)maximumWidth
 {
-	[self qWidget]->setMaximumWidth(maximumWidth);
+	toQt(self)->setMaximumWidth(maximumWidth);
 }
 
 - (bool)isMinimized
 {
-	return [self qWidget]->isMinimized();
+	return toQt(self)->isMinimized();
 }
 
 - (int)minimumHeight
 {
-	return [self qWidget]->minimumHeight();
+	return toQt(self)->minimumHeight();
 }
 
 - (void)setMinimumHeight: (int)minimumHeight
 {
-	[self qWidget]->setMinimumHeight(minimumHeight);
+	toQt(self)->setMinimumHeight(minimumHeight);
 }
 
 - (of_dimension_t)minimumSize
 {
-	return toOF([self qWidget]->minimumSize());
+	return toOF(toQt(self)->minimumSize());
 }
 
 - (void)setMinimumSize: (of_dimension_t)minimumSize
 {
-	[self qWidget]->setMinimumSize(toQt(minimumSize));
+	toQt(self)->setMinimumSize(toQt(minimumSize));
 }
 
 - (of_dimension_t)minimumSizeHint
 {
-	return toOF([self qWidget]->minimumSizeHint());
+	return toOF(toQt(self)->minimumSizeHint());
 }
 
 - (int)minimumWidth
 {
-	return [self qWidget]->minimumWidth();
+	return toQt(self)->minimumWidth();
 }
 
 - (void)setMinimumWidth: (int)minimumWidth
 {
-	[self qWidget]->setMinimumWidth(minimumWidth);
+	toQt(self)->setMinimumWidth(minimumWidth);
 }
 
 - (bool)isModal
 {
-	return [self qWidget]->isModal();
+	return toQt(self)->isModal();
 }
 
 - (bool)hasMouseTracking
 {
-	return [self qWidget]->hasMouseTracking();
+	return toQt(self)->hasMouseTracking();
 }
 
 - (void)setMouseTracking: (bool)mouseTracking
 {
-	[self qWidget]->setMouseTracking(mouseTracking);
+	toQt(self)->setMouseTracking(mouseTracking);
 }
 
 - (of_rectangle_t)normalGeometry
 {
-	return toOF([self qWidget]->normalGeometry());
+	return toOF(toQt(self)->normalGeometry());
 }
 
 - (const QPalette&)palette
 {
-	return [self qWidget]->palette();
+	return toQt(self)->palette();
 }
 
 - (void)setPalette: (const QPalette&)palette
 {
-	[self qWidget]->setPalette(palette);
+	toQt(self)->setPalette(palette);
 }
 
 - (of_point_t)pos
 {
-	return toOF([self qWidget]->pos());
+	return toOF(toQt(self)->pos());
 }
 
 - (void)moveToPosition: (of_point_t)pos
 {
-	[self qWidget]->move(toQt(pos));
+	toQt(self)->move(toQt(pos));
 }
 
 - (of_rectangle_t)rect
 {
-	return toOF([self qWidget]->rect());
+	return toOF(toQt(self)->rect());
 }
 
 - (of_dimension_t)size
 {
-	return toOF([self qWidget]->size());
+	return toOF(toQt(self)->size());
 }
 
 - (void)resizeTo: (of_dimension_t)size
 {
-	[self qWidget]->resize(toQt(size));
+	toQt(self)->resize(toQt(size));
 }
 
 - (of_dimension_t)sizeHint
 {
-	return toOF([self qWidget]->sizeHint());
+	return toOF(toQt(self)->sizeHint());
 }
 
 - (of_dimension_t)sizeIncrement
 {
-	return toOF([self qWidget]->sizeIncrement());
+	return toOF(toQt(self)->sizeIncrement());
 }
 
 - (void)setSizeIncrement: (of_dimension_t)sizeIncrement
 {
-	[self qWidget]->setSizeIncrement(toQt(sizeIncrement));
+	toQt(self)->setSizeIncrement(toQt(sizeIncrement));
 }
 
 - (QSizePolicy)sizePolicy
 {
-	return [self qWidget]->sizePolicy();
+	return toQt(self)->sizePolicy();
 }
 
 - (void)setSizePolicy: (QSizePolicy)sizePolicy
 {
-	[self qWidget]->setSizePolicy(sizePolicy);
+	toQt(self)->setSizePolicy(sizePolicy);
 }
 
 - (OFString*)statusTip
 {
-	return toOF([self qWidget]->statusTip());
+	return toOF(toQt(self)->statusTip());
 }
 
 - (void)setStatusTip: (OFString*)statusTip
 {
-	[self qWidget]->setStatusTip(toQt(statusTip));
+	toQt(self)->setStatusTip(toQt(statusTip));
 }
 
 - (OFString*)styleSheet
 {
-	return toOF([self qWidget]->styleSheet());
+	return toOF(toQt(self)->styleSheet());
 }
 
 - (void)setStyleSheet: (OFString*)styleSheet
 {
-	[self qWidget]->setStyleSheet(toQt(styleSheet));
+	toQt(self)->setStyleSheet(toQt(styleSheet));
 }
 
 - (OFString*)toolTip
 {
-	return toOF([self qWidget]->toolTip());
+	return toOF(toQt(self)->toolTip());
 }
 
 - (void)setToolTip: (OFString*)toolTip
 {
-	[self qWidget]->setToolTip(toQt(toolTip));
+	toQt(self)->setToolTip(toQt(toolTip));
 }
 
 - (int)toolTipDuration
 {
-	return [self qWidget]->toolTipDuration();
+	return toQt(self)->toolTipDuration();
 }
 
 - (void)setToolTipDuration: (int)toolTipDuration
 {
-	[self qWidget]->setToolTipDuration(toolTipDuration);
+	toQt(self)->setToolTipDuration(toolTipDuration);
 }
 
 - (bool)updatesEnabled
 {
-	return [self qWidget]->updatesEnabled();
+	return toQt(self)->updatesEnabled();
 }
 
 - (void)setUpdatesEnabled: (bool)updatesEnabled
 {
-	[self qWidget]->setUpdatesEnabled(updatesEnabled);
+	toQt(self)->setUpdatesEnabled(updatesEnabled);
 }
 
 - (bool)isVisible
 {
-	return [self qWidget]->isVisible();
+	return toQt(self)->isVisible();
 }
 
 - (void)setVisible: (bool)visible
 {
-	[self qWidget]->setVisible(visible);
+	toQt(self)->setVisible(visible);
 }
 
 - (OFString*)whatsThis
 {
-	return toOF([self qWidget]->whatsThis());
+	return toOF(toQt(self)->whatsThis());
 }
 
 - (void)setWhatsThis: (OFString*)whatsThis
 {
-	[self qWidget]->setWhatsThis(toQt(whatsThis));
+	toQt(self)->setWhatsThis(toQt(whatsThis));
 }
 
 - (int)width
 {
-	return [self qWidget]->width();
+	return toQt(self)->width();
 }
 
 - (OFString*)windowFilePath
 {
-	return toOF([self qWidget]->windowFilePath());
+	return toOF(toQt(self)->windowFilePath());
 }
 
 - (void)setWindowFilePath: (OFString*)windowFilePath
 {
-	[self qWidget]->setWindowFilePath(toQt(windowFilePath));
+	toQt(self)->setWindowFilePath(toQt(windowFilePath));
 }
 
 - (Qt::WindowFlags)windowFlags
 {
-	return [self qWidget]->windowFlags();
+	return toQt(self)->windowFlags();
 }
 
 - (void)setWindowFlags: (Qt::WindowFlags)windowFlags
 {
-	[self qWidget]->setWindowFlags(windowFlags);
+	toQt(self)->setWindowFlags(windowFlags);
 }
 
 - (QIcon)windowIcon
 {
-	return [self qWidget]->windowIcon();
+	return toQt(self)->windowIcon();
 }
 
 - (void)setWindowIcon: (QIcon)windowIcon
 {
-	[self qWidget]->setWindowIcon(windowIcon);
+	toQt(self)->setWindowIcon(windowIcon);
 }
 
 - (Qt::WindowModality)windowModality
 {
-	return [self qWidget]->windowModality();
+	return toQt(self)->windowModality();
 }
 
 - (void)setWindowModality: (Qt::WindowModality)windowModality
 {
-	[self qWidget]->setWindowModality(windowModality);
+	toQt(self)->setWindowModality(windowModality);
 }
 
 - (bool)isWindowModified
 {
-	return [self qWidget]->isWindowModified();
+	return toQt(self)->isWindowModified();
 }
 
 - (void)setWindowModified: (bool)windowModified
 {
-	[self qWidget]->setWindowModified(windowModified);
+	toQt(self)->setWindowModified(windowModified);
 }
 
 - (double)windowOpacity
 {
-	return [self qWidget]->windowOpacity();
+	return toQt(self)->windowOpacity();
 }
 
 - (void)setWindowOpacity: (double)windowOpacity
 {
-	[self qWidget]->setWindowOpacity(windowOpacity);
+	toQt(self)->setWindowOpacity(windowOpacity);
 }
 
 - (OFString*)windowTitle
 {
-	return toOF([self qWidget]->windowTitle());
+	return toOF(toQt(self)->windowTitle());
 }
 
 - (void)setWindowTitle: (OFString*)windowTitle
 {
-	[self qWidget]->setWindowTitle(toQt(windowTitle));
+	toQt(self)->setWindowTitle(toQt(windowTitle));
 }
 
 - (int)x
 {
-	return [self qWidget]->x();
+	return toQt(self)->x();
 }
 
 - (int)y
 {
-	return [self qWidget]->y();
+	return toQt(self)->y();
 }
 
 - (OFArray OF_GENERIC(QtAction*)*)actions
 {
-	const QList<QAction*> &actions = [self qWidget]->actions();
+	const QList<QAction*> &actions = toQt(self)->actions();
 	OFMutableArray *ret =
 	    [OFMutableArray arrayWithCapacity: actions.count()];
 	void *pool = objc_autoreleasePoolPush();
 
 	for (QAction *action: actions)
-		[ret addObject:
-		    [[[QtAction alloc] initWithQAction: action] autorelease]];
+		[ret addObject: toOF(action)];
 
 	[ret makeImmutable];
 
@@ -575,12 +579,12 @@
 
 - (void)activateWindow
 {
-	[self qWidget]->activateWindow();
+	toQt(self)->activateWindow();
 }
 
 - (void)addAction: (QtAction*)action
 {
-	[self qWidget]->addAction([action qAction]);
+	toQt(self)->addAction(toQt(action));
 }
 
 - (void)addActions: (OFArray OF_GENERIC(QtAction*)*)actions
@@ -588,167 +592,164 @@
 	QList<QAction*> list;
 
 	for (QtAction *action in actions)
-		list.append([action qAction]);
+		list.append(toQt(action));
 
-	[self qWidget]->addActions(list);
+	toQt(self)->addActions(list);
 }
 
 - (void)adjustSize
 {
-	[self qWidget]->adjustSize();
+	toQt(self)->adjustSize();
 }
 
 - (QPalette::ColorRole)backgroundRole
 {
-	return [self qWidget]->backgroundRole();
+	return toQt(self)->backgroundRole();
 }
 
 - (QBackingStore*)backingStore
 {
-	return [self qWidget]->backingStore();
+	return toQt(self)->backingStore();
 }
 
 - (QtWidget*)childAt: (of_point_t)point
 {
-	return [[[QtWidget alloc] initWithQWidget:
-	    [self qWidget]->childAt(toQt(point))] autorelease];
+	return toOF(toQt(self)->childAt(toQt(point)));
 }
 
 - (void)clearFocus
 {
-	return [self qWidget]->clearFocus();
+	return toQt(self)->clearFocus();
 }
 
 - (void)clearMask
 {
-	[self qWidget]->clearMask();
+	toQt(self)->clearMask();
 }
 
 - (QMargins)contentsMargins
 {
-	return [self qWidget]->contentsMargins();
+	return toQt(self)->contentsMargins();
 }
 
 - (of_rectangle_t)contentsRect
 {
-	return toOF([self qWidget]->contentsRect());
+	return toOF(toQt(self)->contentsRect());
 }
 
-- (WId)effectiveWinId
+- (WId)effectiveWinID
 {
-	return [self qWidget]->effectiveWinId();
+	return toQt(self)->effectiveWinId();
 }
 
 - (void)ensurePolished
 {
-	[self qWidget]->ensurePolished();
+	toQt(self)->ensurePolished();
 }
 
 - (QtWidget*)focusProxy
 {
-	return [[[QtWidget alloc] initWithQWidget:
-	    [self qWidget]->focusProxy()] autorelease];
+	return toOF(toQt(self)->focusProxy());
 }
 
 - (QtWidget*)focusWidget
 {
-	return [[[QtWidget alloc] initWithQWidget:
-	    [self qWidget]->focusWidget()] autorelease];
+	return toOF(toQt(self)->focusWidget());
 }
 
 - (QFontInfo)fontInfo
 {
-	return [self qWidget]->fontInfo();
+	return toQt(self)->fontInfo();
 }
 
 - (QFontMetrics)fontMetrics
 {
-	return [self qWidget]->fontMetrics();
+	return toQt(self)->fontMetrics();
 }
 
 - (QPalette::ColorRole)foregroundRole
 {
-	return [self qWidget]->foregroundRole();
+	return toQt(self)->foregroundRole();
 }
 
 - (QPixmap)grabRectangle: (of_rectangle_t)rectangle
 {
-	return [self qWidget]->grab(toQt(rectangle));
+	return toQt(self)->grab(toQt(rectangle));
 }
 
 - (void)grabGesture: (Qt::GestureType)gesture
 {
-	[self qWidget]->grabGesture(gesture);
+	toQt(self)->grabGesture(gesture);
 }
 
 - (void)grabGesture: (Qt::GestureType)gesture
 	      flags: (Qt::GestureFlags)flags
 {
-	[self qWidget]->grabGesture(gesture, flags);
+	toQt(self)->grabGesture(gesture, flags);
 }
 
 - (void)grabKeyboard
 {
-	[self qWidget]->grabKeyboard();
+	toQt(self)->grabKeyboard();
 }
 
 - (void)grabMouse
 {
-	[self qWidget]->grabMouse();
+	toQt(self)->grabMouse();
 }
 
 - (void)grabMouseWithCursor: (const QCursor&)cursor
 {
-	[self qWidget]->grabMouse(cursor);
+	toQt(self)->grabMouse(cursor);
 }
 
 - (int)grabShortcutWithKey: (const QKeySequence&)key
 {
-	return [self qWidget]->grabShortcut(key);
+	return toQt(self)->grabShortcut(key);
 }
 
 - (int)grabShortcutWithKey: (const QKeySequence&)key
 		   context: (Qt::ShortcutContext)context
 {
-	return [self qWidget]->grabShortcut(key, context);
+	return toQt(self)->grabShortcut(key, context);
 }
 
 - (QGraphicsEffect*)graphicsEffect
 {
-	return [self qWidget]->graphicsEffect();
+	return toQt(self)->graphicsEffect();
 }
 
 - (QGraphicsProxyWidget*)graphicsProxyWidget
 {
-	return [self qWidget]->graphicsProxyWidget();
+	return toQt(self)->graphicsProxyWidget();
 }
 
 #ifdef QT_KEYPAD_NAVIGATION
 - (bool)hasEditFocus
 {
-	return [self qWidget]->hasEditFocus();
+	return toQt(self)->hasEditFocus();
 }
 #endif
 
 - (bool)hasHeightForWidth
 {
-	return [self qWidget]->hasHeightForWidth();
+	return toQt(self)->hasHeightForWidth();
 }
 
 - (int)heightForWidth: (int)w
 {
-	return [self qWidget]->heightForWidth(w);
+	return toQt(self)->heightForWidth(w);
 }
 
 - (QVariant)queryInputMethod: (Qt::InputMethodQuery)query
 {
-	return [self qWidget]->inputMethodQuery(query);
+	return toQt(self)->inputMethodQuery(query);
 }
 
 - (void)insertAction: (QtAction*)action
 	      before: (QtAction*)before
 {
-	[self qWidget]->insertAction([before qAction], [action qAction]);
+	toQt(self)->insertAction(toQt(before), toQt(action));
 }
 
 - (void)insertActions: (OFArray OF_GENERIC(QtAction*)*)actions
@@ -757,33 +758,357 @@
 	QList<QAction*> list;
 
 	for (QtAction *action in actions)
-		list.append([action qAction]);
+		list.append(toQt(action));
 
-	[self qWidget]->insertActions([before qAction], list);
+	toQt(self)->insertActions(toQt(before), list);
 }
 
 - (bool)isAncestorOf: (QtWidget*)child
 {
-	return [self qWidget]->isAncestorOf([child qWidget]);
+	return toQt(self)->isAncestorOf(toQt(child));
 }
 
 - (bool)isEnabledTo: (QtWidget*)ancestor
 {
-	return [self qWidget]->isEnabledTo([ancestor qWidget]);
+	return toQt(self)->isEnabledTo(toQt(ancestor));
 }
 
 - (bool)isHidden
 {
-	return [self qWidget]->isHidden();
+	return toQt(self)->isHidden();
 }
 
 - (bool)isVisibleTo: (QtWidget*)ancestor
 {
-	return [self qWidget]->isVisibleTo([ancestor qWidget]);
+	return toQt(self)->isVisibleTo(toQt(ancestor));
 }
 
 - (bool)isWindow
 {
-	return [self qWidget]->isWindow();
+	return toQt(self)->isWindow();
+}
+
+- (of_point_t)mapPosition: (of_point_t)pos
+		     from: (QtWidget*)parent
+{
+	return toOF(toQt(self)->mapFrom(toQt(parent), toQt(pos)));
+}
+
+- (of_point_t)mapPositionFromGlobal: (of_point_t)pos
+{
+	return toOF(toQt(self)->mapFromGlobal(toQt(pos)));
+}
+
+- (of_point_t)mapPositionFromParent: (of_point_t)pos
+{
+	return toOF(toQt(self)->mapFromParent(toQt(pos)));
+}
+
+- (of_point_t)mapPosition: (of_point_t)pos
+		       to: (QtWidget*)parent
+{
+	return toOF(toQt(self)->mapTo(toQt(parent), toQt(pos)));
+}
+
+- (of_point_t)mapPositionToGlobal: (of_point_t)pos
+{
+	return toOF(toQt(self)->mapToGlobal(toQt(pos)));
+}
+
+- (of_point_t)mapPositionToParent: (of_point_t)pos
+{
+	return toOF(toQt(self)->mapToParent(toQt(pos)));
+}
+
+- (QRegion)mask
+{
+	return toQt(self)->mask();
+}
+
+- (QtWidget*)nativeParentWidget
+{
+	return toOF(toQt(self)->nativeParentWidget());
+}
+
+- (QtWidget*)nextInFocusChain
+{
+	return toOF(toQt(self)->nextInFocusChain());
+}
+
+- (void)overrideWindowFlags: (Qt::WindowFlags)flags
+{
+	toQt(self)->overrideWindowFlags(flags);
+}
+
+- (QtWidget*)parentWidget
+{
+	return toOF(toQt(self)->parentWidget());
+}
+
+- (QtWidget*)previousInFocusChain
+{
+	return toOF(toQt(self)->previousInFocusChain());
+}
+
+- (void)releaseKeyboard
+{
+	toQt(self)->releaseKeyboard();
+}
+
+- (void)releaseMouse
+{
+	toQt(self)->releaseMouse();
+}
+
+- (void)releaseShortcut: (int)ID
+{
+	toQt(self)->releaseShortcut(ID);
+}
+
+- (void)removeAction: (QtAction*)action
+{
+	toQt(self)->removeAction(toQt(action));
+}
+
+- (void)renderIntoPaintDevice: (QtObject <QtPaintDevice>*)target
+		 targetOffset: (of_point_t)targetOffset
+		 sourceRegion: (QRegion)sourceRegion
+{
+	toQt(self)->render([target qPaintDevice], toQt(targetOffset),
+	    sourceRegion);
+}
+
+- (void)renderIntoPaintDevice: (QtObject <QtPaintDevice>*)target
+		 targetOffset: (of_point_t)targetOffset
+		 sourceRegion: (QRegion)sourceRegion
+			flags: (QWidget::RenderFlags)renderFlags
+{
+	toQt(self)->render([target qPaintDevice], toQt(targetOffset),
+	    sourceRegion, renderFlags);
+}
+
+- (void)renderIntoPainter: (QPainter*)target
+	     targetOffset: (of_point_t)targetOffset
+	     sourceRegion: (QRegion)sourceRegion
+{
+	toQt(self)->render(target, toQt(targetOffset), sourceRegion);
+}
+
+- (void)renderIntoPainter: (QPainter*)target
+	     targetOffset: (of_point_t)targetOffset
+	     sourceRegion: (QRegion)sourceRegion
+		    flags: (QWidget::RenderFlags)renderFlags
+{
+	toQt(self)->render(target, toQt(targetOffset), sourceRegion,
+	    renderFlags);
+}
+
+- (void)repaintInRectangle: (of_rectangle_t)rect
+{
+	toQt(self)->repaint(toQt(rect));
+}
+
+- (void)repaintInRegion: (const QRegion&)region
+{
+	toQt(self)->repaint(region);
+}
+
+- (bool)restoreGeometry: (OFDataArray*)geometry
+{
+	return toQt(self)->restoreGeometry(toQt(geometry));
+}
+
+- (OFDataArray*)saveGeometry
+{
+	return toOF(toQt(self)->saveGeometry());
+}
+
+- (void)scrollRight: (int)dx
+	       down: (int)dy
+{
+	toQt(self)->scroll(dx, dy);
+}
+
+- (void)scrollRight: (int)dx
+	       down: (int)dy
+	inRectangle: (of_rectangle_t)rect
+{
+	toQt(self)->scroll(dx, dy, toQt(rect));
+}
+
+- (void)setAttribute: (Qt::WidgetAttribute)attribute
+		  to: (bool)on
+{
+	toQt(self)->setAttribute(attribute, on);
+}
+
+#ifdef QT_KEYPAD_NAVIGATION
+- (void)setEditFocus: (bool)enable
+{
+	toQt(self)->setEditFocus(enable);
+}
+#endif
+
+- (void)setFixedHeight: (int)height
+{
+	toQt(self)->setFixedHeight(height);
+}
+
+- (void)setFixedSize: (of_dimension_t)size
+{
+	toQt(self)->setFixedSize(toQt(size));
+}
+
+- (void)setFixedWidth: (int)width
+{
+	toQt(self)->setFixedWidth(width);
+}
+
+- (void)setFocus: (Qt::FocusReason)reason
+{
+	toQt(self)->setFocus(reason);
+}
+
+- (void)setFocusProxy: (QtWidget*)widget
+{
+	toQt(self)->setFocusProxy(toQt(widget));
+}
+
+- (void)setForegroundRole: (QPalette::ColorRole)role
+{
+	toQt(self)->setForegroundRole(role);
+}
+
+- (void)setGraphicsEffect: (QGraphicsEffect*)effect
+{
+	toQt(self)->setGraphicsEffect(effect);
+}
+
+- (void)setLayout: (QLayout*)layout
+{
+	toQt(self)->setLayout(layout);
+}
+
+- (void)setMaskFromBitmap: (const QBitmap&)bitmap
+{
+	toQt(self)->setMask(bitmap);
+}
+
+- (void)setMask: (const QRegion&)region
+{
+	toQt(self)->setMask(region);
+}
+
+- (void)setParent: (QtWidget*)parent
+{
+	toQt(self)->setParent(toQt(parent));
+}
+
+- (void)setParent: (QtWidget*)parent
+	    flags: (Qt::WindowFlags)flags
+{
+	toQt(self)->setParent(toQt(parent), flags);
+}
+
+- (void)setAutoRepeat: (bool)enable
+	  forShortcut: (int)ID
+{
+	toQt(self)->setShortcutAutoRepeat(ID, enable);
+}
+
+- (void)setEnabled: (bool)enable
+       forShortcut: (int)ID
+{
+	toQt(self)->setShortcutEnabled(ID, enable);
+}
+
+- (void)setStyle: (QStyle*)style
+{
+	toQt(self)->setStyle(style);
+}
+
+- (void)setWindowRole: (OFString*)role
+{
+	toQt(self)->setWindowRole(toQt(role));
+}
+
+- (void)setWindowState: (Qt::WindowStates)windowState
+{
+	toQt(self)->setWindowState(windowState);
+}
+
+- (void)stackUnder: (QtWidget*)widget
+{
+	toQt(self)->stackUnder(toQt(widget));
+}
+
+- (QStyle*)style
+{
+	return toQt(self)->style();
+}
+
+- (bool)testAttribute: (Qt::WidgetAttribute)attribute
+{
+	return toQt(self)->testAttribute(attribute);
+}
+
+- (bool)isUnderMouse
+{
+	return toQt(self)->underMouse();
+}
+
+- (void)ungrabGesture: (Qt::GestureType)gesture
+{
+	toQt(self)->ungrabGesture(gesture);
+}
+
+- (void)updateInRectangle: (of_rectangle_t)rect
+{
+	toQt(self)->update(toQt(rect));
+}
+
+- (void)updateInRegion: (const QRegion&)region
+{
+	toQt(self)->update(region);
+}
+
+- (void)updateGeometry
+{
+	toQt(self)->updateGeometry();
+}
+
+- (QRegion)visibleRegion
+{
+	return toQt(self)->visibleRegion();
+}
+
+- (WId)winID
+{
+	return toQt(self)->winId();
+}
+
+- (QtWidget*)window
+{
+	return toOF(toQt(self)->window());
+}
+
+- (QWindow*)windowHandle
+{
+	return toQt(self)->windowHandle();
+}
+
+- (OFString*)windowRole
+{
+	return toOF(toQt(self)->windowRole());
+}
+
+- (Qt::WindowStates)windowState
+{
+	return toQt(self)->windowState();
+}
+
+- (Qt::WindowType)windowType
+{
+	return toQt(self)->windowType();
 }
 @end

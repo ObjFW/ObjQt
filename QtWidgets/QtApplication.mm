@@ -21,8 +21,12 @@
  */
 
 #import "QtApplication.h"
+#import "OFString+QString.h"
 
 #import "helpers.h"
+
+using ObjQt::toOF;
+using ObjQt::toQt;
 
 @implementation QtApplication
 - initWithQGuiApplication: (QGuiApplication*)qGuiApplication
@@ -40,103 +44,103 @@
 	return qobject_cast<QApplication*>(_qObject);
 }
 
-- (bool)autoSipEnabled
+- (bool)autoSIPEnabled
 {
-	return [self qApplication]->autoSipEnabled();
+	return toQt(self)->autoSipEnabled();
 }
 
-- (void)setAutoSipEnabled: (bool)autoSipEnabled
+- (void)setAutoSIPEnabled: (bool)autoSIPEnabled
 {
-	[self qApplication]->setAutoSipEnabled(autoSipEnabled);
+	toQt(self)->setAutoSipEnabled(autoSIPEnabled);
 }
 
 - (int)cursorFlashTime
 {
-	return [self qApplication]->cursorFlashTime();
+	return toQt(self)->cursorFlashTime();
 }
 
 - (void)setCursorFlashTime: (int)cursorFlashTime
 {
-	[self qApplication]->setCursorFlashTime(cursorFlashTime);
+	toQt(self)->setCursorFlashTime(cursorFlashTime);
 }
 
 - (int)doubleClickInterval
 {
-	return [self qApplication]->doubleClickInterval();
+	return toQt(self)->doubleClickInterval();
 }
 
 - (void)setDoubleClickInterval: (int)doubleClickInterval
 {
-	[self qApplication]->setDoubleClickInterval(doubleClickInterval);
+	toQt(self)->setDoubleClickInterval(doubleClickInterval);
 }
 
 - (of_dimension_t)globalStrut
 {
-	return toOF([self qApplication]->globalStrut());
+	return toOF(toQt(self)->globalStrut());
 }
 
 - (void)setGlobalStrut: (of_dimension_t)globalStrut
 {
-	[self qApplication]->setGlobalStrut(toQt(globalStrut));
+	toQt(self)->setGlobalStrut(toQt(globalStrut));
 }
 
 - (int)keyboardInputInterval
 {
-	return [self qApplication]->keyboardInputInterval();
+	return toQt(self)->keyboardInputInterval();
 }
 
 - (void)setKeyboardInputInterval: (int)keyboardInputInterval
 {
-	[self qApplication]->setKeyboardInputInterval(keyboardInputInterval);
+	toQt(self)->setKeyboardInputInterval(keyboardInputInterval);
 }
 
 - (int)startDragDistance
 {
-	return [self qApplication]->startDragDistance();
+	return toQt(self)->startDragDistance();
 }
 
 - (void)setStartDragDistance: (int)startDragDistance
 {
-	[self qApplication]->setStartDragDistance(startDragDistance);
+	toQt(self)->setStartDragDistance(startDragDistance);
 }
 
 - (int)startDragTime
 {
-	return [self qApplication]->startDragTime();
+	return toQt(self)->startDragTime();
 }
 
 - (void)setStartDragTime: (int)startDragTime
 {
-	[self qApplication]->setStartDragTime(startDragTime);
+	toQt(self)->setStartDragTime(startDragTime);
 }
 
 - (OFString*)styleSheet
 {
-	return toOF([self qApplication]->styleSheet());
+	return toOF(toQt(self)->styleSheet());
 }
 
 - (void)setStyleSheet: (OFString*)styleSheet
 {
-	[self qApplication]->setStyleSheet(toQt(styleSheet));
+	toQt(self)->setStyleSheet(toQt(styleSheet));
 }
 
 - (int)wheelScrollLines
 {
-	return [self qApplication]->wheelScrollLines();
+	return toQt(self)->wheelScrollLines();
 }
 
 - (void)setWheelScrollLines: (int)wheelScrollLines
 {
-	[self qApplication]->setWheelScrollLines(wheelScrollLines);
+	toQt(self)->setWheelScrollLines(wheelScrollLines);
 }
 
 - (void)aboutQt
 {
-	[self qApplication]->aboutQt();
+	toQt(self)->aboutQt();
 }
 
 - (void)closeAllWindows
 {
-	[self qApplication]->closeAllWindows();
+	toQt(self)->closeAllWindows();
 }
 @end

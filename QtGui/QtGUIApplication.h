@@ -20,87 +20,41 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "QtPaintDevice.h"
+#import "QtCoreApplication.h"
 
-#include <QObject>
+#include <QGuiApplication>
 
-using ObjQt::toQt;
+@interface QtGUIApplication: QtCoreApplication
+@property (readonly) QGuiApplication *qGuiApplication;
+@property (copy) OFString *applicationDisplayName;
+@property (copy) OFString *desktopFileName;
+@property Qt::LayoutDirection layoutDirection;
+@property (readonly, copy) OFString *platformName;
+@property (readonly) QScreen *primaryScreen;
+@property bool quitsOnLastWindowClosed;
+@property QIcon windowIcon;
 
-@implementation QtPaintDevice
-@dynamic qObject;
-
-- (QPaintDevice*)qPaintDevice
-{
-	return dynamic_cast<QPaintDevice*>([self qObject]);
-}
-
-- (int)colorCount
-{
-	return toQt(self)->colorCount();
-}
-
-- (int)depth
-{
-	return toQt(self)->depth();
-}
-
-- (int)devicePixelRatio
-{
-	return toQt(self)->devicePixelRatio();
-}
-
-- (double)devicePixelRatioF
-{
-	return toQt(self)->devicePixelRatioF();
-}
-
-- (int)height
-{
-	return toQt(self)->height();
-}
-
-- (int)heightMM
-{
-	return toQt(self)->heightMM();
-}
-
-- (int)logicalDPIX
-{
-	return toQt(self)->logicalDpiX();
-}
-
-- (int)logicalDPIY
-{
-	return toQt(self)->logicalDpiY();
-}
-
-- (QPaintEngine*)paintEngine
-{
-	return toQt(self)->paintEngine();
-}
-
-- (bool)paintingActive
-{
-	return toQt(self)->paintingActive();
-}
-
-- (int)physicalDPIX
-{
-	return toQt(self)->physicalDpiX();
-}
-
-- (int)physicalDPIY
-{
-	return toQt(self)->physicalDpiY();
-}
-
-- (int)width
-{
-	return toQt(self)->width();
-}
-
-- (int)widthMM
-{
-	return toQt(self)->widthMM();
-}
+- initWithQGuiApplication: (QGuiApplication*)qGuiApplication;
+- (double)devicePixelRatio;
+- (bool)isSavingSession;
+- (bool)isSessionRestored;
+- (OFString*)sessionID;
+- (OFString*)sessionKey;
 @end
+
+namespace ObjQt {
+
+static OF_INLINE QtGUIApplication*
+toOF(QGuiApplication *qGuiApplication)
+{
+	return [[[QtGUIApplication alloc]
+	    initWithQGuiApplication: qGuiApplication] autorelease];
+}
+
+static OF_INLINE QGuiApplication*
+toQt(QtGUIApplication *GUIApplication)
+{
+	return [GUIApplication qGuiApplication];
+}
+
+}

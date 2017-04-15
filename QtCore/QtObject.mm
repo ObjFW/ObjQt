@@ -23,10 +23,13 @@
 #import "QtObject.h"
 #import "QtEvent.h"
 #import "QtThread.h"
-
-#import "helpers.h"
+#import "OFString+QString.h"
+#import "OFDataArray+QByteArray.h"
 
 #include <QVariant>
+
+using ObjQt::toOF;
+using ObjQt::toQt;
 
 @implementation QtObject
 @synthesize qObject = _qObject;
@@ -88,8 +91,7 @@
 	void *pool = objc_autoreleasePoolPush();
 
 	for (QObject *qChild: qChildren)
-		[children addObject:
-		    [[[QtObject alloc] initWithQObject: qChild] autorelease]];
+		[children addObject: toOF(qChild)];
 
 	[children makeImmutable];
 
@@ -103,7 +105,7 @@
 				  method: (OFString*)method
 				    type: (Qt::ConnectionType)type
 {
-	return _qObject->connect([sender qObject],
+	return _qObject->connect(toQt(sender),
 	    [signal UTF8String], [method UTF8String], type);
 }
 
@@ -111,14 +113,14 @@
 		receiver: (QtObject*)receiver
 		  method: (OFString*)method
 {
-	return _qObject->disconnect([signal UTF8String], [receiver qObject],
+	return _qObject->disconnect([signal UTF8String], toQt(receiver),
 	    [method UTF8String]);
 }
 
 - (bool)disconnectAllSignalsForReceiver: (QtObject*)receiver
 				 method: (OFString*)method
 {
-	return _qObject->disconnect([receiver qObject], [method UTF8String]);
+	return _qObject->disconnect(toQt(receiver), [method UTF8String]);
 }
 
 - (void)dumpObjectInfo
@@ -133,35 +135,31 @@
 
 - (OFArray OF_GENERIC(OFDataArray*)*)dynamicPropertyNames
 {
-	const QList<QByteArray> &qDynamicPropertyNames =
+	const QList<QByteArray> &dynamicPropertyNames =
 	    _qObject->dynamicPropertyNames();
-	OFMutableArray *dynamicPropertyNames =
-	    [OFMutableArray arrayWithCapacity: qDynamicPropertyNames.count()];
+	OFMutableArray *ret =
+	    [OFMutableArray arrayWithCapacity: dynamicPropertyNames.count()];
 	void *pool = objc_autoreleasePoolPush();
 
-	for (const QByteArray &qDynamicPropertyName: qDynamicPropertyNames) {
-		OFDataArray *dynamicPropertyName = [OFDataArray dataArray];
-		[dynamicPropertyName addItems: qDynamicPropertyName.data()
-					count: qDynamicPropertyName.count()];
-		[dynamicPropertyNames addObject: dynamicPropertyName];
-	}
+	for (const QByteArray &dynamicPropertyName: dynamicPropertyNames)
+		[ret addObject: toOF(dynamicPropertyName)];
 
-	[dynamicPropertyNames makeImmutable];
+	[ret makeImmutable];
 
 	objc_autoreleasePoolPop(pool);
 
-	return dynamicPropertyNames;
+	return ret;
 }
 
 - (bool)handleEvent: (QtEvent*)event
 {
-	return _qObject->event([event qEvent]);
+	return _qObject->event(toQt(event));
 }
 
 - (bool)filterEvent: (QtEvent*)event
 	  forObject: (QtObject*)watched
 {
-	return _qObject->eventFilter([watched qObject], [event qEvent]);
+	return _qObject->eventFilter(toQt(watched), toQt(event));
 }
 
 - (bool)inheritsClassWithName: (OFString*)className
@@ -171,7 +169,7 @@
 
 - (void)installEventFilter: (QtObject*)filterObj
 {
-	_qObject->installEventFilter([filterObj qObject]);
+	_qObject->installEventFilter(toQt(filterObj));
 }
 
 - (bool)isWidgetType
@@ -196,18 +194,17 @@
 
 - (void)moveToThread: (QtThread*)targetThread
 {
-	_qObject->moveToThread([targetThread qThread]);
+	_qObject->moveToThread(toQt(targetThread));
 }
 
 - (QtObject*)parent
 {
-	return [[[QtObject alloc]
-	    initWithQObject: _qObject->parent()] autorelease];
+	return toOF(_qObject->parent());
 }
 
 - (void)setParent: (QtObject*)parent
 {
-	_qObject->setParent([parent qObject]);
+	_qObject->setParent(toQt(parent));
 }
 
 - (QVariant)propertyForName: (OFString*)name
@@ -217,7 +214,7 @@
 
 - (void)removeEventFilter: (QtObject*)obj
 {
-	_qObject->removeEventFilter([obj qObject]);
+	_qObject->removeEventFilter(toQt(obj));
 }
 
 - (bool)setProperty: (QVariant&)value
@@ -239,8 +236,7 @@
 
 - (QtThread*)thread
 {
-	return [[[QtThread alloc]
-	    initWithQThread: _qObject->thread()] autorelease];
+	return toOF(_qObject->thread());
 }
 
 - (void)deleteLater

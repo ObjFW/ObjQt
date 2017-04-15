@@ -80,3 +80,19 @@
 - (QtThread*)thread;
 - (void)deleteLater;
 @end
+
+namespace ObjQt {
+
+static OF_INLINE QtObject*
+toOF(QObject *qObject)
+{
+	return [[[QtObject alloc] initWithQObject: qObject] autorelease];
+}
+
+static OF_INLINE QObject*
+toQt(QtObject *object)
+{
+	return [object qObject];
+}
+
+}

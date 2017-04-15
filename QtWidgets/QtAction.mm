@@ -22,8 +22,10 @@
 
 #import "QtAction.h"
 #import "QtWidget.h"
+#import "OFString+QString.h"
 
-#import "helpers.h"
+using ObjQt::toOF;
+using ObjQt::toQt;
 
 @implementation QtAction
 - initWithQObject: (QObject*)qObject
@@ -43,199 +45,198 @@
 
 - (bool)autoRepeat
 {
-	return [self qAction]->autoRepeat();
+	return toQt(self)->autoRepeat();
 }
 
 - (void)setAutoRepeat: (bool)autoRepeat
 {
-	[self qAction]->setAutoRepeat(autoRepeat);
+	toQt(self)->setAutoRepeat(autoRepeat);
 }
 
 - (bool)isCheckable
 {
-	return [self qAction]->isCheckable();
+	return toQt(self)->isCheckable();
 }
 
 - (void)setCheckable: (bool)checkable
 {
-	[self qAction]->setCheckable(checkable);
+	toQt(self)->setCheckable(checkable);
 }
 
 - (bool)isChecked
 {
-	return [self qAction]->isChecked();
+	return toQt(self)->isChecked();
 }
 
 - (void)setChecked: (bool)checked
 {
-	[self qAction]->setChecked(checked);
+	toQt(self)->setChecked(checked);
 }
 
 - (bool)isEnabled
 {
-	return [self qAction]->isEnabled();
+	return toQt(self)->isEnabled();
 }
 
 - (void)setEnabled: (bool)enabled
 {
-	[self qAction]->setEnabled(enabled);
+	toQt(self)->setEnabled(enabled);
 }
 
 - (QFont)font
 {
-	return [self qAction]->font();
+	return toQt(self)->font();
 }
 
 - (void)setFont: (QFont)font
 {
-	[self qAction]->setFont(font);
+	toQt(self)->setFont(font);
 }
 
 - (QIcon)icon
 {
-	return [self qAction]->icon();
+	return toQt(self)->icon();
 }
 
 - (void)setIcon: (QIcon)icon
 {
-	[self qAction]->setIcon(icon);
+	toQt(self)->setIcon(icon);
 }
 
 - (OFString*)iconText
 {
-	return toOF([self qAction]->iconText());
+	return toOF(toQt(self)->iconText());
 }
 
 - (void)setIconText: (OFString*)iconText
 {
-	[self qAction]->setIconText(toQt(iconText));
+	toQt(self)->setIconText(toQt(iconText));
 }
 
 - (bool)isIconVisibleInMenu
 {
-	return [self qAction]->isIconVisibleInMenu();
+	return toQt(self)->isIconVisibleInMenu();
 }
 
 - (void)setIconVisibleInMenu: (bool)iconVisibleInMenu
 {
-	[self qAction]->setIconVisibleInMenu(iconVisibleInMenu);
+	toQt(self)->setIconVisibleInMenu(iconVisibleInMenu);
 }
 
 - (QAction::MenuRole)menuRole
 {
-	return [self qAction]->menuRole();
+	return toQt(self)->menuRole();
 }
 
 - (void)setMenuRole: (QAction::MenuRole)menuRole
 {
-	[self qAction]->setMenuRole(menuRole);
+	toQt(self)->setMenuRole(menuRole);
 }
 
 - (QAction::Priority)priority
 {
-	return [self qAction]->priority();
+	return toQt(self)->priority();
 }
 
 - (void)setPriority: (QAction::Priority)priority
 {
-	[self qAction]->setPriority(priority);
+	toQt(self)->setPriority(priority);
 }
 
 - (QKeySequence)shortcut
 {
-	return [self qAction]->shortcut();
+	return toQt(self)->shortcut();
 }
 
 - (void)setShortcut: (QKeySequence)shortcut
 {
-	[self qAction]->setShortcut(shortcut);
+	toQt(self)->setShortcut(shortcut);
 }
 
 - (Qt::ShortcutContext)shortcutContext
 {
-	return [self qAction]->shortcutContext();
+	return toQt(self)->shortcutContext();
 }
 
 - (void)setShortcutContext: (Qt::ShortcutContext)shortcutContext
 {
-	[self qAction]->setShortcutContext(shortcutContext);
+	toQt(self)->setShortcutContext(shortcutContext);
 }
 
 - (OFString*)statusTip
 {
-	return toOF([self qAction]->statusTip());
+	return toOF(toQt(self)->statusTip());
 }
 
 - (void)setStatusTip: (OFString*)statusTip
 {
-	[self qAction]->setStatusTip(toQt(statusTip));
+	toQt(self)->setStatusTip(toQt(statusTip));
 }
 
 - (OFString*)text
 {
-	return toOF([self qAction]->text());
+	return toOF(toQt(self)->text());
 }
 
 - (void)setText: (OFString*)text
 {
-	[self qAction]->setText(toQt(text));
+	toQt(self)->setText(toQt(text));
 }
 
 - (OFString*)toolTip
 {
-	return toOF([self qAction]->toolTip());
+	return toOF(toQt(self)->toolTip());
 }
 
 - (void)setToolTip: (OFString*)toolTip
 {
-	[self qAction]->setToolTip(toQt(toolTip));
+	toQt(self)->setToolTip(toQt(toolTip));
 }
 
 - (bool)isVisible
 {
-	return [self qAction]->isVisible();
+	return toQt(self)->isVisible();
 }
 
 - (void)setVisible: (bool)visible
 {
-	[self qAction]->setVisible(visible);
+	toQt(self)->setVisible(visible);
 }
 
 - (OFString*)whatsThis
 {
-	return toOF([self qAction]->whatsThis());
+	return toOF(toQt(self)->whatsThis());
 }
 
 - (void)setWhatsThis: (OFString*)whatsThis
 {
-	[self qAction]->setWhatsThis(toQt(whatsThis));
+	toQt(self)->setWhatsThis(toQt(whatsThis));
 }
 
 - (QActionGroup*)actionGroup
 {
-	return [self qAction]->actionGroup();
+	return toQt(self)->actionGroup();
 }
 
 - (void)activate: (QAction::ActionEvent)event
 {
-	[self qAction]->activate(event);
+	toQt(self)->activate(event);
 }
 
 - (QList<QGraphicsWidget*>)associatedGraphicsWidgets
 {
-	return [self qAction]->associatedGraphicsWidgets();
+	return toQt(self)->associatedGraphicsWidgets();
 }
 
 - (OFArray OF_GENERIC(QtWidget*)*)associatedWidgets
 {
-	const QList<QWidget*> &widgets = [self qAction]->associatedWidgets();
+	const QList<QWidget*> &widgets = toQt(self)->associatedWidgets();
 	OFMutableArray *ret =
 	    [OFMutableArray arrayWithCapacity: widgets.count()];
 	void *pool = objc_autoreleasePoolPush();
 
 	for (QWidget *widget: widgets)
-		[ret addObject:
-		    [[[QtWidget alloc] initWithQWidget: widget] autorelease]];
+		[ret addObject: toOF(widget)];
 
 	[ret makeImmutable];
 
@@ -246,57 +247,61 @@
 
 - (QVariant)data
 {
-	return [self qAction]->data();
+	return toQt(self)->data();
 }
 
 - (bool)isSeparator
 {
-	return [self qAction]->isSeparator();
+	return toQt(self)->isSeparator();
 }
 
 - (QMenu*)menu
 {
-	return [self qAction]->menu();
+	return toQt(self)->menu();
 }
 
 - (QtWidget*)parentWidget
 {
-	return [[[QtWidget alloc] initWithQWidget:
-	    [self qAction]->parentWidget()] autorelease];
+	return toOF(toQt(self)->parentWidget());
 }
 
 - (void)setActionGroup: (QActionGroup*)group
 {
-	[self qAction]->setActionGroup(group);
+	toQt(self)->setActionGroup(group);
+}
+
+- (void)setData: (const QVariant&)userData
+{
+	toQt(self)->setData(userData);
 }
 
 - (void)setMenu: (QMenu*)menu
 {
-	[self qAction]->setMenu(menu);
+	toQt(self)->setMenu(menu);
 }
 
 - (void)setSeparator: (bool)isSeparator
 {
-	[self qAction]->setSeparator(isSeparator);
+	toQt(self)->setSeparator(isSeparator);
 }
 
 - (void)setShortcuts: (const QList<QKeySequence>&)shortcuts
 {
-	[self qAction]->setShortcuts(shortcuts);
+	toQt(self)->setShortcuts(shortcuts);
 }
 
 - (void)setShortcutsWithStandardKey: (QKeySequence::StandardKey)key
 {
-	[self qAction]->setShortcuts(key);
+	toQt(self)->setShortcuts(key);
 }
 
 - (QList<QKeySequence>)shortcuts
 {
-	return [self qAction]->shortcuts();
+	return toQt(self)->shortcuts();
 }
 
 - (bool)showStatusText: (QtWidget*)widget
 {
-	return [self qAction]->showStatusText([widget qWidget]);
+	return toQt(self)->showStatusText(toQt(widget));
 }
 @end

@@ -20,13 +20,15 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "QtGuiApplication.h"
-
-#import "helpers.h"
+#import "QtGUIApplication.h"
+#import "OFString+QString.h"
 
 #include <QIcon>
 
-@implementation QtGuiApplication
+using ObjQt::toOF;
+using ObjQt::toQt;
+
+@implementation QtGUIApplication
 - initWithQCoreApplication: (QCoreApplication*)qCoreApplication
 {
 	OF_INVALID_INIT_METHOD
@@ -44,88 +46,86 @@
 
 - (OFString*)applicationDisplayName
 {
-	return toOF([self qGuiApplication]->applicationDisplayName());
+	return toOF(toQt(self)->applicationDisplayName());
 }
 
 - (void)setApplicationDisplayName: (OFString*)applicationDisplayName
 {
-	[self qGuiApplication]->setApplicationDisplayName(
-	    toQt(applicationDisplayName));
+	toQt(self)->setApplicationDisplayName(toQt(applicationDisplayName));
 }
 
 - (OFString*)desktopFileName
 {
-	return toOF([self qGuiApplication]->desktopFileName());
+	return toOF(toQt(self)->desktopFileName());
 }
 
 - (void)setDesktopFileName: (OFString*)desktopFileName
 {
-	[self qGuiApplication]->setDesktopFileName(toQt(desktopFileName));
+	toQt(self)->setDesktopFileName(toQt(desktopFileName));
 }
 
 - (double)devicePixelRatio
 {
-	return [self qGuiApplication]->devicePixelRatio();
+	return toQt(self)->devicePixelRatio();
 }
 
 - (bool)isSavingSession
 {
-	return [self qGuiApplication]->isSavingSession();
+	return toQt(self)->isSavingSession();
 }
 
 - (bool)isSessionRestored
 {
-	return [self qGuiApplication]->isSessionRestored();
+	return toQt(self)->isSessionRestored();
 }
 
 - (Qt::LayoutDirection)layoutDirection
 {
-	return [self qGuiApplication]->layoutDirection();
+	return toQt(self)->layoutDirection();
 }
 
 - (void)setLayoutDirection: (Qt::LayoutDirection)layoutDirection
 {
-	[self qGuiApplication]->setLayoutDirection(layoutDirection);
+	toQt(self)->setLayoutDirection(layoutDirection);
 }
 
 - (OFString*)platformName
 {
-	return toOF([self qGuiApplication]->platformName());
+	return toOF(toQt(self)->platformName());
 }
 
 - (QScreen*)primaryScreen
 {
-	return [self qGuiApplication]->primaryScreen();
+	return toQt(self)->primaryScreen();
 }
 
-- (bool)quitOnLastWindowClosed
+- (bool)quitsOnLastWindowClosed
 {
-	return [self qGuiApplication]->quitOnLastWindowClosed();
+	return toQt(self)->quitOnLastWindowClosed();
 }
 
-- (void)setQuitOnLastWindowClosed: (bool)quitOnLastWindowClosed
+- (void)setQuitsOnLastWindowClosed: (bool)quitsOnLastWindowClosed
 {
-	[self qGuiApplication]->setQuitOnLastWindowClosed(
-	    quitOnLastWindowClosed);
+	toQt(self)->setQuitOnLastWindowClosed(quitsOnLastWindowClosed);
 }
 
 - (OFString*)sessionID
 {
-	return toOF([self qGuiApplication]->sessionId());
+	return toOF(toQt(self)->sessionId());
 }
 
 - (OFString*)sessionKey
 {
-	return toOF([self qGuiApplication]->sessionKey());
+	return toOF(toQt(self)->sessionKey());
 }
 
 - (QIcon)windowIcon
 {
-	return [self qGuiApplication]->windowIcon();
+	return toQt(self)->windowIcon();
 }
 
 - (void)setWindowIcon: (QIcon)windowIcon
 {
-	[self qGuiApplication]->setWindowIcon(windowIcon);
+	toQt(self)->setWindowIcon(windowIcon);
 }
 @end

@@ -45,3 +45,13 @@
 @interface QtPaintDevice: OFObject <QtPaintDevice>
 @property (readonly) QObject *qObject;
 @end
+
+namespace ObjQt {
+
+static OF_INLINE QPaintDevice*
+toQt(QtPaintDevice *paintDevice)
+{
+	return [paintDevice qPaintDevice];
+}
+
+}

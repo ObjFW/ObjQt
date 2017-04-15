@@ -20,13 +20,13 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "QtGuiApplication.h"
+#import "QtGUIApplication.h"
 
 #include <QApplication>
 
-@interface QtApplication: QtGuiApplication
+@interface QtApplication: QtGUIApplication
 @property (readonly) QApplication *qApplication;
-@property bool autoSipEnabled;
+@property bool autoSIPEnabled;
 @property int cursorFlashTime;
 @property int doubleClickInterval;
 @property of_dimension_t globalStrut;
@@ -38,7 +38,22 @@
 
 - initWithQApplication: (QApplication*)qApplication;
 - (void)aboutQt;
-- (bool)autoSipEnabled;
 - (void)closeAllWindows;
-- (void)setAutoSipEnabled: (bool)enabled;
 @end
+
+namespace ObjQt {
+
+static OF_INLINE QtApplication*
+toOF(QApplication *qApplication)
+{
+	return [[[QtApplication alloc]
+	    initWithQApplication: qApplication] autorelease];
+}
+
+static OF_INLINE QApplication*
+toQt(QtApplication *application)
+{
+	return [application qApplication];
+}
+
+}

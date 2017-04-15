@@ -42,3 +42,19 @@
 - (void)startWithPriority: (QThread::Priority)priority;
 - (void)terminate;
 @end
+
+namespace ObjQt {
+
+static OF_INLINE QtThread*
+toOF(QThread *qThread)
+{
+	return [[[QtThread alloc] initWithQThread: qThread] autorelease];
+}
+
+static OF_INLINE QThread*
+toQt(QtThread *thread)
+{
+	return [thread qThread];
+}
+
+}

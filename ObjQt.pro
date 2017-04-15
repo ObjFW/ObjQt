@@ -9,30 +9,32 @@ INCLUDEPATH += common	\
 	       QtGui	\
 	       QtWidgets
 
-HEADERS += common/helpers.h		\
-	   common/OFString+QString.h	\
-	   common/QtOwnershipManaging.h	\
-	   QtCore/QtChildEvent.h	\
-	   QtCore/QtCoreApplication.h	\
-	   QtCore/QtEvent.h		\
-	   QtCore/QtObject.h		\
-	   QtCore/QtThread.h		\
-	   QtGui/QtGuiApplication.h	\
-	   QtGui/QtPaintDevice.h	\
-	   QtWidgets/QtAction.h		\
-	   QtWidgets/QtApplication.h	\
+HEADERS += common/helpers.h			\
+	   common/OFDataArray+QByteArray.h	\
+	   common/OFString+QString.h		\
+	   common/QtOwnershipManaging.h		\
+	   QtCore/QtChildEvent.h		\
+	   QtCore/QtCoreApplication.h		\
+	   QtCore/QtEvent.h			\
+	   QtCore/QtObject.h			\
+	   QtCore/QtThread.h			\
+	   QtGui/QtGUIApplication.h		\
+	   QtGui/QtPaintDevice.h		\
+	   QtWidgets/QtAction.h			\
+	   QtWidgets/QtApplication.h		\
 	   QtWidgets/QtWidget.h
 
-SOURCES += common/OFString+QString.mm	\
-	   QtCore/QtChildEvent.mm	\
-	   QtCore/QtCoreApplication.mm	\
-	   QtCore/QtEvent.mm  		\
-	   QtCore/QtObject.mm		\
-	   QtCore/QtThread.mm		\
-	   QtGui/QtGuiApplication.mm	\
-	   QtGui/QtPaintDevice.mm	\
-	   QtWidgets/QtAction.mm	\
-	   QtWidgets/QtApplication.mm	\
+SOURCES += common/OFDataArray+QByteArray.mm	\
+	   common/OFString+QString.mm		\
+	   QtCore/QtChildEvent.mm		\
+	   QtCore/QtCoreApplication.mm		\
+	   QtCore/QtEvent.mm  			\
+	   QtCore/QtObject.mm			\
+	   QtCore/QtThread.mm			\
+	   QtGui/QtGUIApplication.mm		\
+	   QtGui/QtPaintDevice.mm		\
+	   QtWidgets/QtAction.mm		\
+	   QtWidgets/QtApplication.mm		\
 	   QtWidgets/QtWidget.mm
 
 OBJCFLAGS += $$system("objfw-config --cppflags --objcflags --cxxflags")

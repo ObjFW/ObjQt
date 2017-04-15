@@ -22,8 +22,10 @@
 
 #import "QtCoreApplication.h"
 #import "QtEvent.h"
+#import "OFString+QString.h"
 
-#import "helpers.h"
+using ObjQt::toOF;
+using ObjQt::toQt;
 
 @implementation QtCoreApplication
 - initWithQObject: (QObject*)qObject
@@ -43,75 +45,72 @@
 
 - (OFString*)applicationName
 {
-	return toOF([self qCoreApplication]->applicationName());
+	return toOF(toQt(self)->applicationName());
 }
 
 - (void)setApplicationName: (OFString*)applicationName
 {
-	[self qCoreApplication]->setApplicationName(toQt(applicationName));
+	toQt(self)->setApplicationName(toQt(applicationName));
 }
 
 - (OFString*)applicationVersion
 {
-	return toOF([self qCoreApplication]->applicationVersion());
+	return toOF(toQt(self)->applicationVersion());
 }
 
 - (void)installNativeEventFilter: (QAbstractNativeEventFilter*)filterObject
 {
-	[self qCoreApplication]->installNativeEventFilter(filterObject);
+	toQt(self)->installNativeEventFilter(filterObject);
 }
 
 - (void)setApplicationVersion: (OFString*)applicationVersion
 {
-	[self qCoreApplication]->setApplicationVersion(
-	    toQt(applicationVersion));
+	toQt(self)->setApplicationVersion(toQt(applicationVersion));
 }
 
 - (OFString*)organizationDomain
 {
-	return toOF([self qCoreApplication]->organizationDomain());
+	return toOF(toQt(self)->organizationDomain());
 }
 
 - (void)setOrganizationDomain: (OFString*)organizationDomain
 {
-	[self qCoreApplication]->setOrganizationDomain(
-	    toQt(organizationDomain));
+	toQt(self)->setOrganizationDomain(toQt(organizationDomain));
 }
 
 - (OFString*)organizationName
 {
-	return toOF([self qCoreApplication]->organizationName());
+	return toOF(toQt(self)->organizationName());
 }
 
 - (void)setOrganizationName: (OFString*)organizationName
 {
-	[self qCoreApplication]->setOrganizationName(toQt(organizationName));
+	toQt(self)->setOrganizationName(toQt(organizationName));
 }
 
 - (void)quit
 {
-	[self qCoreApplication]->quit();
+	toQt(self)->quit();
 }
 
 - (bool)isQuitLockEnabled
 {
-	return [self qCoreApplication]->isQuitLockEnabled();
+	return toQt(self)->isQuitLockEnabled();
 }
 
 - (void)setQuitLockEnabled: (bool)quitLockEnabled
 {
-	[self qCoreApplication]->setQuitLockEnabled(quitLockEnabled);
+	toQt(self)->setQuitLockEnabled(quitLockEnabled);
 }
 
 - (void)removeNativeEventFilter: (QAbstractNativeEventFilter*)filterObject
 {
-	[self qCoreApplication]->removeNativeEventFilter(filterObject);
+	toQt(self)->removeNativeEventFilter(filterObject);
 }
 
 - (bool)sendEvent: (QtEvent*)event
 	 receiver: (QtObject*)receiver
 {
-	return [self qCoreApplication]->notify(
-	    [receiver qObject], [event qEvent]);
+	return toQt(self)->notify(toQt(receiver), toQt(event));
 }
 @end

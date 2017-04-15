@@ -22,6 +22,8 @@
 
 #import "QtThread.h"
 
+using ObjQt::toQt;
+
 @implementation QtThread: QtObject
 - initWithQObject: (QObject*)qObject
 {
@@ -40,81 +42,81 @@
 
 - (QAbstractEventDispatcher*)eventDispatcher
 {
-	return [self qThread]->eventDispatcher();
+	return toQt(self)->eventDispatcher();
 }
 
 - (void)setEventDispatcher: (QAbstractEventDispatcher*)eventDispatcher
 {
-	[self qThread]->setEventDispatcher(eventDispatcher);
+	toQt(self)->setEventDispatcher(eventDispatcher);
 }
 
 - (void)exitWithReturnCode: (int)returnCode
 {
-	[self qThread]->exit(returnCode);
+	toQt(self)->exit(returnCode);
 }
 
 - (bool)isFinished
 {
-	return [self qThread]->isFinished();
+	return toQt(self)->isFinished();
 }
 
 - (bool)isInterruptionRequested
 {
-	return [self qThread]->isInterruptionRequested();
+	return toQt(self)->isInterruptionRequested();
 }
 
 - (bool)isRunning
 {
-	return [self qThread]->isRunning();
+	return toQt(self)->isRunning();
 }
 
 - (int)loopLevel
 {
-	return [self qThread]->loopLevel();
+	return toQt(self)->loopLevel();
 }
 
 - (QThread::Priority)priority
 {
-	return [self qThread]->priority();
+	return toQt(self)->priority();
 }
 
 - (void)setPriority: (QThread::Priority)priority
 {
-	[self qThread]->setPriority(priority);
+	toQt(self)->setPriority(priority);
 }
 
 - (void)requestInterruption
 {
-	[self qThread]->requestInterruption();
+	toQt(self)->requestInterruption();
 }
 
 - (unsigned int)stackSize
 {
-	return [self qThread]->stackSize();
+	return toQt(self)->stackSize();
 }
 
 - (void)setStackSize: (unsigned int)stackSize
 {
-	[self qThread]->setStackSize(stackSize);
+	toQt(self)->setStackSize(stackSize);
 }
 
 - (bool)waitForMilliseconds: (unsigned long)time
 {
-	return [self qThread]->wait(time);
+	return toQt(self)->wait(time);
 }
 
 - (void)quit
 {
-	[self qThread]->quit();
+	toQt(self)->quit();
 }
 
 - (void)startWithPriority: (QThread::Priority)priority
 {
-	[self qThread]->start(priority);
+	toQt(self)->start(priority);
 }
 
 - (void)terminate
 {
-	[self qThread]->terminate();
+	toQt(self)->terminate();
 }
 @end

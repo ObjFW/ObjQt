@@ -35,3 +35,20 @@
 - initWithType: (QChildEvent::Type)type
 	 child: (QtObject*)child;
 @end
+
+namespace ObjQt {
+
+static OF_INLINE QtChildEvent*
+toOF(QChildEvent *qChildEvent)
+{
+	return [[[QtChildEvent alloc]
+	    initWithQChildEvent: qChildEvent] autorelease];
+}
+
+static OF_INLINE QChildEvent*
+toQt(QtChildEvent *childEvent)
+{
+	return [childEvent qChildEvent];
+}
+
+}

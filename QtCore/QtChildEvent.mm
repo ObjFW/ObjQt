@@ -23,6 +23,9 @@
 #import "QtChildEvent.h"
 #import "QtObject.h"
 
+using ObjQt::toOF;
+using ObjQt::toQt;
+
 @implementation QtChildEvent
 - initWithQEvent: (QEvent*)event
 {
@@ -39,7 +42,7 @@
 {
 	try {
 		self = [self initWithQChildEvent:
-		    new QChildEvent(type, [child qObject])];
+		    new QChildEvent(type, toQt(child))];
 
 		[self takeOwnership];
 
@@ -58,22 +61,21 @@
 
 - (bool)isAdded
 {
-	return [self qChildEvent]->added();
+	return toQt(self)->added();
 }
 
 - (QtObject*)child
 {
-	return [[[QtObject alloc]
-	    initWithQObject: [self qChildEvent]->child()] autorelease];
+	return toOF(toQt(self)->child());
 }
 
 - (bool)isPolished
 {
-	return [self qChildEvent]->polished();
+	return toQt(self)->polished();
 }
 
 - (bool)isRemoved
 {
-	return [self qChildEvent]->removed();
+	return toQt(self)->removed();
 }
 @end

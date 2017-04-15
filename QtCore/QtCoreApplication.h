@@ -37,3 +37,20 @@
 - (bool)sendEvent: (QtEvent*)event
 	 receiver: (QtObject*)receiver;
 @end
+
+namespace ObjQt {
+
+static OF_INLINE QtCoreApplication*
+toOF(QCoreApplication *qCoreApplication)
+{
+	return [[[QtCoreApplication alloc]
+	    initWithQCoreApplication: qCoreApplication] autorelease];
+}
+
+static OF_INLINE QCoreApplication*
+toQt(QtCoreApplication *coreApplication)
+{
+	return [coreApplication qCoreApplication];
+}
+
+}

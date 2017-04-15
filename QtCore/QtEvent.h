@@ -42,3 +42,19 @@
 - (void)accept;
 - (void)ignore;
 @end
+
+namespace ObjQt {
+
+static OF_INLINE QtEvent*
+toOF(QEvent *qEvent)
+{
+	return [[[QtEvent alloc] initWithQEvent: qEvent] autorelease];
+}
+
+static OF_INLINE QEvent*
+toQt(QtEvent *event)
+{
+	return [event qEvent];
+}
+
+}

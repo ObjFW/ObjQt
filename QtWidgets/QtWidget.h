@@ -39,7 +39,6 @@
 @property Qt::ContextMenuPolicy contextMenuPolicy;
 @property QCursor cursor;
 @property (getter=isEnabled) bool enabled;
-@property (readonly, getter=hasFocus) bool focus;
 @property Qt::FocusPolicy focusPolicy;
 @property const QFont &font;
 @property (readonly) of_rectangle_t frameGeometry;
@@ -78,7 +77,6 @@
 @property (getter=isVisible) bool visible;
 @property (copy) OFString *whatsThis;
 @property (readonly) int width;
-@property (copy) OFString *windowFilePath;
 @property Qt::WindowFlags windowFlags;
 @property QIcon windowIcon;
 @property Qt::WindowModality windowModality;
@@ -101,7 +99,7 @@
 - (void)clearMask;
 - (QMargins)contentsMargins;
 - (of_rectangle_t)contentsRect;
-- (WId)effectiveWinId;
+- (WId)effectiveWinID;
 - (void)ensurePolished;
 - (QtWidget*)focusProxy;
 - (QtWidget*)focusWidget;
@@ -123,6 +121,7 @@
 #ifdef QT_KEYPAD_NAVIGATION
 - (bool)hasEditFocus;
 #endif
+- (bool)hasFocus;
 - (bool)hasHeightForWidth;
 - (int)heightForWidth: (int)w;
 - (QVariant)queryInputMethod: (Qt::InputMethodQuery)query;
@@ -135,19 +134,107 @@
 - (bool)isHidden;
 - (bool)isVisibleTo: (QtWidget*)ancestor;
 - (bool)isWindow;
-// QPoint mapFrom(const QWidget *parent, const QPoint &pos) const
-// QPoint mapFromGlobal(const QPoint &pos) const
-// QPoint mapFromParent(const QPoint &pos) const
-// QPoint mapTo(const QWidget *parent, const QPoint &pos) const
-// QPoint mapToGlobal(const QPoint &pos) const
-// QPoint mapToParent(const QPoint &pos) const
-// QRegion mask() const
-// ...
-
+- (of_point_t)mapPosition: (of_point_t)pos
+		     from: (QtWidget*)parent;
+- (of_point_t)mapPositionFromGlobal: (of_point_t)pos;
+- (of_point_t)mapPositionFromParent: (of_point_t)pos;
+- (of_point_t)mapPosition: (of_point_t)pos
+		       to: (QtWidget*)parent;
+- (of_point_t)mapPositionToGlobal: (of_point_t)pos;
+- (of_point_t)mapPositionToParent: (of_point_t)pos;
+- (QRegion)mask;
+- (QtWidget*)nativeParentWidget;
+- (QtWidget*)nextInFocusChain;
+- (void)overrideWindowFlags: (Qt::WindowFlags)flags;
+- (QtWidget*)parentWidget;
+- (QtWidget*)previousInFocusChain;
+- (void)releaseKeyboard;
+- (void)releaseMouse;
+- (void)releaseShortcut: (int)ID;
+- (void)removeAction: (QtAction*)action;
+- (void)renderIntoPaintDevice: (QtObject <QtPaintDevice>*)target
+		 targetOffset: (of_point_t)targetOffset
+		 sourceRegion: (QRegion)sourceRegion;
+- (void)renderIntoPaintDevice: (QtObject <QtPaintDevice>*)target
+		 targetOffset: (of_point_t)targetOffset
+		 sourceRegion: (QRegion)sourceRegion
+			flags: (QWidget::RenderFlags)renderFlags;
+- (void)renderIntoPainter: (QPainter*)target
+	     targetOffset: (of_point_t)targetOffset
+	     sourceRegion: (QRegion)sourceRegion;
+- (void)renderIntoPainter: (QPainter*)target
+	     targetOffset: (of_point_t)targetOffset
+	     sourceRegion: (QRegion)sourceRegion
+		    flags: (QWidget::RenderFlags)renderFlags;
+- (void)repaintInRectangle: (of_rectangle_t)rect;
+- (void)repaintInRegion: (const QRegion&)region;
+- (bool)restoreGeometry: (OFDataArray*)geometry;
+- (OFDataArray*)saveGeometry;
+- (void)scrollRight: (int)dx
+	       down: (int)dy;
+- (void)scrollRight: (int)dx
+	       down: (int)dy
+	inRectangle: (of_rectangle_t)rect;
+- (void)setAttribute: (Qt::WidgetAttribute)attribute
+		  to: (bool)on;
+#ifdef QT_KEYPAD_NAVIGATION
+- (void)setEditFocus: (bool)enable;
+#endif
+- (void)setFixedHeight: (int)height;
+- (void)setFixedSize: (of_dimension_t)size;
+- (void)setFixedWidth: (int)width;
+- (void)setFocus: (Qt::FocusReason)reason;
+- (void)setFocusProxy: (QtWidget*)widget;
+- (void)setForegroundRole: (QPalette::ColorRole)role;
+- (void)setGraphicsEffect: (QGraphicsEffect*)effect;
+- (void)setLayout: (QLayout*)layout;
+- (void)setMaskFromBitmap: (const QBitmap&)bitmap;
+- (void)setMask: (const QRegion&)region;
+- (void)setParent: (QtWidget*)parent;
+- (void)setParent: (QtWidget*)parent
+	    flags: (Qt::WindowFlags)flags;
+- (void)setAutoRepeat: (bool)enable
+	  forShortcut: (int)ID;
+- (void)setEnabled: (bool)enable
+       forShortcut: (int)ID;
+- (void)setStyle: (QStyle*)style;
+- (void)setWindowRole: (OFString*)role;
+- (void)setWindowState: (Qt::WindowStates)windowState;
+- (void)stackUnder: (QtWidget*)widget;
+- (QStyle*)style;
+- (bool)testAttribute: (Qt::WidgetAttribute)attribute;
+- (bool)isUnderMouse;
+- (void)ungrabGesture: (Qt::GestureType)gesture;
 - (void)unsetCursor;
 - (void)unsetLayoutDirection;
 - (void)unsetLocale;
+- (void)updateInRectangle: (of_rectangle_t)rect;
+- (void)updateInRegion: (const QRegion&)region;
+- (void)updateGeometry;
+- (QRegion)visibleRegion;
+- (WId)winID;
+- (QtWidget*)window;
+- (QWindow*)windowHandle;
+- (OFString*)windowRole;
+- (Qt::WindowStates)windowState;
+- (Qt::WindowType)windowType;
 @end
 
 @interface QtWidget (QtPaintDevice) <QtPaintDevice>
 @end
+
+namespace ObjQt {
+
+static OF_INLINE QtWidget*
+toOF(QWidget *qWidget)
+{
+	return [[[QtWidget alloc] initWithQWidget: qWidget] autorelease];
+}
+
+static OF_INLINE QWidget*
+toQt(QtWidget *widget)
+{
+	return [widget qWidget];
+}
+
+}

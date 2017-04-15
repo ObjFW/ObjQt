@@ -20,24 +20,20 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "QtCoreApplication.h"
+#import "OFDataArray+QByteArray.h"
 
-#include <QGuiApplication>
+@implementation OFDataArray (QByteArray)
++ (instancetype)dataArrayWithQByteArray: (const QByteArray&)qByteArray
+{
+	OFDataArray *ret = [OFDataArray dataArray];
+	[ret addItems: qByteArray.data()
+		count: qByteArray.count()];
 
-@interface QtGuiApplication: QtCoreApplication
-@property (readonly) QGuiApplication *qGuiApplication;
-@property (copy) OFString *applicationDisplayName;
-@property (copy) OFString *desktopFileName;
-@property Qt::LayoutDirection layoutDirection;
-@property (readonly, copy) OFString *platformName;
-@property (readonly) QScreen *primaryScreen;
-@property bool quitOnLastWindowClosed;
-@property QIcon windowIcon;
+	return ret;
+}
 
-- initWithQGuiApplication: (QGuiApplication*)qGuiApplication;
-- (double)devicePixelRatio;
-- (bool)isSavingSession;
-- (bool)isSessionRestored;
-- (OFString*)sessionID;
-- (OFString*)sessionKey;
+- (QByteArray)qByteArray
+{
+	return QByteArray((char*)[self items], [self count] * [self itemSize]);
+}
 @end

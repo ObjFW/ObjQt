@@ -29,3 +29,19 @@
 - initWithQString: (const QString&)qString;
 - (QString)qString;
 @end
+
+namespace ObjQt {
+
+static OF_INLINE OFString*
+toOF(const QString &qString)
+{
+	return [OFString stringWithQString: qString];
+}
+
+static OF_INLINE QString
+toQt(OFString *string)
+{
+	return [string qString];
+}
+
+}
