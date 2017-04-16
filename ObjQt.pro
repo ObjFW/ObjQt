@@ -37,7 +37,7 @@ SOURCES += common/OFDataArray+QByteArray.mm	\
 	   QtWidgets/QtApplication.mm		\
 	   QtWidgets/QtWidget.mm
 
-OBJCFLAGS += $$system("objfw-config --cppflags --objcflags --cxxflags")
+OBJCFLAGS += $$system("sh -c 'objfw-config --cppflags --objcflags --cxxflags'")
 OBJCFLAGS_WARN_ON = -Wall				\
 		    -Werror				\
 		    -Wsemicolon-before-method-body	\
@@ -49,5 +49,7 @@ macx:QMAKE_CXXFLAGS_WARN_ON = $$OBJCFLAGS_WARN_ON
 !macx:QMAKE_CC = clang++
 !macx:QMAKE_CFLAGS += -std=c++11 $$OBJCFLAGS
 !macx:QMAKE_CFLAGS_WARN_ON = $$OBJCFLAGS_WARN_ON
+win32:QMAKE_CFLAGS -= -fno-keep-inline-dllexport
+win32:QMAKE_CFLAGS_WARN_ON += -Wno-ignored-attributes
 
-LIBS += $$system("objfw-config --ldflags --libs")
+LIBS += $$system("sh -c 'objfw-config --ldflags --libs'")
