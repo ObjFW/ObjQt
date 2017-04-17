@@ -29,7 +29,9 @@
 - (int)colorCount;
 - (int)depth;
 - (int)devicePixelRatio;
+#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
 - (double)devicePixelRatioF;
+#endif
 - (int)height;
 - (int)heightMM;
 - (int)logicalDPIX;

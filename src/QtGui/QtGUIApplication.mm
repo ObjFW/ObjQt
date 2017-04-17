@@ -54,6 +54,7 @@ using ObjQt::toQt;
 	toQt(self)->setApplicationDisplayName(toQt(applicationDisplayName));
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
 - (OFString*)desktopFileName
 {
 	return toOF(toQt(self)->desktopFileName());
@@ -63,6 +64,7 @@ using ObjQt::toQt;
 {
 	toQt(self)->setDesktopFileName(toQt(desktopFileName));
 }
+#endif
 
 - (double)devicePixelRatio
 {
