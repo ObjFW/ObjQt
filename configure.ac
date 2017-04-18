@@ -35,6 +35,8 @@ AX_CHECK_COMPILER_FLAGS(-pipe, [OBJCFLAGS="$OBJCFLAGS -pipe"])
 AX_CHECK_COMPILER_FLAGS(-fno-common, [OBJCFLAGS="$OBJCFLAGS -fno-common"])
 AX_CHECK_COMPILER_FLAGS(-Wobjc-missing-property-synthesis -Werror,
 	[OBJCFLAGS="$OBJCFLAGS -Wobjc-missing-property-synthesis"])
+AX_CHECK_COMPILER_FLAGS(-Wno-ignored-attributes -Werror,
+	[OBJCXXFLAGS="$OBJCXXFLAGS -Wno-ignored-attributes"])
 
 AC_CHECK_TOOL(AR, ar)
 AC_PROG_RANLIB
