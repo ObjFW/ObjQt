@@ -19,6 +19,7 @@ AC_PROG_OBJCXX(clang++ g++)
 AC_PROG_OBJCXXCPP
 AC_PROG_LN_S
 AC_PROG_INSTALL
+AC_PROG_EGREP
 
 CPP="$OBJCXXCPP"
 CPPFLAGS="$CPPFLAGS $OBJCPPFLAGS $($OBJFW_CONFIG --cppflags)"
@@ -26,7 +27,7 @@ OBJCFLAGS="$OBJCFLAGS -Wall $($OBJFW_CONFIG --objcflags)"
 LDFLAGS="$LDFLAGS $($OBJFW_CONFIG --ldflags --rpath)"
 LIBS="$LIBS $($OBJFW_CONFIG --libs)"
 
-AX_CHECK_COMPILER_FLAGS(-std=c++11, [CXXFLAGS="$CXXFLAGS -std=c++11"], [
+AX_CHECK_COMPILER_FLAGS(-std=c++11, [OBJCXXFLAGS="$OBJCXXFLAGS -std=c++11"], [
 	AC_MSG_ERROR(You need a compiler that supports C++11!)
 ])
 
@@ -86,6 +87,20 @@ PKG_CHECK_MODULES(Qt5Widgets, [Qt5Widgets >= 5.5], [
 ])
 AS_IF([test x"$GOBJC" = x"yes"], [
 	OBJCFLAGS="$OBJCFLAGS -Wwrite-strings -Wpointer-arith -Werror"
+])
+
+AC_MSG_CHECKING(whether Qt requires PIC)
+AC_EGREP_CPP(yes, [
+	#include <qglobal.h>
+
+	#ifdef QT_REDUCE_RELOCATIONS
+	yes
+	#endif
+], [
+	OBJCXXFLAGS="$LIB_CFLAGS $OBJCXXFLAGS"
+	AC_MSG_RESULT(yes)
+], [
+	AC_MSG_RESULT(no)
 ])
 
 BUILDSYS_INIT
