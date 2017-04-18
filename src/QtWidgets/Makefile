@@ -3,8 +3,9 @@ include ../../extra.mk
 STATIC_PIC_LIB_NOINST = ${QTWIDGETS_LIB_A}
 STATIC_LIB_NOINST = ${QTWIDGETS_A}
 
-SRCS = QtAction.mm	\
-       QtApplication.mm	\
+SRCS = QtAbstractButton.mm	\
+       QtAction.mm		\
+       QtApplication.mm		\
        QtWidget.mm
 
 include ../../buildsys.mk
