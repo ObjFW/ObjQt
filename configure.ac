@@ -23,7 +23,7 @@ AC_PROG_EGREP
 
 CPP="$OBJCXXCPP"
 CPPFLAGS="$CPPFLAGS $OBJCPPFLAGS $($OBJFW_CONFIG --cppflags)"
-OBJCFLAGS="$OBJCFLAGS -Wall $($OBJFW_CONFIG --objcflags)"
+OBJCXXFLAGS="$OBJCXXFLAGS -Wall $($OBJFW_CONFIG --objcflags)"
 LDFLAGS="$LDFLAGS $($OBJFW_CONFIG --ldflags --rpath)"
 LIBS="$LIBS $($OBJFW_CONFIG --libs)"
 
@@ -31,10 +31,10 @@ AX_CHECK_COMPILER_FLAGS(-std=c++11, [OBJCXXFLAGS="$OBJCXXFLAGS -std=c++11"], [
 	AC_MSG_ERROR(You need a compiler that supports C++11!)
 ])
 
-AX_CHECK_COMPILER_FLAGS(-pipe, [OBJCFLAGS="$OBJCFLAGS -pipe"])
-AX_CHECK_COMPILER_FLAGS(-fno-common, [OBJCFLAGS="$OBJCFLAGS -fno-common"])
+AX_CHECK_COMPILER_FLAGS(-pipe, [OBJCXXFLAGS="$OBJCXXFLAGS -pipe"])
+AX_CHECK_COMPILER_FLAGS(-fno-common, [OBJCXXFLAGS="$OBJCXXFLAGS -fno-common"])
 AX_CHECK_COMPILER_FLAGS(-Wobjc-missing-property-synthesis -Werror,
-	[OBJCFLAGS="$OBJCFLAGS -Wobjc-missing-property-synthesis"])
+	[OBJCXXFLAGS="$OBJCXXFLAGS -Wobjc-missing-property-synthesis"])
 AX_CHECK_COMPILER_FLAGS(-Wno-ignored-attributes -Werror,
 	[OBJCXXFLAGS="$OBJCXXFLAGS -Wno-ignored-attributes"])
 
@@ -87,8 +87,8 @@ PKG_CHECK_MODULES(Qt5Widgets, [Qt5Widgets >= 5.5], [
 ], [
 	AC_MSG_ERROR(You need Qt5Widgets >= 5.5 installed!)
 ])
-AS_IF([test x"$GOBJC" = x"yes"], [
-	OBJCFLAGS="$OBJCFLAGS -Wwrite-strings -Wpointer-arith -Werror"
+AS_IF([test x"$GOBJCXX" = x"yes"], [
+	OBJCXXFLAGS="$OBJCXXFLAGS -Wwrite-strings -Wpointer-arith -Werror"
 ])
 
 AC_MSG_CHECKING(whether Qt requires PIC)
@@ -112,8 +112,6 @@ dnl set CPP and OBJCC to OBJCPPCXX and add OBJCXXCPPFLAGS to CPPFLAGS, thus we
 dnl need to AC_SUBST these ourself.
 AC_SUBST(CPP)
 AC_SUBST(CPPFLAGS)
-AC_SUBST(CXXFLAGS)
-AC_SUBST(OBJCFLAGS)
 
 AC_CONFIG_FILES([buildsys.mk extra.mk])
 AC_OUTPUT
