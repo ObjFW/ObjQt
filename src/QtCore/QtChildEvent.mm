@@ -27,18 +27,18 @@ using ObjQt::toOF;
 using ObjQt::toQt;
 
 @implementation QtChildEvent
-- initWithQEvent: (QEvent*)event
+- initWithQEvent: (QEvent *)event
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQChildEvent: (QChildEvent*)event
+- initWithQChildEvent: (QChildEvent *)event
 {
 	return [super initWithQEvent: event];
 }
 
 - initWithType: (QChildEvent::Type)type
-	 child: (QtObject*)child
+	 child: (QtObject *)child
 {
 	try {
 		self = [self initWithQChildEvent:
@@ -54,9 +54,9 @@ using ObjQt::toQt;
 	}
 }
 
-- (QChildEvent*)qChildEvent
+- (QChildEvent *)qChildEvent
 {
-	return dynamic_cast<QChildEvent*>(_qEvent);
+	return dynamic_cast<QChildEvent *>(_qEvent);
 }
 
 - (bool)isAdded
@@ -64,7 +64,7 @@ using ObjQt::toQt;
 	return toQt(self)->added();
 }
 
-- (QtObject*)child
+- (QtObject *)child
 {
 	return toOF(toQt(self)->child());
 }

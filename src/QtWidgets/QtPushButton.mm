@@ -30,18 +30,17 @@ using ObjQt::toOF;
 using ObjQt::toQt;
 
 @implementation QtPushButton
-
-- initWithQAbstractButton: (QAbstractButton*)qAbstractButton
+- initWithQAbstractButton: (QAbstractButton *)qAbstractButton
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQPushButton: (QPushButton*)qPushButton
+- initWithQPushButton: (QPushButton *)qPushButton
 {
 	return [super initWithQAbstractButton: qPushButton];
 }
 
-- initWithText: (OFString*)text
+- initWithText: (OFString *)text
 {
 	try {
 		self = [self initWithQPushButton:
@@ -58,7 +57,7 @@ using ObjQt::toQt;
 }
 
 - initWithIcon: (QIcon)icon
-	  text: (OFString*)text
+	  text: (OFString *)text
 {
 	try {
 		self = [self initWithQPushButton:
@@ -74,17 +73,17 @@ using ObjQt::toQt;
 	}
 }
 
-- (QPushButton*)qPushButton
+- (QPushButton *)qPushButton
 {
-	return qobject_cast<QPushButton*>(_qObject);
+	return qobject_cast<QPushButton *>(_qObject);
 }
 
-- (QMenu*)menu
+- (QMenu *)menu
 {
 	return toQt(self)->menu();
 }
 
-- (void)setMenu: (QMenu*)menu
+- (void)setMenu: (QMenu *)menu
 {
 	toQt(self)->setMenu(menu);
 }

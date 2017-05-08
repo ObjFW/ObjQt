@@ -29,19 +29,19 @@ using ObjQt::toOF;
 using ObjQt::toQt;
 
 @implementation QtAbstractButton
-- initWithQWidget: (QWidget*)qWidget
+- initWithQWidget: (QWidget *)qWidget
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQAbstractButton: (QAbstractButton*)qAbstractButton
+- initWithQAbstractButton: (QAbstractButton *)qAbstractButton
 {
 	return [super initWithQWidget: qAbstractButton];
 }
 
-- (QAbstractButton*)qAbstractButton
+- (QAbstractButton *)qAbstractButton
 {
-	return qobject_cast<QAbstractButton*>(_qObject);
+	return qobject_cast<QAbstractButton *>(_qObject);
 }
 
 - (bool)autoExclusive
@@ -144,17 +144,17 @@ using ObjQt::toQt;
 	toQt(self)->setShortcut(shortcut);
 }
 
-- (OFString*)text
+- (OFString *)text
 {
 	return toOF(toQt(self)->text());
 }
 
-- (void)setText: (OFString*)text
+- (void)setText: (OFString *)text
 {
 	toQt(self)->setText(toQt(text));
 }
 
-- (QButtonGroup*)group
+- (QButtonGroup *)group
 {
 	return toQt(self)->group();
 }

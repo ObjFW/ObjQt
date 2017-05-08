@@ -38,20 +38,21 @@
 @property QKeySequence shortcut;
 @property (copy) OFString *text;
 
-- initWithQAbstractButton: (QAbstractButton*)qAbstractButton;
-- (QButtonGroup*)group;
+- initWithQWidget: (QWidget *)qWidget OF_UNAVAILABLE;
+- initWithQAbstractButton: (QAbstractButton *)qAbstractButton;
+- (QButtonGroup *)group;
 @end
 
 namespace ObjQt {
 
-static OF_INLINE QtAbstractButton*
+static OF_INLINE QtAbstractButton *
 toOF(QAbstractButton *qAbstractButton)
 {
 	return [[[QtAbstractButton alloc]
 	    initWithQAbstractButton: qAbstractButton] autorelease];
 }
 
-static OF_INLINE QAbstractButton*
+static OF_INLINE QAbstractButton *
 toQt(QtAbstractButton *abstractButton)
 {
 	return [abstractButton qAbstractButton];

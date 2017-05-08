@@ -40,56 +40,57 @@
 @property (retain) QtObject *parent;
 @property (copy) OFString *objectName;
 
-- initWithQObject: (QObject*)qObject;
+- init OF_UNAVAILABLE;
+- initWithQObject: (QObject *)qObject;
 - (bool)setBlockSignals: (bool)block;
-- (OFArray OF_GENERIC(QtObject*)*)children;
-- (QMetaObject::Connection)connectSignal: (OFString*)signal
-				  sender: (QtObject*)sender
-				  method: (OFString*)method
+- (OFArray OF_GENERIC(QtObject *) *)children;
+- (QMetaObject::Connection)connectSignal: (OFString *)signal
+				  sender: (QtObject *)sender
+				  method: (OFString *)method
 				    type: (Qt::ConnectionType)type;
-- (bool)disconnectSignal: (OFString*)signal
-		receiver: (QtObject*)receiver
-		  method: (OFString*)method;
-- (bool)disconnectAllSignalsForReceiver: (QtObject*)receiver
-				 method: (OFString*)method;
+- (bool)disconnectSignal: (OFString *)signal
+		receiver: (QtObject *)receiver
+		  method: (OFString *)method;
+- (bool)disconnectAllSignalsForReceiver: (QtObject *)receiver
+				 method: (OFString *)method;
 - (void)dumpObjectInfo;
 - (void)dumpObjectTree;
-- (OFArray OF_GENERIC(OFDataArray*)*)dynamicPropertyNames;
-- (bool)handleEvent: (QtEvent*)event;
-- (bool)filterEvent: (QtEvent*)event
-	  forObject: (QtObject*)watched;
+- (OFArray OF_GENERIC(OFDataArray *) *)dynamicPropertyNames;
+- (bool)handleEvent: (QtEvent *)event;
+- (bool)filterEvent: (QtEvent *)event
+	  forObject: (QtObject *)watched;
 // MISSING: T findChild(const QString &name = QString(),
 //     Qt::FindChildOptions options = Qt::FindChildrenRecursively) const;
 // MISSING QList<T> findChildren(const QString &name = QString(),
 //     Qt::FindChildOptions options = Qt::FindChildrenRecursively) const;
 // MISSING: QList<T> findChildren(const QRegExp &regExp,
 //     Qt::FindChildOptions options = Qt::FindChildrenRecursively) const;
-- (bool)inheritsClassWithName: (OFString*)className;
-- (void)installEventFilter: (QtObject*)filterObj;
+- (bool)inheritsClassWithName: (OFString *)className;
+- (void)installEventFilter: (QtObject *)filterObj;
 - (bool)isWidgetType;
 - (bool)isWindowType;
 - (void)killTimerWithID: (int)ID;
-- (void)moveToThread: (QtThread*)targetThread;
-- (QVariant)propertyForName: (OFString*)name;
-- (void)removeEventFilter: (QtObject*)obj;
+- (void)moveToThread: (QtThread *)targetThread;
+- (QVariant)propertyForName: (OFString *)name;
+- (void)removeEventFilter: (QtObject *)obj;
 - (bool)setProperty: (QVariant&)value
-	    forName: (OFString*)name;
+	    forName: (OFString *)name;
 - (bool)signalsBlocked;
 - (int)startTimerWithInterval: (int)interval
 			 type: (Qt::TimerType)type;
-- (QtThread*)thread;
+- (QtThread *)thread;
 - (void)deleteLater;
 @end
 
 namespace ObjQt {
 
-static OF_INLINE QtObject*
+static OF_INLINE QtObject *
 toOF(QObject *qObject)
 {
 	return [[[QtObject alloc] initWithQObject: qObject] autorelease];
 }
 
-static OF_INLINE QObject*
+static OF_INLINE QObject *
 toQt(QtObject *object)
 {
 	return [object qObject];

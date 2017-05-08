@@ -25,7 +25,7 @@
 #include <QPaintDevice>
 
 @protocol QtPaintDevice
-- (QPaintDevice*)qPaintDevice;
+- (QPaintDevice *)qPaintDevice;
 - (int)colorCount;
 - (int)depth;
 - (int)devicePixelRatio;
@@ -36,7 +36,7 @@
 - (int)heightMM;
 - (int)logicalDPIX;
 - (int)logicalDPIY;
-- (QPaintEngine*)paintEngine;
+- (QPaintEngine *)paintEngine;
 - (bool)paintingActive;
 - (int)physicalDPIX;
 - (int)physicalDPIY;
@@ -50,7 +50,7 @@
 
 namespace ObjQt {
 
-static OF_INLINE QPaintDevice*
+static OF_INLINE QPaintDevice *
 toQt(QtPaintDevice *paintDevice)
 {
 	return [paintDevice qPaintDevice];

@@ -46,34 +46,35 @@
 @property (getter=isVisible) bool visible;
 @property (copy) OFString *whatsThis;
 
-- initWithQAction: (QAction*)qAction;
-- (QActionGroup*)actionGroup;
+- initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
+- initWithQAction: (QAction *)qAction;
+- (QActionGroup *)actionGroup;
 - (void)activate: (QAction::ActionEvent)event;
-- (QList<QGraphicsWidget*>)associatedGraphicsWidgets;
-- (OFArray OF_GENERIC(QtWidget*)*)associatedWidgets;
+- (QList<QGraphicsWidget *>)associatedGraphicsWidgets;
+- (OFArray OF_GENERIC(QtWidget *) *)associatedWidgets;
 - (QVariant)data;
 - (bool)isSeparator;
-- (QMenu*)menu;
-- (QtWidget*)parentWidget;
-- (void)setActionGroup: (QActionGroup*)group;
+- (QMenu *)menu;
+- (QtWidget *)parentWidget;
+- (void)setActionGroup: (QActionGroup *)group;
 - (void)setData: (const QVariant&)data;
-- (void)setMenu: (QMenu*)menu;
+- (void)setMenu: (QMenu *)menu;
 - (void)setSeparator: (bool)isSeparator;
 - (void)setShortcuts: (const QList<QKeySequence>&)shortcuts;
 - (void)setShortcutsWithStandardKey: (QKeySequence::StandardKey)key;
 - (QList<QKeySequence>)shortcuts;
-- (bool)showStatusText: (QtWidget*)widget;
+- (bool)showStatusText: (QtWidget *)widget;
 @end
 
 namespace ObjQt {
 
-static OF_INLINE QtAction*
+static OF_INLINE QtAction *
 toOF(QAction *qAction)
 {
 	return [[[QtAction alloc] initWithQAction: qAction] autorelease];
 }
 
-static OF_INLINE QAction*
+static OF_INLINE QAction *
 toQt(QtAction *action)
 {
 	return [action qAction];

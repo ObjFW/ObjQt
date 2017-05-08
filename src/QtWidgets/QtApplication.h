@@ -36,21 +36,22 @@
 @property (copy) OFString *styleSheet;
 @property int wheelScrollLines;
 
-- initWithQApplication: (QApplication*)qApplication;
+- initWithQGuiApplication: (QGuiApplication *)qGuiApplication OF_UNAVAILABLE;
+- initWithQApplication: (QApplication *)qApplication;
 - (void)aboutQt;
 - (void)closeAllWindows;
 @end
 
 namespace ObjQt {
 
-static OF_INLINE QtApplication*
+static OF_INLINE QtApplication *
 toOF(QApplication *qApplication)
 {
 	return [[[QtApplication alloc]
 	    initWithQApplication: qApplication] autorelease];
 }
 
-static OF_INLINE QApplication*
+static OF_INLINE QApplication *
 toQt(QtApplication *application)
 {
 	return [application qApplication];

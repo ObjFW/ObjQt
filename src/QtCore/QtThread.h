@@ -34,7 +34,8 @@
 @property QThread::Priority priority;
 @property unsigned int stackSize;
 
-- initWithQThread: (QThread*)qThread;
+- initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
+- initWithQThread: (QThread *)qThread;
 - (void)exitWithReturnCode: (int)returnCode;
 - (void)requestInterruption;
 - (bool)waitForMilliseconds: (unsigned long)time;
@@ -45,13 +46,13 @@
 
 namespace ObjQt {
 
-static OF_INLINE QtThread*
+static OF_INLINE QtThread *
 toOF(QThread *qThread)
 {
 	return [[[QtThread alloc] initWithQThread: qThread] autorelease];
 }
 
-static OF_INLINE QThread*
+static OF_INLINE QThread *
 toQt(QtThread *thread)
 {
 	return [thread qThread];

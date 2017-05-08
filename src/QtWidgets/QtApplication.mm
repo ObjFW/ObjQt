@@ -29,19 +29,19 @@ using ObjQt::toOF;
 using ObjQt::toQt;
 
 @implementation QtApplication
-- initWithQGuiApplication: (QGuiApplication*)qGuiApplication
+- initWithQGuiApplication: (QGuiApplication *)qGuiApplication
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQApplication: (QApplication*)qApplication
+- initWithQApplication: (QApplication *)qApplication
 {
 	return [super initWithQGuiApplication: qApplication];
 }
 
-- (QApplication*)qApplication
+- (QApplication *)qApplication
 {
-	return qobject_cast<QApplication*>(_qObject);
+	return qobject_cast<QApplication *>(_qObject);
 }
 
 - (bool)autoSIPEnabled
@@ -114,12 +114,12 @@ using ObjQt::toQt;
 	toQt(self)->setStartDragTime(startDragTime);
 }
 
-- (OFString*)styleSheet
+- (OFString *)styleSheet
 {
 	return toOF(toQt(self)->styleSheet());
 }
 
-- (void)setStyleSheet: (OFString*)styleSheet
+- (void)setStyleSheet: (OFString *)styleSheet
 {
 	toQt(self)->setStyleSheet(toQt(styleSheet));
 }

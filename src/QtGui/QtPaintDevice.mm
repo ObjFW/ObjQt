@@ -29,9 +29,9 @@ using ObjQt::toQt;
 @implementation QtPaintDevice
 @dynamic qObject;
 
-- (QPaintDevice*)qPaintDevice
+- (QPaintDevice *)qPaintDevice
 {
-	return dynamic_cast<QPaintDevice*>([self qObject]);
+	return dynamic_cast<QPaintDevice *>([self qObject]);
 }
 
 - (int)colorCount
@@ -76,7 +76,7 @@ using ObjQt::toQt;
 	return toQt(self)->logicalDpiY();
 }
 
-- (QPaintEngine*)paintEngine
+- (QPaintEngine *)paintEngine
 {
 	return toQt(self)->paintEngine();
 }

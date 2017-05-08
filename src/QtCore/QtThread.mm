@@ -25,27 +25,27 @@
 using ObjQt::toQt;
 
 @implementation QtThread: QtObject
-- initWithQObject: (QObject*)qObject
+- initWithQObject: (QObject *)qObject
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQThread: (QThread*)qThread
+- initWithQThread: (QThread *)qThread
 {
 	return [super initWithQObject: qThread];
 }
 
-- (QThread*)qThread
+- (QThread *)qThread
 {
-	return qobject_cast<QThread*>(_qObject);
+	return qobject_cast<QThread *>(_qObject);
 }
 
-- (QAbstractEventDispatcher*)eventDispatcher
+- (QAbstractEventDispatcher *)eventDispatcher
 {
 	return toQt(self)->eventDispatcher();
 }
 
-- (void)setEventDispatcher: (QAbstractEventDispatcher*)eventDispatcher
+- (void)setEventDispatcher: (QAbstractEventDispatcher *)eventDispatcher
 {
 	toQt(self)->setEventDispatcher(eventDispatcher);
 }

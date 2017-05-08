@@ -28,27 +28,28 @@
 
 @interface QtPushButton: QtAbstractButton
 @property (readonly) QPushButton *qPushButton;
-@property QMenu* menu;
+@property QMenu *menu;
 @property bool autoDefault;
 @property (getter=isDefault, setter=setDefault:) bool default_;
 @property (getter=isFlat) bool flat;
 
-- initWithQPushButton: (QPushButton*)qPushButton;
-- initWithText: (OFString*)text;
+- initWithQAbstractButton: (QAbstractButton *)qAbstractButton OF_UNAVAILABLE;
+- initWithQPushButton: (QPushButton *)qPushButton;
+- initWithText: (OFString *)text;
 - initWithIcon: (QIcon)icon
-	  text: (OFString*)text;
+	  text: (OFString *)text;
 @end
 
 namespace ObjQt {
 
-static OF_INLINE QtPushButton*
+static OF_INLINE QtPushButton *
 toOF(QPushButton *qPushButton)
 {
 	return [[[QtPushButton alloc]
 	    initWithQPushButton: qPushButton] autorelease];
 }
 
-static OF_INLINE QPushButton*
+static OF_INLINE QPushButton *
 toQt(QtPushButton *pushButton)
 {
 	return [pushButton qPushButton];

@@ -28,62 +28,62 @@ using ObjQt::toOF;
 using ObjQt::toQt;
 
 @implementation QtCoreApplication
-- initWithQObject: (QObject*)qObject
+- initWithQObject: (QObject *)qObject
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQCoreApplication: (QCoreApplication*)qCoreApplication
+- initWithQCoreApplication: (QCoreApplication *)qCoreApplication
 {
 	return [super initWithQObject: qCoreApplication];
 }
 
-- (QCoreApplication*)qCoreApplication
+- (QCoreApplication *)qCoreApplication
 {
-	return qobject_cast<QCoreApplication*>(_qObject);
+	return qobject_cast<QCoreApplication *>(_qObject);
 }
 
-- (OFString*)applicationName
+- (OFString *)applicationName
 {
 	return toOF(toQt(self)->applicationName());
 }
 
-- (void)setApplicationName: (OFString*)applicationName
+- (void)setApplicationName: (OFString *)applicationName
 {
 	toQt(self)->setApplicationName(toQt(applicationName));
 }
 
-- (OFString*)applicationVersion
+- (OFString *)applicationVersion
 {
 	return toOF(toQt(self)->applicationVersion());
 }
 
-- (void)installNativeEventFilter: (QAbstractNativeEventFilter*)filterObject
+- (void)installNativeEventFilter: (QAbstractNativeEventFilter *)filterObject
 {
 	toQt(self)->installNativeEventFilter(filterObject);
 }
 
-- (void)setApplicationVersion: (OFString*)applicationVersion
+- (void)setApplicationVersion: (OFString *)applicationVersion
 {
 	toQt(self)->setApplicationVersion(toQt(applicationVersion));
 }
 
-- (OFString*)organizationDomain
+- (OFString *)organizationDomain
 {
 	return toOF(toQt(self)->organizationDomain());
 }
 
-- (void)setOrganizationDomain: (OFString*)organizationDomain
+- (void)setOrganizationDomain: (OFString *)organizationDomain
 {
 	toQt(self)->setOrganizationDomain(toQt(organizationDomain));
 }
 
-- (OFString*)organizationName
+- (OFString *)organizationName
 {
 	return toOF(toQt(self)->organizationName());
 }
 
-- (void)setOrganizationName: (OFString*)organizationName
+- (void)setOrganizationName: (OFString *)organizationName
 {
 	toQt(self)->setOrganizationName(toQt(organizationName));
 }
@@ -103,13 +103,13 @@ using ObjQt::toQt;
 	toQt(self)->setQuitLockEnabled(quitLockEnabled);
 }
 
-- (void)removeNativeEventFilter: (QAbstractNativeEventFilter*)filterObject
+- (void)removeNativeEventFilter: (QAbstractNativeEventFilter *)filterObject
 {
 	toQt(self)->removeNativeEventFilter(filterObject);
 }
 
-- (bool)sendEvent: (QtEvent*)event
-	 receiver: (QtObject*)receiver
+- (bool)sendEvent: (QtEvent *)event
+	 receiver: (QtObject *)receiver
 {
 	return toQt(self)->notify(toQt(receiver), toQt(event));
 }

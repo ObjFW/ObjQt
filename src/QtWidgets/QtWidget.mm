@@ -40,19 +40,19 @@ using ObjQt::toQt;
 		[self inheritMethodsFromClass: [QtPaintDevice class]];
 }
 
-- initWithQObject: (QObject*)qObject
+- initWithQObject: (QObject *)qObject
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQWidget: (QWidget*)qWidget
+- initWithQWidget: (QWidget *)qWidget
 {
 	return [super initWithQObject: qWidget];
 }
 
-- (QWidget*)qWidget
+- (QWidget *)qWidget
 {
-	return qobject_cast<QWidget*>(_qObject);
+	return qobject_cast<QWidget *>(_qObject);
 }
 
 - (bool)acceptDrops
@@ -65,22 +65,22 @@ using ObjQt::toQt;
 	toQt(self)->setAcceptDrops(acceptDrops);
 }
 
-- (OFString*)accessibleDescription
+- (OFString *)accessibleDescription
 {
 	return toOF(toQt(self)->accessibleDescription());
 }
 
-- (void)setAccessibleDescription: (OFString*)accessibleDescription
+- (void)setAccessibleDescription: (OFString *)accessibleDescription
 {
 	toQt(self)->setAccessibleDescription(toQt(accessibleDescription));
 }
 
-- (OFString*)accessibleName
+- (OFString *)accessibleName
 {
 	return toOF(toQt(self)->accessibleName());
 }
 
-- (void)setAccessibleName: (OFString*)accessibleName
+- (void)setAccessibleName: (OFString *)accessibleName
 {
 	toQt(self)->setAccessibleName(toQt(accessibleName));
 }
@@ -165,12 +165,12 @@ using ObjQt::toQt;
 	toQt(self)->setFocusPolicy(focusPolicy);
 }
 
-- (const QFont&)font
+- (const QFont &)font
 {
 	return toQt(self)->font();
 }
 
-- (void)setFont: (const QFont&)font
+- (void)setFont: (const QFont &)font
 {
 	toQt(self)->setFont(font);
 }
@@ -345,12 +345,12 @@ using ObjQt::toQt;
 	return toOF(toQt(self)->normalGeometry());
 }
 
-- (const QPalette&)palette
+- (const QPalette &)palette
 {
 	return toQt(self)->palette();
 }
 
-- (void)setPalette: (const QPalette&)palette
+- (void)setPalette: (const QPalette &)palette
 {
 	toQt(self)->setPalette(palette);
 }
@@ -405,32 +405,32 @@ using ObjQt::toQt;
 	toQt(self)->setSizePolicy(sizePolicy);
 }
 
-- (OFString*)statusTip
+- (OFString *)statusTip
 {
 	return toOF(toQt(self)->statusTip());
 }
 
-- (void)setStatusTip: (OFString*)statusTip
+- (void)setStatusTip: (OFString *)statusTip
 {
 	toQt(self)->setStatusTip(toQt(statusTip));
 }
 
-- (OFString*)styleSheet
+- (OFString *)styleSheet
 {
 	return toOF(toQt(self)->styleSheet());
 }
 
-- (void)setStyleSheet: (OFString*)styleSheet
+- (void)setStyleSheet: (OFString *)styleSheet
 {
 	toQt(self)->setStyleSheet(toQt(styleSheet));
 }
 
-- (OFString*)toolTip
+- (OFString *)toolTip
 {
 	return toOF(toQt(self)->toolTip());
 }
 
-- (void)setToolTip: (OFString*)toolTip
+- (void)setToolTip: (OFString *)toolTip
 {
 	toQt(self)->setToolTip(toQt(toolTip));
 }
@@ -465,12 +465,12 @@ using ObjQt::toQt;
 	toQt(self)->setVisible(visible);
 }
 
-- (OFString*)whatsThis
+- (OFString *)whatsThis
 {
 	return toOF(toQt(self)->whatsThis());
 }
 
-- (void)setWhatsThis: (OFString*)whatsThis
+- (void)setWhatsThis: (OFString *)whatsThis
 {
 	toQt(self)->setWhatsThis(toQt(whatsThis));
 }
@@ -480,12 +480,12 @@ using ObjQt::toQt;
 	return toQt(self)->width();
 }
 
-- (OFString*)windowFilePath
+- (OFString *)windowFilePath
 {
 	return toOF(toQt(self)->windowFilePath());
 }
 
-- (void)setWindowFilePath: (OFString*)windowFilePath
+- (void)setWindowFilePath: (OFString *)windowFilePath
 {
 	toQt(self)->setWindowFilePath(toQt(windowFilePath));
 }
@@ -540,12 +540,12 @@ using ObjQt::toQt;
 	toQt(self)->setWindowOpacity(windowOpacity);
 }
 
-- (OFString*)windowTitle
+- (OFString *)windowTitle
 {
 	return toOF(toQt(self)->windowTitle());
 }
 
-- (void)setWindowTitle: (OFString*)windowTitle
+- (void)setWindowTitle: (OFString *)windowTitle
 {
 	toQt(self)->setWindowTitle(toQt(windowTitle));
 }
@@ -560,9 +560,9 @@ using ObjQt::toQt;
 	return toQt(self)->y();
 }
 
-- (OFArray OF_GENERIC(QtAction*)*)actions
+- (OFArray OF_GENERIC(QtAction *) *)actions
 {
-	const QList<QAction*> &actions = toQt(self)->actions();
+	const QList<QAction *> &actions = toQt(self)->actions();
 	OFMutableArray *ret =
 	    [OFMutableArray arrayWithCapacity: actions.count()];
 	void *pool = objc_autoreleasePoolPush();
@@ -582,14 +582,14 @@ using ObjQt::toQt;
 	toQt(self)->activateWindow();
 }
 
-- (void)addAction: (QtAction*)action
+- (void)addAction: (QtAction *)action
 {
 	toQt(self)->addAction(toQt(action));
 }
 
-- (void)addActions: (OFArray OF_GENERIC(QtAction*)*)actions
+- (void)addActions: (OFArray OF_GENERIC(QtAction *) *)actions
 {
-	QList<QAction*> list;
+	QList<QAction *> list;
 
 	for (QtAction *action in actions)
 		list.append(toQt(action));
@@ -607,12 +607,12 @@ using ObjQt::toQt;
 	return toQt(self)->backgroundRole();
 }
 
-- (QBackingStore*)backingStore
+- (QBackingStore *)backingStore
 {
 	return toQt(self)->backingStore();
 }
 
-- (QtWidget*)childAt: (of_point_t)point
+- (QtWidget *)childAt: (of_point_t)point
 {
 	return toOF(toQt(self)->childAt(toQt(point)));
 }
@@ -647,12 +647,12 @@ using ObjQt::toQt;
 	toQt(self)->ensurePolished();
 }
 
-- (QtWidget*)focusProxy
+- (QtWidget *)focusProxy
 {
 	return toOF(toQt(self)->focusProxy());
 }
 
-- (QtWidget*)focusWidget
+- (QtWidget *)focusWidget
 {
 	return toOF(toQt(self)->focusWidget());
 }
@@ -698,28 +698,28 @@ using ObjQt::toQt;
 	toQt(self)->grabMouse();
 }
 
-- (void)grabMouseWithCursor: (const QCursor&)cursor
+- (void)grabMouseWithCursor: (const QCursor &)cursor
 {
 	toQt(self)->grabMouse(cursor);
 }
 
-- (int)grabShortcutWithKey: (const QKeySequence&)key
+- (int)grabShortcutWithKey: (const QKeySequence &)key
 {
 	return toQt(self)->grabShortcut(key);
 }
 
-- (int)grabShortcutWithKey: (const QKeySequence&)key
+- (int)grabShortcutWithKey: (const QKeySequence &)key
 		   context: (Qt::ShortcutContext)context
 {
 	return toQt(self)->grabShortcut(key, context);
 }
 
-- (QGraphicsEffect*)graphicsEffect
+- (QGraphicsEffect *)graphicsEffect
 {
 	return toQt(self)->graphicsEffect();
 }
 
-- (QGraphicsProxyWidget*)graphicsProxyWidget
+- (QGraphicsProxyWidget *)graphicsProxyWidget
 {
 	return toQt(self)->graphicsProxyWidget();
 }
@@ -746,16 +746,16 @@ using ObjQt::toQt;
 	return toQt(self)->inputMethodQuery(query);
 }
 
-- (void)insertAction: (QtAction*)action
-	      before: (QtAction*)before
+- (void)insertAction: (QtAction *)action
+	      before: (QtAction *)before
 {
 	toQt(self)->insertAction(toQt(before), toQt(action));
 }
 
-- (void)insertActions: (OFArray OF_GENERIC(QtAction*)*)actions
-	       before: (QtAction*)before
+- (void)insertActions: (OFArray OF_GENERIC(QtAction *) *)actions
+	       before: (QtAction *)before
 {
-	QList<QAction*> list;
+	QList<QAction *> list;
 
 	for (QtAction *action in actions)
 		list.append(toQt(action));
@@ -763,12 +763,12 @@ using ObjQt::toQt;
 	toQt(self)->insertActions(toQt(before), list);
 }
 
-- (bool)isAncestorOf: (QtWidget*)child
+- (bool)isAncestorOf: (QtWidget *)child
 {
 	return toQt(self)->isAncestorOf(toQt(child));
 }
 
-- (bool)isEnabledTo: (QtWidget*)ancestor
+- (bool)isEnabledTo: (QtWidget *)ancestor
 {
 	return toQt(self)->isEnabledTo(toQt(ancestor));
 }
@@ -778,7 +778,7 @@ using ObjQt::toQt;
 	return toQt(self)->isHidden();
 }
 
-- (bool)isVisibleTo: (QtWidget*)ancestor
+- (bool)isVisibleTo: (QtWidget *)ancestor
 {
 	return toQt(self)->isVisibleTo(toQt(ancestor));
 }
@@ -789,7 +789,7 @@ using ObjQt::toQt;
 }
 
 - (of_point_t)mapPosition: (of_point_t)pos
-		     from: (QtWidget*)parent
+		     from: (QtWidget *)parent
 {
 	return toOF(toQt(self)->mapFrom(toQt(parent), toQt(pos)));
 }
@@ -805,7 +805,7 @@ using ObjQt::toQt;
 }
 
 - (of_point_t)mapPosition: (of_point_t)pos
-		       to: (QtWidget*)parent
+		       to: (QtWidget *)parent
 {
 	return toOF(toQt(self)->mapTo(toQt(parent), toQt(pos)));
 }
@@ -825,12 +825,12 @@ using ObjQt::toQt;
 	return toQt(self)->mask();
 }
 
-- (QtWidget*)nativeParentWidget
+- (QtWidget *)nativeParentWidget
 {
 	return toOF(toQt(self)->nativeParentWidget());
 }
 
-- (QtWidget*)nextInFocusChain
+- (QtWidget *)nextInFocusChain
 {
 	return toOF(toQt(self)->nextInFocusChain());
 }
@@ -840,12 +840,12 @@ using ObjQt::toQt;
 	toQt(self)->overrideWindowFlags(flags);
 }
 
-- (QtWidget*)parentWidget
+- (QtWidget *)parentWidget
 {
 	return toOF(toQt(self)->parentWidget());
 }
 
-- (QtWidget*)previousInFocusChain
+- (QtWidget *)previousInFocusChain
 {
 	return toOF(toQt(self)->previousInFocusChain());
 }
@@ -865,12 +865,12 @@ using ObjQt::toQt;
 	toQt(self)->releaseShortcut(ID);
 }
 
-- (void)removeAction: (QtAction*)action
+- (void)removeAction: (QtAction *)action
 {
 	toQt(self)->removeAction(toQt(action));
 }
 
-- (void)renderIntoPaintDevice: (QtObject <QtPaintDevice>*)target
+- (void)renderIntoPaintDevice: (QtObject <QtPaintDevice> *)target
 		 targetOffset: (of_point_t)targetOffset
 		 sourceRegion: (QRegion)sourceRegion
 {
@@ -878,7 +878,7 @@ using ObjQt::toQt;
 	    sourceRegion);
 }
 
-- (void)renderIntoPaintDevice: (QtObject <QtPaintDevice>*)target
+- (void)renderIntoPaintDevice: (QtObject <QtPaintDevice> *)target
 		 targetOffset: (of_point_t)targetOffset
 		 sourceRegion: (QRegion)sourceRegion
 			flags: (QWidget::RenderFlags)renderFlags
@@ -887,14 +887,14 @@ using ObjQt::toQt;
 	    sourceRegion, renderFlags);
 }
 
-- (void)renderIntoPainter: (QPainter*)target
+- (void)renderIntoPainter: (QPainter *)target
 	     targetOffset: (of_point_t)targetOffset
 	     sourceRegion: (QRegion)sourceRegion
 {
 	toQt(self)->render(target, toQt(targetOffset), sourceRegion);
 }
 
-- (void)renderIntoPainter: (QPainter*)target
+- (void)renderIntoPainter: (QPainter *)target
 	     targetOffset: (of_point_t)targetOffset
 	     sourceRegion: (QRegion)sourceRegion
 		    flags: (QWidget::RenderFlags)renderFlags
@@ -908,17 +908,17 @@ using ObjQt::toQt;
 	toQt(self)->repaint(toQt(rect));
 }
 
-- (void)repaintInRegion: (const QRegion&)region
+- (void)repaintInRegion: (const QRegion &)region
 {
 	toQt(self)->repaint(region);
 }
 
-- (bool)restoreGeometry: (OFDataArray*)geometry
+- (bool)restoreGeometry: (OFDataArray *)geometry
 {
 	return toQt(self)->restoreGeometry(toQt(geometry));
 }
 
-- (OFDataArray*)saveGeometry
+- (OFDataArray *)saveGeometry
 {
 	return toOF(toQt(self)->saveGeometry());
 }
@@ -969,7 +969,7 @@ using ObjQt::toQt;
 	toQt(self)->setFocus(reason);
 }
 
-- (void)setFocusProxy: (QtWidget*)widget
+- (void)setFocusProxy: (QtWidget *)widget
 {
 	toQt(self)->setFocusProxy(toQt(widget));
 }
@@ -979,32 +979,32 @@ using ObjQt::toQt;
 	toQt(self)->setForegroundRole(role);
 }
 
-- (void)setGraphicsEffect: (QGraphicsEffect*)effect
+- (void)setGraphicsEffect: (QGraphicsEffect *)effect
 {
 	toQt(self)->setGraphicsEffect(effect);
 }
 
-- (void)setLayout: (QLayout*)layout
+- (void)setLayout: (QLayout *)layout
 {
 	toQt(self)->setLayout(layout);
 }
 
-- (void)setMaskFromBitmap: (const QBitmap&)bitmap
+- (void)setMaskFromBitmap: (const QBitmap &)bitmap
 {
 	toQt(self)->setMask(bitmap);
 }
 
-- (void)setMask: (const QRegion&)region
+- (void)setMask: (const QRegion &)region
 {
 	toQt(self)->setMask(region);
 }
 
-- (void)setParent: (QtWidget*)parent
+- (void)setParent: (QtWidget *)parent
 {
 	toQt(self)->setParent(toQt(parent));
 }
 
-- (void)setParent: (QtWidget*)parent
+- (void)setParent: (QtWidget *)parent
 	    flags: (Qt::WindowFlags)flags
 {
 	toQt(self)->setParent(toQt(parent), flags);
@@ -1022,12 +1022,12 @@ using ObjQt::toQt;
 	toQt(self)->setShortcutEnabled(ID, enable);
 }
 
-- (void)setStyle: (QStyle*)style
+- (void)setStyle: (QStyle *)style
 {
 	toQt(self)->setStyle(style);
 }
 
-- (void)setWindowRole: (OFString*)role
+- (void)setWindowRole: (OFString *)role
 {
 	toQt(self)->setWindowRole(toQt(role));
 }
@@ -1037,12 +1037,12 @@ using ObjQt::toQt;
 	toQt(self)->setWindowState(windowState);
 }
 
-- (void)stackUnder: (QtWidget*)widget
+- (void)stackUnder: (QtWidget *)widget
 {
 	toQt(self)->stackUnder(toQt(widget));
 }
 
-- (QStyle*)style
+- (QStyle *)style
 {
 	return toQt(self)->style();
 }
@@ -1067,7 +1067,7 @@ using ObjQt::toQt;
 	toQt(self)->update(toQt(rect));
 }
 
-- (void)updateInRegion: (const QRegion&)region
+- (void)updateInRegion: (const QRegion &)region
 {
 	toQt(self)->update(region);
 }
@@ -1087,17 +1087,17 @@ using ObjQt::toQt;
 	return toQt(self)->winId();
 }
 
-- (QtWidget*)window
+- (QtWidget *)window
 {
 	return toOF(toQt(self)->window());
 }
 
-- (QWindow*)windowHandle
+- (QWindow *)windowHandle
 {
 	return toQt(self)->windowHandle();
 }
 
-- (OFString*)windowRole
+- (OFString *)windowRole
 {
 	return toOF(toQt(self)->windowRole());
 }

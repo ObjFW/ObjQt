@@ -38,20 +38,21 @@
 @property (readonly) QEvent::Type type;
 
 + (int)registerEventType: (int)hint;
-- initWithQEvent: (QEvent*)qEvent;
+- init OF_UNAVAILABLE;
+- initWithQEvent: (QEvent *)qEvent;
 - (void)accept;
 - (void)ignore;
 @end
 
 namespace ObjQt {
 
-static OF_INLINE QtEvent*
+static OF_INLINE QtEvent *
 toOF(QEvent *qEvent)
 {
 	return [[[QtEvent alloc] initWithQEvent: qEvent] autorelease];
 }
 
-static OF_INLINE QEvent*
+static OF_INLINE QEvent *
 toQt(QtEvent *event)
 {
 	return [event qEvent];

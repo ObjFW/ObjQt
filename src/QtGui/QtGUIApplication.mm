@@ -29,38 +29,38 @@ using ObjQt::toOF;
 using ObjQt::toQt;
 
 @implementation QtGUIApplication
-- initWithQCoreApplication: (QCoreApplication*)qCoreApplication
+- initWithQCoreApplication: (QCoreApplication *)qCoreApplication
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQGuiApplication: (QGuiApplication*)qGuiApplication
+- initWithQGuiApplication: (QGuiApplication *)qGuiApplication
 {
 	return [super initWithQCoreApplication: qGuiApplication];
 }
 
-- (QGuiApplication*)qGuiApplication
+- (QGuiApplication *)qGuiApplication
 {
-	return qobject_cast<QGuiApplication*>(_qObject);
+	return qobject_cast<QGuiApplication *>(_qObject);
 }
 
-- (OFString*)applicationDisplayName
+- (OFString *)applicationDisplayName
 {
 	return toOF(toQt(self)->applicationDisplayName());
 }
 
-- (void)setApplicationDisplayName: (OFString*)applicationDisplayName
+- (void)setApplicationDisplayName: (OFString *)applicationDisplayName
 {
 	toQt(self)->setApplicationDisplayName(toQt(applicationDisplayName));
 }
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
-- (OFString*)desktopFileName
+- (OFString *)desktopFileName
 {
 	return toOF(toQt(self)->desktopFileName());
 }
 
-- (void)setDesktopFileName: (OFString*)desktopFileName
+- (void)setDesktopFileName: (OFString *)desktopFileName
 {
 	toQt(self)->setDesktopFileName(toQt(desktopFileName));
 }
@@ -91,12 +91,12 @@ using ObjQt::toQt;
 	toQt(self)->setLayoutDirection(layoutDirection);
 }
 
-- (OFString*)platformName
+- (OFString *)platformName
 {
 	return toOF(toQt(self)->platformName());
 }
 
-- (QScreen*)primaryScreen
+- (QScreen *)primaryScreen
 {
 	return toQt(self)->primaryScreen();
 }
@@ -111,12 +111,12 @@ using ObjQt::toQt;
 	toQt(self)->setQuitOnLastWindowClosed(quitsOnLastWindowClosed);
 }
 
-- (OFString*)sessionID
+- (OFString *)sessionID
 {
 	return toOF(toQt(self)->sessionId());
 }
 
-- (OFString*)sessionKey
+- (OFString *)sessionKey
 {
 	return toOF(toQt(self)->sessionKey());
 }

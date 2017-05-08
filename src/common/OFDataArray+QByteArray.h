@@ -25,13 +25,13 @@
 #include <QByteArray>
 
 @interface OFDataArray (QByteArray)
-+ (instancetype)dataArrayWithQByteArray: (const QByteArray&)qByteArray;
++ (instancetype)dataArrayWithQByteArray: (const QByteArray &)qByteArray;
 - (QByteArray)qByteArray;
 @end
 
 namespace ObjQt {
 
-static OF_INLINE OFDataArray*
+static OF_INLINE OFDataArray *
 toOF(const QByteArray &qByteArray)
 {
 	return [OFDataArray dataArrayWithQByteArray: qByteArray];

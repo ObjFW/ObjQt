@@ -28,19 +28,19 @@ using ObjQt::toOF;
 using ObjQt::toQt;
 
 @implementation QtAction
-- initWithQObject: (QObject*)qObject
+- initWithQObject: (QObject *)qObject
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQAction: (QAction*)qAction
+- initWithQAction: (QAction *)qAction
 {
 	return [super initWithQObject: qAction];
 }
 
-- (QAction*)qAction
+- (QAction *)qAction
 {
-	return qobject_cast<QAction*>(_qObject);
+	return qobject_cast<QAction *>(_qObject);
 }
 
 - (bool)autoRepeat
@@ -103,12 +103,12 @@ using ObjQt::toQt;
 	toQt(self)->setIcon(icon);
 }
 
-- (OFString*)iconText
+- (OFString *)iconText
 {
 	return toOF(toQt(self)->iconText());
 }
 
-- (void)setIconText: (OFString*)iconText
+- (void)setIconText: (OFString *)iconText
 {
 	toQt(self)->setIconText(toQt(iconText));
 }
@@ -163,32 +163,32 @@ using ObjQt::toQt;
 	toQt(self)->setShortcutContext(shortcutContext);
 }
 
-- (OFString*)statusTip
+- (OFString *)statusTip
 {
 	return toOF(toQt(self)->statusTip());
 }
 
-- (void)setStatusTip: (OFString*)statusTip
+- (void)setStatusTip: (OFString *)statusTip
 {
 	toQt(self)->setStatusTip(toQt(statusTip));
 }
 
-- (OFString*)text
+- (OFString *)text
 {
 	return toOF(toQt(self)->text());
 }
 
-- (void)setText: (OFString*)text
+- (void)setText: (OFString *)text
 {
 	toQt(self)->setText(toQt(text));
 }
 
-- (OFString*)toolTip
+- (OFString *)toolTip
 {
 	return toOF(toQt(self)->toolTip());
 }
 
-- (void)setToolTip: (OFString*)toolTip
+- (void)setToolTip: (OFString *)toolTip
 {
 	toQt(self)->setToolTip(toQt(toolTip));
 }
@@ -203,17 +203,17 @@ using ObjQt::toQt;
 	toQt(self)->setVisible(visible);
 }
 
-- (OFString*)whatsThis
+- (OFString *)whatsThis
 {
 	return toOF(toQt(self)->whatsThis());
 }
 
-- (void)setWhatsThis: (OFString*)whatsThis
+- (void)setWhatsThis: (OFString *)whatsThis
 {
 	toQt(self)->setWhatsThis(toQt(whatsThis));
 }
 
-- (QActionGroup*)actionGroup
+- (QActionGroup *)actionGroup
 {
 	return toQt(self)->actionGroup();
 }
@@ -223,14 +223,14 @@ using ObjQt::toQt;
 	toQt(self)->activate(event);
 }
 
-- (QList<QGraphicsWidget*>)associatedGraphicsWidgets
+- (QList<QGraphicsWidget *>)associatedGraphicsWidgets
 {
 	return toQt(self)->associatedGraphicsWidgets();
 }
 
-- (OFArray OF_GENERIC(QtWidget*)*)associatedWidgets
+- (OFArray OF_GENERIC(QtWidget *) *)associatedWidgets
 {
-	const QList<QWidget*> &widgets = toQt(self)->associatedWidgets();
+	const QList<QWidget *> &widgets = toQt(self)->associatedWidgets();
 	OFMutableArray *ret =
 	    [OFMutableArray arrayWithCapacity: widgets.count()];
 	void *pool = objc_autoreleasePoolPush();
@@ -255,27 +255,27 @@ using ObjQt::toQt;
 	return toQt(self)->isSeparator();
 }
 
-- (QMenu*)menu
+- (QMenu *)menu
 {
 	return toQt(self)->menu();
 }
 
-- (QtWidget*)parentWidget
+- (QtWidget *)parentWidget
 {
 	return toOF(toQt(self)->parentWidget());
 }
 
-- (void)setActionGroup: (QActionGroup*)group
+- (void)setActionGroup: (QActionGroup *)group
 {
 	toQt(self)->setActionGroup(group);
 }
 
-- (void)setData: (const QVariant&)userData
+- (void)setData: (const QVariant &)userData
 {
 	toQt(self)->setData(userData);
 }
 
-- (void)setMenu: (QMenu*)menu
+- (void)setMenu: (QMenu *)menu
 {
 	toQt(self)->setMenu(menu);
 }
@@ -285,7 +285,7 @@ using ObjQt::toQt;
 	toQt(self)->setSeparator(isSeparator);
 }
 
-- (void)setShortcuts: (const QList<QKeySequence>&)shortcuts
+- (void)setShortcuts: (const QList<QKeySequence> &)shortcuts
 {
 	toQt(self)->setShortcuts(shortcuts);
 }
@@ -300,7 +300,7 @@ using ObjQt::toQt;
 	return toQt(self)->shortcuts();
 }
 
-- (bool)showStatusText: (QtWidget*)widget
+- (bool)showStatusText: (QtWidget *)widget
 {
 	return toQt(self)->showStatusText(toQt(widget));
 }

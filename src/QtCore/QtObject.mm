@@ -39,7 +39,7 @@ using ObjQt::toQt;
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQObject: (QObject*)qObject
+- initWithQObject: (QObject *)qObject
 {
 	self = [super init];
 
@@ -68,12 +68,12 @@ using ObjQt::toQt;
 	_ownsObject = false;
 }
 
-- (OFString*)objectName
+- (OFString *)objectName
 {
 	return toOF(_qObject->objectName());
 }
 
-- (void)setObjectName: (OFString*)objectName
+- (void)setObjectName: (OFString *)objectName
 {
 	_qObject->setObjectName(toQt(objectName));
 }
@@ -83,7 +83,7 @@ using ObjQt::toQt;
 	return _qObject->blockSignals(block);
 }
 
-- (OFArray OF_GENERIC(QtObject*)*)children
+- (OFArray OF_GENERIC(QtObject *) *)children
 {
 	const QObjectList &qChildren = _qObject->children();
 	OFMutableArray *children = [OFMutableArray arrayWithCapacity:
@@ -100,25 +100,25 @@ using ObjQt::toQt;
 	return children;
 }
 
-- (QMetaObject::Connection)connectSignal: (OFString*)signal
-				  sender: (QtObject*)sender
-				  method: (OFString*)method
+- (QMetaObject::Connection)connectSignal: (OFString *)signal
+				  sender: (QtObject *)sender
+				  method: (OFString *)method
 				    type: (Qt::ConnectionType)type
 {
 	return _qObject->connect(toQt(sender),
 	    [signal UTF8String], [method UTF8String], type);
 }
 
-- (bool)disconnectSignal: (OFString*)signal
-		receiver: (QtObject*)receiver
-		  method: (OFString*)method
+- (bool)disconnectSignal: (OFString *)signal
+		receiver: (QtObject *)receiver
+		  method: (OFString *)method
 {
 	return _qObject->disconnect([signal UTF8String], toQt(receiver),
 	    [method UTF8String]);
 }
 
-- (bool)disconnectAllSignalsForReceiver: (QtObject*)receiver
-				 method: (OFString*)method
+- (bool)disconnectAllSignalsForReceiver: (QtObject *)receiver
+				 method: (OFString *)method
 {
 	return _qObject->disconnect(toQt(receiver), [method UTF8String]);
 }
@@ -133,7 +133,7 @@ using ObjQt::toQt;
 	_qObject->dumpObjectTree();
 }
 
-- (OFArray OF_GENERIC(OFDataArray*)*)dynamicPropertyNames
+- (OFArray OF_GENERIC(OFDataArray *) *)dynamicPropertyNames
 {
 	const QList<QByteArray> &dynamicPropertyNames =
 	    _qObject->dynamicPropertyNames();
@@ -151,23 +151,23 @@ using ObjQt::toQt;
 	return ret;
 }
 
-- (bool)handleEvent: (QtEvent*)event
+- (bool)handleEvent: (QtEvent *)event
 {
 	return _qObject->event(toQt(event));
 }
 
-- (bool)filterEvent: (QtEvent*)event
-	  forObject: (QtObject*)watched
+- (bool)filterEvent: (QtEvent *)event
+	  forObject: (QtObject *)watched
 {
 	return _qObject->eventFilter(toQt(watched), toQt(event));
 }
 
-- (bool)inheritsClassWithName: (OFString*)className
+- (bool)inheritsClassWithName: (OFString *)className
 {
 	return _qObject->inherits([className UTF8String]);
 }
 
-- (void)installEventFilter: (QtObject*)filterObj
+- (void)installEventFilter: (QtObject *)filterObj
 {
 	_qObject->installEventFilter(toQt(filterObj));
 }
@@ -187,38 +187,38 @@ using ObjQt::toQt;
 	_qObject->killTimer(ID);
 }
 
-- (const QMetaObject*)metaObject
+- (const QMetaObject *)metaObject
 {
 	return _qObject->metaObject();
 }
 
-- (void)moveToThread: (QtThread*)targetThread
+- (void)moveToThread: (QtThread *)targetThread
 {
 	_qObject->moveToThread(toQt(targetThread));
 }
 
-- (QtObject*)parent
+- (QtObject *)parent
 {
 	return toOF(_qObject->parent());
 }
 
-- (void)setParent: (QtObject*)parent
+- (void)setParent: (QtObject *)parent
 {
 	_qObject->setParent(toQt(parent));
 }
 
-- (QVariant)propertyForName: (OFString*)name
+- (QVariant)propertyForName: (OFString *)name
 {
 	return _qObject->property([name UTF8String]);
 }
 
-- (void)removeEventFilter: (QtObject*)obj
+- (void)removeEventFilter: (QtObject *)obj
 {
 	_qObject->removeEventFilter(toQt(obj));
 }
 
-- (bool)setProperty: (QVariant&)value
-	    forName: (OFString*)name
+- (bool)setProperty: (QVariant &)value
+	    forName: (OFString *)name
 {
 	return _qObject->setProperty([name UTF8String], value);
 }
@@ -234,7 +234,7 @@ using ObjQt::toQt;
 	return _qObject->startTimer(interval, type);
 }
 
-- (QtThread*)thread
+- (QtThread *)thread
 {
 	return toOF(_qObject->thread());
 }

@@ -36,24 +36,25 @@
 @property bool quitsOnLastWindowClosed;
 @property QIcon windowIcon;
 
-- initWithQGuiApplication: (QGuiApplication*)qGuiApplication;
+- initWithQCoreApplication: (QCoreApplication *)qCoreApplication OF_UNAVAILABLE;
+- initWithQGuiApplication: (QGuiApplication *)qGuiApplication;
 - (double)devicePixelRatio;
 - (bool)isSavingSession;
 - (bool)isSessionRestored;
-- (OFString*)sessionID;
-- (OFString*)sessionKey;
+- (OFString *)sessionID;
+- (OFString *)sessionKey;
 @end
 
 namespace ObjQt {
 
-static OF_INLINE QtGUIApplication*
+static OF_INLINE QtGUIApplication *
 toOF(QGuiApplication *qGuiApplication)
 {
 	return [[[QtGUIApplication alloc]
 	    initWithQGuiApplication: qGuiApplication] autorelease];
 }
 
-static OF_INLINE QGuiApplication*
+static OF_INLINE QGuiApplication *
 toQt(QtGUIApplication *GUIApplication)
 {
 	return [GUIApplication qGuiApplication];

@@ -23,7 +23,7 @@
 #import "OFDataArray+QByteArray.h"
 
 @implementation OFDataArray (QByteArray)
-+ (instancetype)dataArrayWithQByteArray: (const QByteArray&)qByteArray
++ (instancetype)dataArrayWithQByteArray: (const QByteArray &)qByteArray
 {
 	OFDataArray *ret = [OFDataArray dataArray];
 	[ret addItems: qByteArray.data()
@@ -34,6 +34,6 @@
 
 - (QByteArray)qByteArray
 {
-	return QByteArray((char*)[self items], [self count] * [self itemSize]);
+	return QByteArray((char *)[self items], [self count] * [self itemSize]);
 }
 @end

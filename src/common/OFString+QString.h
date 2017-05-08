@@ -25,14 +25,14 @@
 #include <QString>
 
 @interface OFString (QString)
-+ (instancetype)stringWithQString: (const QString&)qString;
-- initWithQString: (const QString&)qString;
++ (instancetype)stringWithQString: (const QString &)qString;
+- initWithQString: (const QString &)qString;
 - (QString)qString;
 @end
 
 namespace ObjQt {
 
-static OF_INLINE OFString*
+static OF_INLINE OFString *
 toOF(const QString &qString)
 {
 	return [OFString stringWithQString: qString];

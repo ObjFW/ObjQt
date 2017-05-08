@@ -30,24 +30,25 @@
 @property (copy) OFString *organizationDomain, *organizationName;
 @property (getter=isQuitLockEnabled) bool quitLockEnabled;
 
-- initWithQCoreApplication: (QCoreApplication*)qCoreApplication;
-- (void)installNativeEventFilter: (QAbstractNativeEventFilter*)filterObject;
+- initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
+- initWithQCoreApplication: (QCoreApplication *)qCoreApplication;
+- (void)installNativeEventFilter: (QAbstractNativeEventFilter *)filterObject;
 - (void)quit;
-- (void)removeNativeEventFilter: (QAbstractNativeEventFilter*)filterObject;
-- (bool)sendEvent: (QtEvent*)event
-	 receiver: (QtObject*)receiver;
+- (void)removeNativeEventFilter: (QAbstractNativeEventFilter *)filterObject;
+- (bool)sendEvent: (QtEvent *)event
+	 receiver: (QtObject *)receiver;
 @end
 
 namespace ObjQt {
 
-static OF_INLINE QtCoreApplication*
+static OF_INLINE QtCoreApplication *
 toOF(QCoreApplication *qCoreApplication)
 {
 	return [[[QtCoreApplication alloc]
 	    initWithQCoreApplication: qCoreApplication] autorelease];
 }
 
-static OF_INLINE QCoreApplication*
+static OF_INLINE QCoreApplication *
 toQt(QtCoreApplication *coreApplication)
 {
 	return [coreApplication qCoreApplication];

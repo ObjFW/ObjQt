@@ -35,7 +35,7 @@
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQEvent: (QEvent*)qEvent
+- initWithQEvent: (QEvent *)qEvent
 {
 	self = [super init];
 
