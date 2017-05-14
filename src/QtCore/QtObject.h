@@ -41,7 +41,7 @@
 @property (nonatomic, copy) OFString *objectName;
 
 - init OF_UNAVAILABLE;
-- initWithQObject: (QObject *)qObject;
+- initWithQObject: (QObject *)qObject OF_DESIGNATED_INITIALIZER;
 - (bool)setBlockSignals: (bool)block;
 - (OFArray OF_GENERIC(QtObject *) *)children;
 - (QMetaObject::Connection)connectSignal: (OFString *)signal

@@ -31,7 +31,8 @@
 @property (nonatomic, getter=isQuitLockEnabled) bool quitLockEnabled;
 
 - initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
-- initWithQCoreApplication: (QCoreApplication *)qCoreApplication;
+- initWithQCoreApplication: (QCoreApplication *)qCoreApplication
+    OF_DESIGNATED_INITIALIZER;
 - (void)installNativeEventFilter: (QAbstractNativeEventFilter *)filterObject;
 - (void)quit;
 - (void)removeNativeEventFilter: (QAbstractNativeEventFilter *)filterObject;

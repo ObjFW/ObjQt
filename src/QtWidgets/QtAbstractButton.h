@@ -39,7 +39,8 @@
 @property (nonatomic, copy) OFString *text;
 
 - initWithQWidget: (QWidget *)qWidget OF_UNAVAILABLE;
-- initWithQAbstractButton: (QAbstractButton *)qAbstractButton;
+- initWithQAbstractButton: (QAbstractButton *)qAbstractButton
+    OF_DESIGNATED_INITIALIZER;
 - (QButtonGroup *)group;
 @end
 

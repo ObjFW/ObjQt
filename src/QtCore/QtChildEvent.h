@@ -32,7 +32,7 @@
 @property (readonly, nonatomic, getter=isRemoved) bool removed;
 
 - initWithQEvent: (QEvent *)event OF_UNAVAILABLE;
-- initWithQChildEvent: (QChildEvent *)qChildEvent;
+- initWithQChildEvent: (QChildEvent *)qChildEvent OF_DESIGNATED_INITIALIZER;
 - initWithType: (QChildEvent::Type)type
 	 child: (QtObject *)child;
 @end

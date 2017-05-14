@@ -36,7 +36,7 @@
 @property (nonatomic) unsigned int stackSize;
 
 - initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
-- initWithQThread: (QThread *)qThread;
+- initWithQThread: (QThread *)qThread OF_DESIGNATED_INITIALIZER;
 - (void)exitWithReturnCode: (int)returnCode;
 - (void)requestInterruption;
 - (bool)waitForMilliseconds: (unsigned long)time;

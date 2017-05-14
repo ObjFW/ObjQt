@@ -39,7 +39,7 @@
 
 + (int)registerEventType: (int)hint;
 - init OF_UNAVAILABLE;
-- initWithQEvent: (QEvent *)qEvent;
+- initWithQEvent: (QEvent *)qEvent OF_DESIGNATED_INITIALIZER;
 - (void)accept;
 - (void)ignore;
 @end

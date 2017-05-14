@@ -50,7 +50,7 @@ using ObjQt::toQt;
 
 		return self;
 	} catch (const std::bad_alloc &e) {
-		self = [super initWithQAbstractButton: NULL];
+		self = [self initWithQPushButton: NULL];
 		[self release];
 		throw;
 	}
@@ -67,7 +67,7 @@ using ObjQt::toQt;
 
 		return self;
 	} catch (const std::bad_alloc &e) {
-		self = [super initWithQAbstractButton: NULL];
+		self = [self initWithQPushButton: NULL];
 		[self release];
 		throw;
 	}

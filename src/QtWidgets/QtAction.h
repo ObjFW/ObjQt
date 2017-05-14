@@ -47,7 +47,7 @@
 @property (nonatomic, copy) OFString *whatsThis;
 
 - initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
-- initWithQAction: (QAction *)qAction;
+- initWithQAction: (QAction *)qAction OF_DESIGNATED_INITIALIZER;
 - (QActionGroup *)actionGroup;
 - (void)activate: (QAction::ActionEvent)event;
 - (QList<QGraphicsWidget *>)associatedGraphicsWidgets;

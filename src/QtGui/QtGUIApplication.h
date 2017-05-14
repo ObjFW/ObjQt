@@ -37,7 +37,8 @@
 @property (nonatomic) QIcon windowIcon;
 
 - initWithQCoreApplication: (QCoreApplication *)qCoreApplication OF_UNAVAILABLE;
-- initWithQGuiApplication: (QGuiApplication *)qGuiApplication;
+- initWithQGuiApplication: (QGuiApplication *)qGuiApplication
+    OF_DESIGNATED_INITIALIZER;
 - (double)devicePixelRatio;
 - (bool)isSavingSession;
 - (bool)isSessionRestored;

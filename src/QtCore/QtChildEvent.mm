@@ -48,7 +48,7 @@ using ObjQt::toQt;
 
 		return self;
 	} catch (const std::bad_alloc &e) {
-		self = [super initWithQEvent: NULL];
+		self = [self initWithQChildEvent: NULL];
 		[self release];
 		throw;
 	}

@@ -34,7 +34,7 @@
 @property (nonatomic, getter=isFlat) bool flat;
 
 - initWithQAbstractButton: (QAbstractButton *)qAbstractButton OF_UNAVAILABLE;
-- initWithQPushButton: (QPushButton *)qPushButton;
+- initWithQPushButton: (QPushButton *)qPushButton OF_DESIGNATED_INITIALIZER;
 - initWithText: (OFString *)text;
 - initWithIcon: (QIcon)icon
 	  text: (OFString *)text;

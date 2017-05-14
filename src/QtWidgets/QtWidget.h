@@ -87,7 +87,7 @@
 @property (readonly, nonatomic) int y;
 
 - initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
-- initWithQWidget: (QWidget *)qWidget;
+- initWithQWidget: (QWidget *)qWidget OF_DESIGNATED_INITIALIZER;
 - (OFArray OF_GENERIC(QtAction *) *)actions;
 - (void)activateWindow;
 - (void)addAction: (QtAction *)action;

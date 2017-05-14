@@ -37,7 +37,7 @@
 @property (nonatomic) int wheelScrollLines;
 
 - initWithQGuiApplication: (QGuiApplication *)qGuiApplication OF_UNAVAILABLE;
-- initWithQApplication: (QApplication *)qApplication;
+- initWithQApplication: (QApplication *)qApplication OF_DESIGNATED_INITIALIZER;
 - (void)aboutQt;
 - (void)closeAllWindows;
 @end
