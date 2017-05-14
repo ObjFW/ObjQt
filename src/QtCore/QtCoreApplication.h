@@ -25,10 +25,10 @@
 #include <QCoreApplication>
 
 @interface QtCoreApplication: QtObject
-@property (readonly) QCoreApplication *qCoreApplication;
-@property (copy) OFString *applicationName, *applicationVersion;
-@property (copy) OFString *organizationDomain, *organizationName;
-@property (getter=isQuitLockEnabled) bool quitLockEnabled;
+@property (readonly, nonatomic) QCoreApplication *qCoreApplication;
+@property (nonatomic, copy) OFString *applicationName, *applicationVersion;
+@property (nonatomic, copy) OFString *organizationDomain, *organizationName;
+@property (nonatomic, getter=isQuitLockEnabled) bool quitLockEnabled;
 
 - initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
 - initWithQCoreApplication: (QCoreApplication *)qCoreApplication;

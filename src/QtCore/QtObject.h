@@ -35,10 +35,10 @@
 	bool _ownsObject;
 }
 
-@property (readonly) QObject *qObject;
-@property (readonly) const QMetaObject *metaObject;
-@property (retain) QtObject *parent;
-@property (copy) OFString *objectName;
+@property (readonly, nonatomic) QObject *qObject;
+@property (readonly, nonatomic) const QMetaObject *metaObject;
+@property (nonatomic, retain) QtObject *parent;
+@property (nonatomic, copy) OFString *objectName;
 
 - init OF_UNAVAILABLE;
 - initWithQObject: (QObject *)qObject;

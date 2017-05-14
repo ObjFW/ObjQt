@@ -25,11 +25,11 @@
 @class QtObject;
 
 @interface QtChildEvent: QtEvent
-@property (readonly) QChildEvent *qChildEvent;
-@property (readonly, getter=isAdded) bool added;
-@property (readonly, retain) QtObject *child;
-@property (readonly, getter=isPolished) bool polished;
-@property (readonly, getter=isRemoved) bool removed;
+@property (readonly, nonatomic) QChildEvent *qChildEvent;
+@property (readonly, nonatomic, getter=isAdded) bool added;
+@property (readonly, nonatomic) QtObject *child;
+@property (readonly, nonatomic, getter=isPolished) bool polished;
+@property (readonly, nonatomic, getter=isRemoved) bool removed;
 
 - initWithQEvent: (QEvent *)event OF_UNAVAILABLE;
 - initWithQChildEvent: (QChildEvent *)qChildEvent;

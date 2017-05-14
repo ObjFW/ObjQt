@@ -25,14 +25,15 @@
 #include <QThread>
 
 @interface QtThread: QtObject
-@property (readonly) QThread *qThread;
-@property QAbstractEventDispatcher *eventDispatcher;
-@property (readonly, getter=isFinished) bool finished;
-@property (readonly, getter=isInterruptionRequested) bool interruptionRequested;
-@property (readonly, getter=isRunning) bool running;
-@property (readonly) int loopLevel;
-@property QThread::Priority priority;
-@property unsigned int stackSize;
+@property (readonly, nonatomic) QThread *qThread;
+@property (nonatomic) QAbstractEventDispatcher *eventDispatcher;
+@property (readonly, nonatomic, getter=isFinished) bool finished;
+@property (readonly, nonatomic, getter=isInterruptionRequested)
+    bool interruptionRequested;
+@property (readonly, nonatomic, getter=isRunning) bool running;
+@property (readonly, nonatomic) int loopLevel;
+@property (nonatomic) QThread::Priority priority;
+@property (nonatomic) unsigned int stackSize;
 
 - initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
 - initWithQThread: (QThread *)qThread;

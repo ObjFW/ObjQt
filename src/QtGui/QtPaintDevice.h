@@ -45,7 +45,7 @@
 @end
 
 @interface QtPaintDevice: OFObject <QtPaintDevice>
-@property (readonly) QObject *qObject;
+@property (readonly, nonatomic) QObject *qObject;
 @end
 
 namespace ObjQt {

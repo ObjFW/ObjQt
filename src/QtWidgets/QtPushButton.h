@@ -27,11 +27,11 @@
 #include <QPushButton>
 
 @interface QtPushButton: QtAbstractButton
-@property (readonly) QPushButton *qPushButton;
-@property QMenu *menu;
-@property bool autoDefault;
-@property (getter=isDefault, setter=setDefault:) bool default_;
-@property (getter=isFlat) bool flat;
+@property (readonly, nonatomic) QPushButton *qPushButton;
+@property (nonatomic) QMenu *menu;
+@property (nonatomic) bool autoDefault;
+@property (nonatomic, getter=isDefault, setter=setDefault:) bool default_;
+@property (nonatomic, getter=isFlat) bool flat;
 
 - initWithQAbstractButton: (QAbstractButton *)qAbstractButton OF_UNAVAILABLE;
 - initWithQPushButton: (QPushButton *)qPushButton;

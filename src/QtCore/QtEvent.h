@@ -32,10 +32,10 @@
 	bool _ownsEvent;
 }
 
-@property (readonly) QEvent *qEvent;
-@property (getter=isAccepted) bool accepted;
-@property (readonly, getter=isSpontaneous) bool spontaneous;
-@property (readonly) QEvent::Type type;
+@property (readonly, nonatomic) QEvent *qEvent;
+@property (nonatomic, getter=isAccepted) bool accepted;
+@property (readonly, nonatomic, getter=isSpontaneous) bool spontaneous;
+@property (readonly, nonatomic) QEvent::Type type;
 
 + (int)registerEventType: (int)hint;
 - init OF_UNAVAILABLE;

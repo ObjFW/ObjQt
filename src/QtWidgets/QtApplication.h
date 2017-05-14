@@ -25,16 +25,16 @@
 #include <QApplication>
 
 @interface QtApplication: QtGUIApplication
-@property (readonly) QApplication *qApplication;
-@property bool autoSIPEnabled;
-@property int cursorFlashTime;
-@property int doubleClickInterval;
-@property of_dimension_t globalStrut;
-@property int keyboardInputInterval;
-@property int startDragDistance;
-@property int startDragTime;
-@property (copy) OFString *styleSheet;
-@property int wheelScrollLines;
+@property (readonly, nonatomic) QApplication *qApplication;
+@property (nonatomic) bool autoSIPEnabled;
+@property (nonatomic) int cursorFlashTime;
+@property (nonatomic) int doubleClickInterval;
+@property (nonatomic) of_dimension_t globalStrut;
+@property (nonatomic) int keyboardInputInterval;
+@property (nonatomic) int startDragDistance;
+@property (nonatomic) int startDragTime;
+@property (nonatomic, copy) OFString *styleSheet;
+@property (nonatomic) int wheelScrollLines;
 
 - initWithQGuiApplication: (QGuiApplication *)qGuiApplication OF_UNAVAILABLE;
 - initWithQApplication: (QApplication *)qApplication;

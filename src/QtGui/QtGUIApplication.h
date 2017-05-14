@@ -25,16 +25,16 @@
 #include <QGuiApplication>
 
 @interface QtGUIApplication: QtCoreApplication
-@property (readonly) QGuiApplication *qGuiApplication;
-@property (copy) OFString *applicationDisplayName;
+@property (readonly, nonatomic) QGuiApplication *qGuiApplication;
+@property (nonatomic, copy) OFString *applicationDisplayName;
 #if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
-@property (copy) OFString *desktopFileName;
+@property (nonatomic, copy) OFString *desktopFileName;
 #endif
-@property Qt::LayoutDirection layoutDirection;
-@property (readonly, copy) OFString *platformName;
-@property (readonly) QScreen *primaryScreen;
-@property bool quitsOnLastWindowClosed;
-@property QIcon windowIcon;
+@property (nonatomic) Qt::LayoutDirection layoutDirection;
+@property (readonly, nonatomic) OFString *platformName;
+@property (readonly, nonatomic) QScreen *primaryScreen;
+@property (nonatomic) bool quitsOnLastWindowClosed;
+@property (nonatomic) QIcon windowIcon;
 
 - initWithQCoreApplication: (QCoreApplication *)qCoreApplication OF_UNAVAILABLE;
 - initWithQGuiApplication: (QGuiApplication *)qGuiApplication;

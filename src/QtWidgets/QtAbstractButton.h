@@ -25,18 +25,18 @@
 #include <QAbstractButton>
 
 @interface QtAbstractButton: QtWidget
-@property (readonly) QAbstractButton *qAbstractButton;
-@property bool autoExclusive;
-@property bool autoRepeat;
-@property int autoRepeatDelay;
-@property int autoRepeatInterval;
-@property (getter=isCheckable) bool checkable;
-@property (getter=isChecked) bool checked;
-@property (getter=isDown) bool down;
-@property QIcon icon;
-@property of_dimension_t iconSize;
-@property QKeySequence shortcut;
-@property (copy) OFString *text;
+@property (readonly, nonatomic) QAbstractButton *qAbstractButton;
+@property (nonatomic) bool autoExclusive;
+@property (nonatomic) bool autoRepeat;
+@property (nonatomic) int autoRepeatDelay;
+@property (nonatomic) int autoRepeatInterval;
+@property (nonatomic, getter=isCheckable) bool checkable;
+@property (nonatomic, getter=isChecked) bool checked;
+@property (nonatomic, getter=isDown) bool down;
+@property (nonatomic) QIcon icon;
+@property (nonatomic) of_dimension_t iconSize;
+@property (nonatomic) QKeySequence shortcut;
+@property (nonatomic, copy) OFString *text;
 
 - initWithQWidget: (QWidget *)qWidget OF_UNAVAILABLE;
 - initWithQAbstractButton: (QAbstractButton *)qAbstractButton;

@@ -27,24 +27,24 @@
 @class QtWidget;
 
 @interface QtAction: QtObject
-@property (readonly) QAction *qAction;
-@property bool autoRepeat;
-@property (getter=isCheckable) bool checkable;
-@property (getter=isChecked) bool checked;
-@property (getter=isEnabled) bool enabled;
-@property QFont font;
-@property QIcon icon;
-@property (copy) OFString *iconText;
-@property (getter=isIconVisibleInMenu) bool iconVisibleInMenu;
-@property QAction::MenuRole menuRole;
-@property QAction::Priority priority;
-@property QKeySequence shortcut;
-@property Qt::ShortcutContext shortcutContext;
-@property (copy) OFString *statusTip;
-@property (copy) OFString *text;
-@property (copy) OFString *toolTip;
-@property (getter=isVisible) bool visible;
-@property (copy) OFString *whatsThis;
+@property (readonly, nonatomic) QAction *qAction;
+@property (nonatomic) bool autoRepeat;
+@property (nonatomic, getter=isCheckable) bool checkable;
+@property (nonatomic, getter=isChecked) bool checked;
+@property (nonatomic, getter=isEnabled) bool enabled;
+@property (nonatomic) QFont font;
+@property (nonatomic) QIcon icon;
+@property (nonatomic, copy) OFString *iconText;
+@property (nonatomic, getter=isIconVisibleInMenu) bool iconVisibleInMenu;
+@property (nonatomic) QAction::MenuRole menuRole;
+@property (nonatomic) QAction::Priority priority;
+@property (nonatomic) QKeySequence shortcut;
+@property (nonatomic) Qt::ShortcutContext shortcutContext;
+@property (nonatomic, copy) OFString *statusTip;
+@property (nonatomic, copy) OFString *text;
+@property (nonatomic, copy) OFString *toolTip;
+@property (nonatomic, getter=isVisible) bool visible;
+@property (nonatomic, copy) OFString *whatsThis;
 
 - initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
 - initWithQAction: (QAction *)qAction;
