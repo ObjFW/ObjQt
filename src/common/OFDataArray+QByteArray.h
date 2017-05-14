@@ -34,12 +34,18 @@ namespace ObjQt {
 static OF_INLINE OFDataArray *
 toOF(const QByteArray &qByteArray)
 {
+	if (qByteArray.isNull())
+		return nil;
+
 	return [OFDataArray dataArrayWithQByteArray: qByteArray];
 }
 
 static OF_INLINE QByteArray
 toQt(OFDataArray *dataArray)
 {
+	if (dataArray == nil)
+		return QByteArray();
+
 	return [dataArray qByteArray];
 }
 

@@ -229,6 +229,9 @@ namespace ObjQt {
 static OF_INLINE QtWidget *
 toOF(QWidget *qWidget)
 {
+	if (qWidget == NULL)
+		return nil;
+
 	return [[[QtWidget alloc] initWithQWidget: qWidget] autorelease];
 }
 

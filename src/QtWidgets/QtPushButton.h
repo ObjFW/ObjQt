@@ -45,6 +45,9 @@ namespace ObjQt {
 static OF_INLINE QtPushButton *
 toOF(QPushButton *qPushButton)
 {
+	if (qPushButton == NULL)
+		return nil;
+
 	return [[[QtPushButton alloc]
 	    initWithQPushButton: qPushButton] autorelease];
 }

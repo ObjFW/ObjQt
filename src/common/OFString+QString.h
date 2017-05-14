@@ -35,12 +35,18 @@ namespace ObjQt {
 static OF_INLINE OFString *
 toOF(const QString &qString)
 {
+	if (qString.isNull())
+		return nil;
+
 	return [OFString stringWithQString: qString];
 }
 
 static OF_INLINE QString
 toQt(OFString *string)
 {
+	if (string == nil)
+		return QString();
+
 	return [string qString];
 }
 

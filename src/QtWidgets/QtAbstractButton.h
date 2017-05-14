@@ -49,6 +49,9 @@ namespace ObjQt {
 static OF_INLINE QtAbstractButton *
 toOF(QAbstractButton *qAbstractButton)
 {
+	if (qAbstractButton == NULL)
+		return nil;
+
 	return [[[QtAbstractButton alloc]
 	    initWithQAbstractButton: qAbstractButton] autorelease];
 }

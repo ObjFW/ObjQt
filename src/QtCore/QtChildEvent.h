@@ -42,6 +42,9 @@ namespace ObjQt {
 static OF_INLINE QtChildEvent *
 toOF(QChildEvent *qChildEvent)
 {
+	if (qChildEvent == NULL)
+		return nil;
+
 	return [[[QtChildEvent alloc]
 	    initWithQChildEvent: qChildEvent] autorelease];
 }

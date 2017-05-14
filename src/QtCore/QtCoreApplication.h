@@ -45,6 +45,9 @@ namespace ObjQt {
 static OF_INLINE QtCoreApplication *
 toOF(QCoreApplication *qCoreApplication)
 {
+	if (qCoreApplication == NULL)
+		return nil;
+
 	return [[[QtCoreApplication alloc]
 	    initWithQCoreApplication: qCoreApplication] autorelease];
 }

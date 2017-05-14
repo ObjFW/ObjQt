@@ -50,6 +50,9 @@ namespace ObjQt {
 static OF_INLINE QtThread *
 toOF(QThread *qThread)
 {
+	if (qThread == NULL)
+		return nil;
+
 	return [[[QtThread alloc] initWithQThread: qThread] autorelease];
 }
 

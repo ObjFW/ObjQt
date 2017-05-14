@@ -71,6 +71,9 @@ namespace ObjQt {
 static OF_INLINE QtAction *
 toOF(QAction *qAction)
 {
+	if (qAction == NULL)
+		return nil;
+
 	return [[[QtAction alloc] initWithQAction: qAction] autorelease];
 }
 

@@ -41,7 +41,7 @@ toOF(const QPoint &qPoint)
 }
 
 static OF_INLINE QPoint
-toQt(of_point_t point)
+toQt(const of_point_t &point)
 {
 	return QPoint(point.x, point.y);
 }
@@ -53,7 +53,7 @@ toOF(const QSize &qSize)
 }
 
 static OF_INLINE QSize
-toQt(of_dimension_t dimension)
+toQt(const of_dimension_t &dimension)
 {
 	return QSize(dimension.width, dimension.height);
 }
@@ -66,7 +66,7 @@ toOF(const QRect &qRect)
 }
 
 static OF_INLINE QRect
-toQt(of_rectangle_t rectangle)
+toQt(const of_rectangle_t &rectangle)
 {
 	return QRect(rectangle.origin.x, rectangle.origin.y,
 	    rectangle.size.width, rectangle.size.height);

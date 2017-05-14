@@ -87,6 +87,9 @@ namespace ObjQt {
 static OF_INLINE QtObject *
 toOF(QObject *qObject)
 {
+	if (qObject == NULL)
+		return nil;
+
 	return [[[QtObject alloc] initWithQObject: qObject] autorelease];
 }
 

@@ -51,6 +51,9 @@ namespace ObjQt {
 static OF_INLINE QtGUIApplication *
 toOF(QGuiApplication *qGuiApplication)
 {
+	if (qGuiApplication == NULL)
+		return nil;
+
 	return [[[QtGUIApplication alloc]
 	    initWithQGuiApplication: qGuiApplication] autorelease];
 }
