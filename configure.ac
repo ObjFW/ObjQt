@@ -35,6 +35,8 @@ AX_CHECK_COMPILER_FLAGS(-pipe, [OBJCXXFLAGS="$OBJCXXFLAGS -pipe"])
 AX_CHECK_COMPILER_FLAGS(-fno-common, [OBJCXXFLAGS="$OBJCXXFLAGS -fno-common"])
 AX_CHECK_COMPILER_FLAGS(-Wobjc-missing-property-synthesis -Werror,
 	[OBJCXXFLAGS="$OBJCXXFLAGS -Wobjc-missing-property-synthesis"])
+AX_CHECK_COMPILER_FLAGS(-Watomic-properties,
+	[OBJCXXFLAGS="$OBJCXXFLAGS -Watomic-properties"])
 AX_CHECK_COMPILER_FLAGS(-Wno-ignored-attributes -Werror,
 	[OBJCXXFLAGS="$OBJCXXFLAGS -Wno-ignored-attributes"])
 

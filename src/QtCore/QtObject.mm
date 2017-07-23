@@ -24,7 +24,7 @@
 #import "QtEvent.h"
 #import "QtThread.h"
 #import "OFString+QString.h"
-#import "OFDataArray+QByteArray.h"
+#import "OFData+QByteArray.h"
 
 #include <QVariant>
 
@@ -133,7 +133,7 @@ using ObjQt::toQt;
 	_qObject->dumpObjectTree();
 }
 
-- (OFArray OF_GENERIC(OFDataArray *) *)dynamicPropertyNames
+- (OFArray OF_GENERIC(OFData *) *)dynamicPropertyNames
 {
 	const QList<QByteArray> &dynamicPropertyNames =
 	    _qObject->dynamicPropertyNames();

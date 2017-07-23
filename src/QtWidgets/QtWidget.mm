@@ -23,7 +23,7 @@
 #import "QtWidget.h"
 #import "QtAction.h"
 #import "OFString+QString.h"
-#import "OFDataArray+QByteArray.h"
+#import "OFData+QByteArray.h"
 
 #import "helpers.h"
 
@@ -913,12 +913,12 @@ using ObjQt::toQt;
 	toQt(self)->repaint(region);
 }
 
-- (bool)restoreGeometry: (OFDataArray *)geometry
+- (bool)restoreGeometry: (OFData *)geometry
 {
 	return toQt(self)->restoreGeometry(toQt(geometry));
 }
 
-- (OFDataArray *)saveGeometry
+- (OFData *)saveGeometry
 {
 	return toOF(toQt(self)->saveGeometry());
 }

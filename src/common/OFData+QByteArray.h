@@ -24,29 +24,29 @@
 
 #include <QByteArray>
 
-@interface OFDataArray (QByteArray)
-+ (instancetype)dataArrayWithQByteArray: (const QByteArray &)qByteArray;
+@interface OFData (QByteArray)
++ (instancetype)dataWithQByteArray: (const QByteArray &)qByteArray;
 - (QByteArray)qByteArray;
 @end
 
 namespace ObjQt {
 
-static OF_INLINE OFDataArray *
+static OF_INLINE OFData *
 toOF(const QByteArray &qByteArray)
 {
 	if (qByteArray.isNull())
 		return nil;
 
-	return [OFDataArray dataArrayWithQByteArray: qByteArray];
+	return [OFData dataWithQByteArray: qByteArray];
 }
 
 static OF_INLINE QByteArray
-toQt(OFDataArray *dataArray)
+toQt(OFData *data)
 {
-	if (dataArray == nil)
+	if (data == nil)
 		return QByteArray();
 
-	return [dataArray qByteArray];
+	return [data qByteArray];
 }
 
 }

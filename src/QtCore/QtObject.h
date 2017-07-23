@@ -55,7 +55,7 @@
 				 method: (OFString *)method;
 - (void)dumpObjectInfo;
 - (void)dumpObjectTree;
-- (OFArray OF_GENERIC(OFDataArray *) *)dynamicPropertyNames;
+- (OFArray OF_GENERIC(OFData *) *)dynamicPropertyNames;
 - (bool)handleEvent: (QtEvent *)event;
 - (bool)filterEvent: (QtEvent *)event
 	  forObject: (QtObject *)watched;

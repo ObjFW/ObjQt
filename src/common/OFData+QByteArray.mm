@@ -20,20 +20,18 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "OFDataArray+QByteArray.h"
+#import "OFData+QByteArray.h"
 
-@implementation OFDataArray (QByteArray)
-+ (instancetype)dataArrayWithQByteArray: (const QByteArray &)qByteArray
+@implementation OFData (QByteArray)
++ (instancetype)dataWithQByteArray: (const QByteArray &)qByteArray
 {
-	OFDataArray *ret = [OFDataArray dataArray];
-	[ret addItems: qByteArray.data()
-		count: qByteArray.count()];
-
-	return ret;
+	return [OFData dataWithItems: qByteArray.data()
+			       count: qByteArray.count()];
 }
 
 - (QByteArray)qByteArray
 {
-	return QByteArray((char *)[self items], [self count] * [self itemSize]);
+	return QByteArray((const char *)[self items],
+	    [self count] * [self itemSize]);
 }
 @end

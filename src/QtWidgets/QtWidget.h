@@ -169,8 +169,8 @@
 		    flags: (QWidget::RenderFlags)renderFlags;
 - (void)repaintInRectangle: (of_rectangle_t)rect;
 - (void)repaintInRegion: (const QRegion &)region;
-- (bool)restoreGeometry: (OFDataArray *)geometry;
-- (OFDataArray *)saveGeometry;
+- (bool)restoreGeometry: (OFData *)geometry;
+- (OFData *)saveGeometry;
 - (void)scrollRight: (int)dx
 	       down: (int)dy;
 - (void)scrollRight: (int)dx
