@@ -37,11 +37,11 @@
 @property (nonatomic) of_dimension_t iconSize;
 @property (nonatomic) QKeySequence shortcut;
 @property (nonatomic, copy) OFString *text;
+@property (readonly, nonatomic) QButtonGroup *group;
 
 - initWithQWidget: (QWidget *)qWidget OF_UNAVAILABLE;
 - initWithQAbstractButton: (QAbstractButton *)qAbstractButton
     OF_DESIGNATED_INITIALIZER;
-- (QButtonGroup *)group;
 @end
 
 namespace ObjQt {

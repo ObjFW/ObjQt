@@ -37,13 +37,16 @@
 
 @property (readonly, nonatomic) QObject *qObject;
 @property (readonly, nonatomic) const QMetaObject *metaObject;
-@property (nonatomic, retain) QtObject *parent;
-@property (nonatomic, copy) OFString *objectName;
+@property (retain, nonatomic) QtObject *parent;
+@property (copy, nonatomic) OFString *objectName;
+@property (readonly, nonatomic) OFArray OF_GENERIC(QtObject *) *children;
+@property (readonly, nonatomic)
+    OFArray OF_GENERIC(OFData *) *dynamicPropertyNames;
+@property (readonly, nonatomic) QtThread *thread;
 
 - init OF_UNAVAILABLE;
 - initWithQObject: (QObject *)qObject OF_DESIGNATED_INITIALIZER;
 - (bool)setBlockSignals: (bool)block;
-- (OFArray OF_GENERIC(QtObject *) *)children;
 - (QMetaObject::Connection)connectSignal: (OFString *)signal
 				  sender: (QtObject *)sender
 				  method: (OFString *)method
@@ -55,7 +58,6 @@
 				 method: (OFString *)method;
 - (void)dumpObjectInfo;
 - (void)dumpObjectTree;
-- (OFArray OF_GENERIC(OFData *) *)dynamicPropertyNames;
 - (bool)handleEvent: (QtEvent *)event;
 - (bool)filterEvent: (QtEvent *)event
 	  forObject: (QtObject *)watched;
@@ -78,7 +80,6 @@
 - (bool)signalsBlocked;
 - (int)startTimerWithInterval: (int)interval
 			 type: (Qt::TimerType)type;
-- (QtThread *)thread;
 - (void)deleteLater;
 @end
 

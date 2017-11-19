@@ -35,6 +35,8 @@
 @property (readonly, nonatomic) QScreen *primaryScreen;
 @property (nonatomic) bool quitsOnLastWindowClosed;
 @property (nonatomic) QIcon windowIcon;
+@property (readonly, nonatomic) OFString *sessionID;
+@property (readonly, nonatomic) OFString *sessionKey;
 
 - initWithQCoreApplication: (QCoreApplication *)qCoreApplication OF_UNAVAILABLE;
 - initWithQGuiApplication: (QGuiApplication *)qGuiApplication
@@ -42,8 +44,6 @@
 - (double)devicePixelRatio;
 - (bool)isSavingSession;
 - (bool)isSessionRestored;
-- (OFString *)sessionID;
-- (OFString *)sessionKey;
 @end
 
 namespace ObjQt {

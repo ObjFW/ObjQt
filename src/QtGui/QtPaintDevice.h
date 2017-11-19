@@ -25,23 +25,23 @@
 #include <QPaintDevice>
 
 @protocol QtPaintDevice
-- (QPaintDevice *)qPaintDevice;
-- (int)colorCount;
-- (int)depth;
-- (int)devicePixelRatio;
+@property (readonly, nonatomic) QPaintDevice *qPaintDevice;
+@property (readonly, nonatomic) int colorCount;
+@property (readonly, nonatomic) int depth;
+@property (readonly, nonatomic) int devicePixelRatio;
 #if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
-- (double)devicePixelRatioF;
+@property (readonly, nonatomic) double devicePixelRatioF;
 #endif
-- (int)height;
-- (int)heightMM;
-- (int)logicalDPIX;
-- (int)logicalDPIY;
-- (QPaintEngine *)paintEngine;
-- (bool)paintingActive;
-- (int)physicalDPIX;
-- (int)physicalDPIY;
-- (int)width;
-- (int)widthMM;
+@property (readonly, nonatomic) int height;
+@property (readonly, nonatomic) int heightMM;
+@property (readonly, nonatomic) int logicalDPIX;
+@property (readonly, nonatomic) int logicalDPIY;
+@property (readonly, nonatomic) QPaintEngine *paintEngine;
+@property (readonly, nonatomic) bool paintingActive;
+@property (readonly, nonatomic) int physicalDPIX;
+@property (readonly, nonatomic) int physicalDPIY;
+@property (readonly, nonatomic) int width;
+@property (readonly, nonatomic) int widthMM;
 @end
 
 @interface QtPaintDevice: OFObject <QtPaintDevice>

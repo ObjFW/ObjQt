@@ -30,8 +30,8 @@
 @interface QtWidget: QtObject
 @property (readonly, nonatomic) QWidget *qWidget;
 @property (nonatomic) bool acceptDrops;
-@property (nonatomic, copy) OFString *accessibleDescription;
-@property (nonatomic, copy) OFString *accessibleName;
+@property (copy, nonatomic) OFString *accessibleDescription;
+@property (copy, nonatomic) OFString *accessibleName;
 @property (nonatomic) bool autoFillBackground;
 @property (nonatomic) of_dimension_t baseSize;
 @property (readonly, nonatomic) of_rectangle_t childrenRect;
@@ -50,7 +50,7 @@
 @property (readonly, nonatomic) bool isActiveWindow;
 @property (nonatomic) Qt::LayoutDirection layoutDirection;
 @property (nonatomic) QLocale locale;
-@property (nonatomic, readonly, getter=isMaximized) bool maximized;
+@property (readonly, nonatomic, getter=isMaximized) bool maximized;
 @property (nonatomic) int maximumHeight;
 @property (nonatomic) of_dimension_t maximumSize;
 @property (nonatomic) int maximumWidth;
@@ -69,26 +69,37 @@
 @property (readonly, nonatomic) of_dimension_t sizeHint;
 @property (nonatomic) of_dimension_t sizeIncrement;
 @property (nonatomic) QSizePolicy sizePolicy;
-@property (nonatomic, copy) OFString *statusTip;
-@property (nonatomic, copy) OFString *styleSheet;
-@property (nonatomic, copy) OFString *toolTip;
+@property (copy, nonatomic) OFString *statusTip;
+@property (copy, nonatomic) OFString *styleSheet;
+@property (copy, nonatomic) OFString *toolTip;
 @property (nonatomic) int toolTipDuration;
 @property (nonatomic) bool updatesEnabled;
 @property (nonatomic, getter=isVisible) bool visible;
-@property (nonatomic, copy) OFString *whatsThis;
+@property (copy, nonatomic) OFString *whatsThis;
 @property (readonly, nonatomic) int width;
 @property (nonatomic) Qt::WindowFlags windowFlags;
 @property (nonatomic) QIcon windowIcon;
 @property (nonatomic) Qt::WindowModality windowModality;
 @property (nonatomic, getter=isWindowModified) bool windowModified;
 @property (nonatomic) double windowOpacity;
-@property (nonatomic, copy) OFString *windowTitle;
+@property (copy, nonatomic) OFString *windowTitle;
 @property (readonly, nonatomic) int x;
 @property (readonly, nonatomic) int y;
+@property (readonly, nonatomic) OFArray OF_GENERIC(QtAction *) *actions;
+@property (readonly, nonatomic) of_rectangle_t contentsRect;
+@property (readonly, nonatomic) QtWidget *focusProxy;
+@property (readonly, nonatomic) QtWidget *focusWidget;
+@property (readonly, nonatomic, getter=isHidden) bool hidden;
+@property (readonly, nonatomic) bool isWindow;
+@property (readonly, nonatomic) QtWidget *nativeParentWidget;
+@property (readonly, nonatomic) QtWidget *nextInFocusChain;
+@property (readonly, nonatomic) QtWidget *parentWidget;
+@property (readonly, nonatomic) QtWidget *previousInFocusChain;
+@property (readonly, nonatomic) QtWidget *window;
+@property (readonly, nonatomic) OFString *windowRole;
 
 - initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
 - initWithQWidget: (QWidget *)qWidget OF_DESIGNATED_INITIALIZER;
-- (OFArray OF_GENERIC(QtAction *) *)actions;
 - (void)activateWindow;
 - (void)addAction: (QtAction *)action;
 - (void)addActions: (OFArray OF_GENERIC(QtAction *) *)actions;
@@ -99,11 +110,8 @@
 - (void)clearFocus;
 - (void)clearMask;
 - (QMargins)contentsMargins;
-- (of_rectangle_t)contentsRect;
 - (WId)effectiveWinID;
 - (void)ensurePolished;
-- (QtWidget *)focusProxy;
-- (QtWidget *)focusWidget;
 - (QFontInfo)fontInfo;
 - (QFontMetrics)fontMetrics;
 - (QPalette::ColorRole)foregroundRole;
@@ -132,9 +140,7 @@
 	       before: (QtAction *)before;
 - (bool)isAncestorOf: (QtWidget *)child;
 - (bool)isEnabledTo: (QtWidget *)ancestor;
-- (bool)isHidden;
 - (bool)isVisibleTo: (QtWidget *)ancestor;
-- (bool)isWindow;
 - (of_point_t)mapPosition: (of_point_t)pos
 		     from: (QtWidget *)parent;
 - (of_point_t)mapPositionFromGlobal: (of_point_t)pos;
@@ -144,11 +150,7 @@
 - (of_point_t)mapPositionToGlobal: (of_point_t)pos;
 - (of_point_t)mapPositionToParent: (of_point_t)pos;
 - (QRegion)mask;
-- (QtWidget *)nativeParentWidget;
-- (QtWidget *)nextInFocusChain;
 - (void)overrideWindowFlags: (Qt::WindowFlags)flags;
-- (QtWidget *)parentWidget;
-- (QtWidget *)previousInFocusChain;
 - (void)releaseKeyboard;
 - (void)releaseMouse;
 - (void)releaseShortcut: (int)ID;
@@ -178,13 +180,13 @@
 	inRectangle: (of_rectangle_t)rect;
 - (void)setAttribute: (Qt::WidgetAttribute)attribute
 		  to: (bool)on;
+- (void)setFocus: (Qt::FocusReason)reason;
 #ifdef QT_KEYPAD_NAVIGATION
 - (void)setEditFocus: (bool)enable;
 #endif
 - (void)setFixedHeight: (int)height;
 - (void)setFixedSize: (of_dimension_t)size;
 - (void)setFixedWidth: (int)width;
-- (void)setFocus: (Qt::FocusReason)reason;
 - (void)setFocusProxy: (QtWidget *)widget;
 - (void)setForegroundRole: (QPalette::ColorRole)role;
 - (void)setGraphicsEffect: (QGraphicsEffect *)effect;
@@ -214,9 +216,7 @@
 - (void)updateGeometry;
 - (QRegion)visibleRegion;
 - (WId)winID;
-- (QtWidget *)window;
 - (QWindow *)windowHandle;
-- (OFString *)windowRole;
 - (Qt::WindowStates)windowState;
 - (Qt::WindowType)windowType;
 @end

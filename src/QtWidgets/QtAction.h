@@ -40,27 +40,26 @@
 @property (nonatomic) QAction::Priority priority;
 @property (nonatomic) QKeySequence shortcut;
 @property (nonatomic) Qt::ShortcutContext shortcutContext;
-@property (nonatomic, copy) OFString *statusTip;
-@property (nonatomic, copy) OFString *text;
-@property (nonatomic, copy) OFString *toolTip;
+@property (copy, nonatomic) OFString *statusTip;
+@property (copy, nonatomic) OFString *text;
+@property (copy, nonatomic) OFString *toolTip;
 @property (nonatomic, getter=isVisible) bool visible;
-@property (nonatomic, copy) OFString *whatsThis;
+@property (copy, nonatomic) OFString *whatsThis;
+@property (readonly, nonatomic)
+    OFArray OF_GENERIC(QtWidget *) *associatedWidgets;
+    @property (nonatomic, setter=setSeparator:) bool isSeparator;
+@property (readonly, nonatomic) QtWidget *parentWidget;
 
 - initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
 - initWithQAction: (QAction *)qAction OF_DESIGNATED_INITIALIZER;
 - (QActionGroup *)actionGroup;
 - (void)activate: (QAction::ActionEvent)event;
 - (QList<QGraphicsWidget *>)associatedGraphicsWidgets;
-- (OFArray OF_GENERIC(QtWidget *) *)associatedWidgets;
 - (QVariant)data;
-- (bool)isSeparator;
 - (QMenu *)menu;
-- (QtWidget *)parentWidget;
 - (void)setActionGroup: (QActionGroup *)group;
-- (void)setData: (const QVariant&)data;
-- (void)setMenu: (QMenu *)menu;
-- (void)setSeparator: (bool)isSeparator;
-- (void)setShortcuts: (const QList<QKeySequence>&)shortcuts;
+- (void)setData: (const QVariant &)data;
+- (void)setShortcuts: (const QList<QKeySequence> &)shortcuts;
 - (void)setShortcutsWithStandardKey: (QKeySequence::StandardKey)key;
 - (QList<QKeySequence>)shortcuts;
 - (bool)showStatusText: (QtWidget *)widget;
