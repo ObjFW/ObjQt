@@ -52,10 +52,16 @@ toOF(const QSize &qSize)
 	return of_dimension(qSize.width(), qSize.height());
 }
 
-static OF_INLINE QSize
+static OF_INLINE of_dimension_t
+toOF(const QSizeF &qSizeF)
+{
+	return of_dimension(qSizeF.width(), qSizeF.height());
+}
+
+static OF_INLINE QSizeF
 toQt(const of_dimension_t &dimension)
 {
-	return QSize(dimension.width, dimension.height);
+	return QSizeF(dimension.width, dimension.height);
 }
 
 static OF_INLINE of_rectangle_t
@@ -65,10 +71,17 @@ toOF(const QRect &qRect)
 	    qRect.width(), qRect.height());
 }
 
-static OF_INLINE QRect
+static OF_INLINE of_rectangle_t
+toOF(const QRectF &qRectF)
+{
+	return of_rectangle(qRectF.x(), qRectF.y(),
+	    qRectF.width(), qRectF.height());
+}
+
+static OF_INLINE QRectF
 toQt(const of_rectangle_t &rectangle)
 {
-	return QRect(rectangle.origin.x, rectangle.origin.y,
+	return QRectF(rectangle.origin.x, rectangle.origin.y,
 	    rectangle.size.width, rectangle.size.height);
 }
 

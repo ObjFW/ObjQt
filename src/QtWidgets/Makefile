@@ -6,7 +6,8 @@ STATIC_LIB_NOINST = ${QTWIDGETS_A}
 SRCS = QtAbstractButton.mm	\
        QtAction.mm		\
        QtApplication.mm		\
-       QtPushButton.mm           \
+       QtGraphicsWidget.mm	\
+       QtPushButton.mm		\
        QtWidget.mm
 
 include ../../buildsys.mk

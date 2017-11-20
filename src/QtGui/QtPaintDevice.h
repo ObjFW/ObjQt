@@ -51,7 +51,7 @@
 namespace ObjQt {
 
 static OF_INLINE QPaintDevice *
-toQt(QtPaintDevice *paintDevice)
+toQt(id <QtPaintDevice> paintDevice)
 {
 	return [paintDevice qPaintDevice];
 }

@@ -102,7 +102,7 @@ using ObjQt::toQt;
 
 - (void)setBaseSize: (of_dimension_t)baseSize
 {
-	toQt(self)->setBaseSize(toQt(baseSize));
+	toQt(self)->setBaseSize(toQt(baseSize).toSize());
 }
 
 - (of_rectangle_t)childrenRect
@@ -197,7 +197,7 @@ using ObjQt::toQt;
 
 - (void)setGeometry: (of_rectangle_t)geometry
 {
-	toQt(self)->setGeometry(toQt(geometry));
+	toQt(self)->setGeometry(toQt(geometry).toRect());
 }
 
 - (int)height
@@ -272,7 +272,7 @@ using ObjQt::toQt;
 
 - (void)setMaximumSize: (of_dimension_t)maximumSize
 {
-	toQt(self)->setMaximumSize(toQt(maximumSize));
+	toQt(self)->setMaximumSize(toQt(maximumSize).toSize());
 }
 
 - (int)maximumWidth
@@ -307,7 +307,7 @@ using ObjQt::toQt;
 
 - (void)setMinimumSize: (of_dimension_t)minimumSize
 {
-	toQt(self)->setMinimumSize(toQt(minimumSize));
+	toQt(self)->setMinimumSize(toQt(minimumSize).toSize());
 }
 
 - (of_dimension_t)minimumSizeHint
@@ -377,7 +377,7 @@ using ObjQt::toQt;
 
 - (void)resizeTo: (of_dimension_t)size
 {
-	toQt(self)->resize(toQt(size));
+	toQt(self)->resize(toQt(size).toSize());
 }
 
 - (of_dimension_t)sizeHint
@@ -392,7 +392,7 @@ using ObjQt::toQt;
 
 - (void)setSizeIncrement: (of_dimension_t)sizeIncrement
 {
-	toQt(self)->setSizeIncrement(toQt(sizeIncrement));
+	toQt(self)->setSizeIncrement(toQt(sizeIncrement).toSize());
 }
 
 - (QSizePolicy)sizePolicy
@@ -674,7 +674,7 @@ using ObjQt::toQt;
 
 - (QPixmap)grabRectangle: (of_rectangle_t)rectangle
 {
-	return toQt(self)->grab(toQt(rectangle));
+	return toQt(self)->grab(toQt(rectangle).toRect());
 }
 
 - (void)grabGesture: (Qt::GestureType)gesture
@@ -905,7 +905,7 @@ using ObjQt::toQt;
 
 - (void)repaintInRectangle: (of_rectangle_t)rect
 {
-	toQt(self)->repaint(toQt(rect));
+	toQt(self)->repaint(toQt(rect).toRect());
 }
 
 - (void)repaintInRegion: (const QRegion &)region
@@ -933,7 +933,7 @@ using ObjQt::toQt;
 	       down: (int)dy
 	inRectangle: (of_rectangle_t)rect
 {
-	toQt(self)->scroll(dx, dy, toQt(rect));
+	toQt(self)->scroll(dx, dy, toQt(rect).toRect());
 }
 
 - (void)setAttribute: (Qt::WidgetAttribute)attribute
@@ -956,7 +956,7 @@ using ObjQt::toQt;
 
 - (void)setFixedSize: (of_dimension_t)size
 {
-	toQt(self)->setFixedSize(toQt(size));
+	toQt(self)->setFixedSize(toQt(size).toSize());
 }
 
 - (void)setFixedWidth: (int)width
@@ -1064,7 +1064,7 @@ using ObjQt::toQt;
 
 - (void)updateInRectangle: (of_rectangle_t)rect
 {
-	toQt(self)->update(toQt(rect));
+	toQt(self)->update(toQt(rect).toRect());
 }
 
 - (void)updateInRegion: (const QRegion &)region

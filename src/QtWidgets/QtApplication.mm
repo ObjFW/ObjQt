@@ -81,7 +81,7 @@ using ObjQt::toQt;
 
 - (void)setGlobalStrut: (of_dimension_t)globalStrut
 {
-	toQt(self)->setGlobalStrut(toQt(globalStrut));
+	toQt(self)->setGlobalStrut(toQt(globalStrut).toSize());
 }
 
 - (int)keyboardInputInterval

@@ -131,7 +131,7 @@ using ObjQt::toQt;
 
 - (void)setIconSize: (of_dimension_t)iconSize
 {
-	toQt(self)->setIconSize(toQt(iconSize));
+	toQt(self)->setIconSize(toQt(iconSize).toSize());
 }
 
 - (QKeySequence)shortcut
