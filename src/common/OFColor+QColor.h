@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2018, Jonathan Schleifer <js@heap.zone>
  *
  * https://heap.zone/git/objqt.git
  *
@@ -20,23 +20,34 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "OFData+QByteArray.h"
+#import <ObjFW/ObjFW.h>
 
-@implementation OFData (QByteArray)
-+ (instancetype)dataWithQByteArray: (const QByteArray &)qByteArray
-{
-	return [[[self alloc] initWithQByteArray: qByteArray] autorelease];
-}
+#include <QColor>
 
-- (instancetype)initWithQByteArray: (const QByteArray &)qByteArray
-{
-	return [self initWithItems: qByteArray.data()
-			     count: qByteArray.count()];
-}
-
-- (QByteArray)qByteArray
-{
-	return QByteArray((const char *)[self items],
-	    [self count] * [self itemSize]);
-}
+@interface OFColor (QColor)
++ (instancetype)colorWithQColor: (const QColor &)qColor;
+- (instancetype)initWithQColor: (const QColor &)qColor;
+- (QColor)qColor;
 @end
+
+namespace ObjQt {
+
+static OF_INLINE OFColor *
+toOF(const QColor &qColor)
+{
+	if (!qColor.isValid())
+		return nil;
+
+	return [OFColor colorWithQColor: qColor];
+}
+
+static OF_INLINE QColor
+toQt(OFColor *color)
+{
+	if (color == nil)
+		return QColor();
+
+	return [color qColor];
+}
+
+}

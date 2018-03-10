@@ -26,6 +26,7 @@
 
 @interface OFData (QByteArray)
 + (instancetype)dataWithQByteArray: (const QByteArray &)qByteArray;
+- (instancetype)initWithQByteArray: (const QByteArray &)qByteArray;
 - (QByteArray)qByteArray;
 @end
 

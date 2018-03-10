@@ -26,7 +26,7 @@
 
 @interface OFString (QString)
 + (instancetype)stringWithQString: (const QString &)qString;
-- initWithQString: (const QString &)qString;
+- (instancetype)initWithQString: (const QString &)qString;
 - (QString)qString;
 @end
 

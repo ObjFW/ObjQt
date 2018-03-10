@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Jonathan Schleifer <js@heap.zone>
+ * Copyright (c) 2018, Jonathan Schleifer <js@heap.zone>
  *
  * https://heap.zone/git/objqt.git
  *
@@ -20,23 +20,37 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "OFData+QByteArray.h"
+#import "OFColor+QColor.h"
 
-@implementation OFData (QByteArray)
-+ (instancetype)dataWithQByteArray: (const QByteArray &)qByteArray
+@implementation OFColor (QColor)
++ (instancetype)colorWithQColor: (const QColor &)qColor
 {
-	return [[[self alloc] initWithQByteArray: qByteArray] autorelease];
+	return [[[self alloc] initWithQColor: qColor] autorelease];
 }
 
-- (instancetype)initWithQByteArray: (const QByteArray &)qByteArray
+- (instancetype)initWithQColor: (const QColor &)qColor
 {
-	return [self initWithItems: qByteArray.data()
-			     count: qByteArray.count()];
+	return [self initWithRed: qColor.redF()
+			   green: qColor.greenF()
+			    blue: qColor.blueF()
+			   alpha: qColor.alphaF()];
 }
 
-- (QByteArray)qByteArray
+- (QColor)qColor
 {
-	return QByteArray((const char *)[self items],
-	    [self count] * [self itemSize]);
+	QColor qColor;
+	float red, green, blue, alpha;
+
+	[self getRed: &red
+	       green: &green
+		blue: &blue
+	       alpha: &alpha];
+
+	qColor.setRedF(red);
+	qColor.setGreenF(green);
+	qColor.setBlueF(blue);
+	qColor.setAlphaF(alpha);
+
+	return qColor;
 }
 @end

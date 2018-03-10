@@ -23,12 +23,12 @@
 #import "OFString+QString.h"
 
 @implementation OFString (QString)
-+ stringWithQString: (const QString &)qString
++ (instancetype)stringWithQString: (const QString &)qString
 {
 	return [[[self alloc] initWithQString: qString] autorelease];
 }
 
-- initWithQString: (const QString &)qString
+- (instancetype)initWithQString: (const QString &)qString
 {
 	static_assert(sizeof(QChar) == sizeof(char16_t),
 	    "QChar and char16_t have a different size!");
