@@ -1,13 +1,13 @@
 AC_INIT(ObjQt, 0.1, js@heap.zone)
-BUILDSYS_INIT
+AC_CONFIG_SRCDIR(src)
+AC_CONFIG_AUX_DIR(build-aux)
+AC_CONFIG_MACRO_DIR(build-aux/m4)
 
 AS_IF([test configure.ac -nt configure], [
 	AC_MSG_ERROR([configure.ac is newer than configure! Run autoreconf!])
 ])
 
-AC_CONFIG_SRCDIR(src)
-AC_CONFIG_AUX_DIR(build-aux)
-AC_CONFIG_MACRO_DIR(build-aux/m4)
+BUILDSYS_INIT
 
 AC_CHECK_TOOL(OBJFW_CONFIG, objfw-config)
 AS_IF([test x"$OBJFW_CONFIG" = x""], [
