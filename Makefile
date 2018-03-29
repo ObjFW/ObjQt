@@ -1,4 +1,5 @@
-SUBDIRS = src
+SUBDIRS = src examples
+
 DISTCLEAN = aclocal.m4		\
 	    autom4te.cache	\
 	    buildsys.mk		\
