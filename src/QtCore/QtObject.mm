@@ -34,12 +34,12 @@ using ObjQt::toQt;
 @implementation QtObject
 @synthesize qObject = _qObject;
 
-- init
+- (instancetype)init
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQObject: (QObject *)qObject
+- (instancetype)initWithQObject: (QObject *)qObject
 {
 	self = [super init];
 
@@ -106,21 +106,21 @@ using ObjQt::toQt;
 				    type: (Qt::ConnectionType)type
 {
 	return _qObject->connect(toQt(sender),
-	    [signal UTF8String], [method UTF8String], type);
+	    signal.UTF8String, method.UTF8String, type);
 }
 
 - (bool)disconnectSignal: (OFString *)signal
 		receiver: (QtObject *)receiver
 		  method: (OFString *)method
 {
-	return _qObject->disconnect([signal UTF8String], toQt(receiver),
-	    [method UTF8String]);
+	return _qObject->disconnect(signal.UTF8String, toQt(receiver),
+	    method.UTF8String);
 }
 
 - (bool)disconnectAllSignalsForReceiver: (QtObject *)receiver
 				 method: (OFString *)method
 {
-	return _qObject->disconnect(toQt(receiver), [method UTF8String]);
+	return _qObject->disconnect(toQt(receiver), method.UTF8String);
 }
 
 - (void)dumpObjectInfo
@@ -164,7 +164,7 @@ using ObjQt::toQt;
 
 - (bool)inheritsClassWithName: (OFString *)className
 {
-	return _qObject->inherits([className UTF8String]);
+	return _qObject->inherits(className.UTF8String);
 }
 
 - (void)installEventFilter: (QtObject *)filterObj
@@ -209,7 +209,7 @@ using ObjQt::toQt;
 
 - (QVariant)propertyForName: (OFString *)name
 {
-	return _qObject->property([name UTF8String]);
+	return _qObject->property(name.UTF8String);
 }
 
 - (void)removeEventFilter: (QtObject *)obj
@@ -220,7 +220,7 @@ using ObjQt::toQt;
 - (bool)setProperty: (QVariant &)value
 	    forName: (OFString *)name
 {
-	return _qObject->setProperty([name UTF8String], value);
+	return _qObject->setProperty(name.UTF8String, value);
 }
 
 - (bool)signalsBlocked

@@ -38,8 +38,8 @@
 @property (readonly, nonatomic) QEvent::Type type;
 
 + (int)registerEventType: (int)hint;
-- init OF_UNAVAILABLE;
-- initWithQEvent: (QEvent *)qEvent OF_DESIGNATED_INITIALIZER;
+- (instancetype)init OF_UNAVAILABLE;
+- (instancetype)initWithQEvent: (QEvent *)qEvent OF_DESIGNATED_INITIALIZER;
 - (void)accept;
 - (void)ignore;
 @end
@@ -58,7 +58,7 @@ toOF(QEvent *qEvent)
 static OF_INLINE QEvent *
 toQt(QtEvent *event)
 {
-	return [event qEvent];
+	return event.qEvent;
 }
 
 }

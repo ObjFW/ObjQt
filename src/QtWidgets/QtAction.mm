@@ -28,12 +28,12 @@ using ObjQt::toOF;
 using ObjQt::toQt;
 
 @implementation QtAction
-- initWithQObject: (QObject *)qObject
+- (instancetype)initWithQObject: (QObject *)qObject
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQAction: (QAction *)qAction
+- (instancetype)initWithQAction: (QAction *)qAction
 {
 	return [super initWithQObject: qAction];
 }

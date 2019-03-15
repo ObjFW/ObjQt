@@ -36,7 +36,6 @@
 
 - (QByteArray)qByteArray
 {
-	return QByteArray((const char *)[self items],
-	    [self count] * [self itemSize]);
+	return QByteArray((const char *)self.items, self.count * self.itemSize);
 }
 @end

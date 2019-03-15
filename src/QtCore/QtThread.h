@@ -35,8 +35,8 @@
 @property (nonatomic) QThread::Priority priority;
 @property (nonatomic) unsigned int stackSize;
 
-- initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
-- initWithQThread: (QThread *)qThread OF_DESIGNATED_INITIALIZER;
+- (instancetype)initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
+- (instancetype)initWithQThread: (QThread *)qThread OF_DESIGNATED_INITIALIZER;
 - (void)exitWithReturnCode: (int)returnCode;
 - (void)requestInterruption;
 - (bool)waitForMilliseconds: (unsigned long)time;
@@ -59,7 +59,7 @@ toOF(QThread *qThread)
 static OF_INLINE QThread *
 toQt(QtThread *thread)
 {
-	return [thread qThread];
+	return thread.qThread;
 }
 
 }

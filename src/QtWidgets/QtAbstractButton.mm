@@ -29,12 +29,12 @@ using ObjQt::toOF;
 using ObjQt::toQt;
 
 @implementation QtAbstractButton
-- initWithQWidget: (QWidget *)qWidget
+- (instancetype)initWithQWidget: (QWidget *)qWidget
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQAbstractButton: (QAbstractButton *)qAbstractButton
+- (instancetype)initWithQAbstractButton: (QAbstractButton *)qAbstractButton
 {
 	return [super initWithQWidget: qAbstractButton];
 }

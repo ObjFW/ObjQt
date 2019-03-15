@@ -25,9 +25,10 @@
 #include <QByteArray>
 
 @interface OFData (QByteArray)
+@property (readonly, nonatomic) QByteArray qByteArray;
+
 + (instancetype)dataWithQByteArray: (const QByteArray &)qByteArray;
 - (instancetype)initWithQByteArray: (const QByteArray &)qByteArray;
-- (QByteArray)qByteArray;
 @end
 
 namespace ObjQt {
@@ -47,7 +48,7 @@ toQt(OFData *data)
 	if (data == nil)
 		return QByteArray();
 
-	return [data qByteArray];
+	return data.qByteArray;
 }
 
 }

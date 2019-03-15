@@ -43,7 +43,7 @@
 	    "char16_t and QChar have a different size!");
 
 	void *pool = objc_autoreleasePoolPush();
-	QString ret = QString((QChar *)[self UTF16String]);
+	QString ret = QString((QChar *)self.UTF16String);
 
 	objc_autoreleasePoolPop(pool);
 

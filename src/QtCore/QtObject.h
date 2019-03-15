@@ -44,8 +44,8 @@
     OFArray OF_GENERIC(OFData *) *dynamicPropertyNames;
 @property (readonly, nonatomic) QtThread *thread;
 
-- init OF_UNAVAILABLE;
-- initWithQObject: (QObject *)qObject OF_DESIGNATED_INITIALIZER;
+- (instancetype)init OF_UNAVAILABLE;
+- (instancetype)initWithQObject: (QObject *)qObject OF_DESIGNATED_INITIALIZER;
 - (bool)setBlockSignals: (bool)block;
 - (QMetaObject::Connection)connectSignal: (OFString *)signal
 				  sender: (QtObject *)sender
@@ -97,7 +97,7 @@ toOF(QObject *qObject)
 static OF_INLINE QObject *
 toQt(QtObject *object)
 {
-	return [object qObject];
+	return object.qObject;
 }
 
 }

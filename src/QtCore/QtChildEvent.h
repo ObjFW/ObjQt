@@ -31,10 +31,11 @@
 @property (readonly, nonatomic, getter=isPolished) bool polished;
 @property (readonly, nonatomic, getter=isRemoved) bool removed;
 
-- initWithQEvent: (QEvent *)event OF_UNAVAILABLE;
-- initWithQChildEvent: (QChildEvent *)qChildEvent OF_DESIGNATED_INITIALIZER;
-- initWithType: (QChildEvent::Type)type
-	 child: (QtObject *)child;
+- (instancetype)initWithQEvent: (QEvent *)event OF_UNAVAILABLE;
+- (instancetype)initWithQChildEvent:
+    (QChildEvent *)qChildEvent OF_DESIGNATED_INITIALIZER;
+- (instancetype)initWithType: (QChildEvent::Type)type
+		       child: (QtObject *)child;
 @end
 
 namespace ObjQt {
@@ -52,7 +53,7 @@ toOF(QChildEvent *qChildEvent)
 static OF_INLINE QChildEvent *
 toQt(QtChildEvent *childEvent)
 {
-	return [childEvent qChildEvent];
+	return childEvent.qChildEvent;
 }
 
 }

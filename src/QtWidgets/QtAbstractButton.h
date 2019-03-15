@@ -39,8 +39,8 @@
 @property (nonatomic, copy) OFString *text;
 @property (readonly, nonatomic) QButtonGroup *group;
 
-- initWithQWidget: (QWidget *)qWidget OF_UNAVAILABLE;
-- initWithQAbstractButton: (QAbstractButton *)qAbstractButton
+- (instancetype)initWithQWidget: (QWidget *)qWidget OF_UNAVAILABLE;
+- (instancetype)initWithQAbstractButton: (QAbstractButton *)qAbstractButton
     OF_DESIGNATED_INITIALIZER;
 @end
 
@@ -59,7 +59,7 @@ toOF(QAbstractButton *qAbstractButton)
 static OF_INLINE QAbstractButton *
 toQt(QtAbstractButton *abstractButton)
 {
-	return [abstractButton qAbstractButton];
+	return abstractButton.qAbstractButton;
 }
 
 }

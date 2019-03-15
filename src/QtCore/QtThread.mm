@@ -25,12 +25,12 @@
 using ObjQt::toQt;
 
 @implementation QtThread: QtObject
-- initWithQObject: (QObject *)qObject
+- (instancetype)initWithQObject: (QObject *)qObject
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQThread: (QThread *)qThread
+- (instancetype)initWithQThread: (QThread *)qThread
 {
 	return [super initWithQObject: qThread];
 }

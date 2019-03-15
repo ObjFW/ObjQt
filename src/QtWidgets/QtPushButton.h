@@ -33,11 +33,13 @@
 @property (nonatomic, getter=isDefault, setter=setDefault:) bool default_;
 @property (nonatomic, getter=isFlat) bool flat;
 
-- initWithQAbstractButton: (QAbstractButton *)qAbstractButton OF_UNAVAILABLE;
-- initWithQPushButton: (QPushButton *)qPushButton OF_DESIGNATED_INITIALIZER;
-- initWithText: (OFString *)text;
-- initWithIcon: (QIcon)icon
-	  text: (OFString *)text;
+- (instancetype)initWithQAbstractButton: (QAbstractButton *)qAbstractButton
+    OF_UNAVAILABLE;
+- (instancetype)initWithQPushButton: (QPushButton *)qPushButton
+    OF_DESIGNATED_INITIALIZER;
+- (instancetype)initWithText: (OFString *)text;
+- (instancetype)initWithIcon: (QIcon)icon
+			text: (OFString *)text;
 @end
 
 namespace ObjQt {
@@ -55,7 +57,7 @@ toOF(QPushButton *qPushButton)
 static OF_INLINE QPushButton *
 toQt(QtPushButton *pushButton)
 {
-	return [pushButton qPushButton];
+	return pushButton.qPushButton;
 }
 
 }

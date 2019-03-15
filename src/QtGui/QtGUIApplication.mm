@@ -29,12 +29,12 @@ using ObjQt::toOF;
 using ObjQt::toQt;
 
 @implementation QtGUIApplication
-- initWithQCoreApplication: (QCoreApplication *)qCoreApplication
+- (instancetype)initWithQCoreApplication: (QCoreApplication *)qCoreApplication
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQGuiApplication: (QGuiApplication *)qGuiApplication
+- (instancetype)initWithQGuiApplication: (QGuiApplication *)qGuiApplication
 {
 	return [super initWithQCoreApplication: qGuiApplication];
 }

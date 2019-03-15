@@ -33,19 +33,19 @@ using ObjQt::toQt;
 
 @implementation QtGraphicsWidget
 
-- initWithQObject: (QObject *)qObject
+- (instancetype)initWithQObject: (QObject *)qObject
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQGraphicsWidget: (QGraphicsWidget *)qGraphicsWidget
+- (instancetype)initWithQGraphicsWidget: (QGraphicsWidget *)qGraphicsWidget
 {
 	return [super initWithQObject: qGraphicsWidget];
 }
 
 - (QGraphicsWidget *)qGraphicsWidget
 {
-	return dynamic_cast<QGraphicsWidget *>([self qObject]);
+	return dynamic_cast<QGraphicsWidget *>(self.qObject);
 }
 
 - (bool)autoFillBackground

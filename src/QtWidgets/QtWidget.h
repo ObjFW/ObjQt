@@ -98,8 +98,8 @@
 @property (readonly, nonatomic) QtWidget *window;
 @property (readonly, nonatomic) OFString *windowRole;
 
-- initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
-- initWithQWidget: (QWidget *)qWidget OF_DESIGNATED_INITIALIZER;
+- (instancetype)initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
+- (instancetype)initWithQWidget: (QWidget *)qWidget OF_DESIGNATED_INITIALIZER;
 - (void)activateWindow;
 - (void)addAction: (QtAction *)action;
 - (void)addActions: (OFArray OF_GENERIC(QtAction *) *)actions;
@@ -238,7 +238,7 @@ toOF(QWidget *qWidget)
 static OF_INLINE QWidget *
 toQt(QtWidget *widget)
 {
-	return [widget qWidget];
+	return widget.qWidget;
 }
 
 }

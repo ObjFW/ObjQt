@@ -30,8 +30,8 @@
 @property (nonatomic, copy) OFString *organizationDomain, *organizationName;
 @property (nonatomic, getter=isQuitLockEnabled) bool quitLockEnabled;
 
-- initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
-- initWithQCoreApplication: (QCoreApplication *)qCoreApplication
+- (instancetype)initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
+- (instancetype)initWithQCoreApplication: (QCoreApplication *)qCoreApplication
     OF_DESIGNATED_INITIALIZER;
 - (void)installNativeEventFilter: (QAbstractNativeEventFilter *)filterObject;
 - (void)quit;
@@ -55,7 +55,7 @@ toOF(QCoreApplication *qCoreApplication)
 static OF_INLINE QCoreApplication *
 toQt(QtCoreApplication *coreApplication)
 {
-	return [coreApplication qCoreApplication];
+	return coreApplication.qCoreApplication;
 }
 
 }

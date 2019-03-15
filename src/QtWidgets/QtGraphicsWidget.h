@@ -52,8 +52,8 @@
 @property (readonly, nonatomic) of_rectangle_t windowFrameGeometry;
 @property (readonly, nonatomic) of_rectangle_t windowFrameRect;
 
-- initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
-- initWithQGraphicsWidget: (QGraphicsWidget *)qGraphicsWidget
+- (instancetype)initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
+- (instancetype)initWithQGraphicsWidget: (QGraphicsWidget *)qGraphicsWidget
     OF_DESIGNATED_INITIALIZER;
 - (void)addAction: (QtAction *)action;
 - (void)addActions: (OFArray OF_GENERIC(QtAction *) *)actions;
@@ -107,7 +107,7 @@ toOF(QGraphicsWidget *qGraphicsWidget)
 static OF_INLINE QGraphicsWidget *
 toQt(QtGraphicsWidget *graphicsWidget)
 {
-	return [graphicsWidget qGraphicsWidget];
+	return graphicsWidget.qGraphicsWidget;
 }
 
 }

@@ -47,11 +47,11 @@
 @property (copy, nonatomic) OFString *whatsThis;
 @property (readonly, nonatomic)
     OFArray OF_GENERIC(QtWidget *) *associatedWidgets;
-    @property (nonatomic, setter=setSeparator:) bool isSeparator;
+@property (nonatomic, setter=setSeparator:) bool isSeparator;
 @property (readonly, nonatomic) QtWidget *parentWidget;
 
-- initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
-- initWithQAction: (QAction *)qAction OF_DESIGNATED_INITIALIZER;
+- (instancetype)initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
+- (instancetype)initWithQAction: (QAction *)qAction OF_DESIGNATED_INITIALIZER;
 - (QActionGroup *)actionGroup;
 - (void)activate: (QAction::ActionEvent)event;
 - (QList<QGraphicsWidget *>)associatedGraphicsWidgets;
@@ -79,7 +79,7 @@ toOF(QAction *qAction)
 static OF_INLINE QAction *
 toQt(QtAction *action)
 {
-	return [action qAction];
+	return action.qAction;
 }
 
 }

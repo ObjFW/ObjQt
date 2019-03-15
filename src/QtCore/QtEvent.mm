@@ -30,12 +30,12 @@
 	return QEvent::registerEventType(hint);
 }
 
-- init
+- (instancetype)init
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQEvent: (QEvent *)qEvent
+- (instancetype)initWithQEvent: (QEvent *)qEvent
 {
 	self = [super init];
 

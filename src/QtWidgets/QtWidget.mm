@@ -40,12 +40,12 @@ using ObjQt::toQt;
 		[self inheritMethodsFromClass: [QtPaintDevice class]];
 }
 
-- initWithQObject: (QObject *)qObject
+- (instancetype)initWithQObject: (QObject *)qObject
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQWidget: (QWidget *)qWidget
+- (instancetype)initWithQWidget: (QWidget *)qWidget
 {
 	return [super initWithQObject: qWidget];
 }

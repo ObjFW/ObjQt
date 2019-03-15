@@ -25,9 +25,10 @@
 #include <QColor>
 
 @interface OFColor (QColor)
+@property (readonly, nonatomic) QColor qColor;
+
 + (instancetype)colorWithQColor: (const QColor &)qColor;
 - (instancetype)initWithQColor: (const QColor &)qColor;
-- (QColor)qColor;
 @end
 
 namespace ObjQt {
@@ -47,7 +48,7 @@ toQt(OFColor *color)
 	if (color == nil)
 		return QColor();
 
-	return [color qColor];
+	return color.qColor;
 }
 
 }

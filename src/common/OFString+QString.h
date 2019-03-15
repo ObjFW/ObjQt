@@ -25,9 +25,10 @@
 #include <QString>
 
 @interface OFString (QString)
+@property (readonly, nonatomic) QString qString;
+
 + (instancetype)stringWithQString: (const QString &)qString;
 - (instancetype)initWithQString: (const QString &)qString;
-- (QString)qString;
 @end
 
 namespace ObjQt {
@@ -47,7 +48,7 @@ toQt(OFString *string)
 	if (string == nil)
 		return QString();
 
-	return [string qString];
+	return string.qString;
 }
 
 }

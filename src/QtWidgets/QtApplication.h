@@ -36,8 +36,10 @@
 @property (nonatomic, copy) OFString *styleSheet;
 @property (nonatomic) int wheelScrollLines;
 
-- initWithQGuiApplication: (QGuiApplication *)qGuiApplication OF_UNAVAILABLE;
-- initWithQApplication: (QApplication *)qApplication OF_DESIGNATED_INITIALIZER;
+- (instancetype)initWithQGuiApplication: (QGuiApplication *)qGuiApplication
+    OF_UNAVAILABLE;
+- (instancetype)initWithQApplication: (QApplication *)qApplication
+    OF_DESIGNATED_INITIALIZER;
 - (void)aboutQt;
 - (void)closeAllWindows;
 @end
@@ -57,7 +59,7 @@ toOF(QApplication *qApplication)
 static OF_INLINE QApplication *
 toQt(QtApplication *application)
 {
-	return [application qApplication];
+	return application.qApplication;
 }
 
 }

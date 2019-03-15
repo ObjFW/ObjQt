@@ -27,18 +27,18 @@ using ObjQt::toOF;
 using ObjQt::toQt;
 
 @implementation QtChildEvent
-- initWithQEvent: (QEvent *)event
+- (instancetype)initWithQEvent: (QEvent *)event
 {
 	OF_INVALID_INIT_METHOD
 }
 
-- initWithQChildEvent: (QChildEvent *)event
+- (instancetype)initWithQChildEvent: (QChildEvent *)event
 {
 	return [super initWithQEvent: event];
 }
 
-- initWithType: (QChildEvent::Type)type
-	 child: (QtObject *)child
+- (instancetype)initWithType: (QChildEvent::Type)type
+		       child: (QtObject *)child
 {
 	try {
 		self = [self initWithQChildEvent:

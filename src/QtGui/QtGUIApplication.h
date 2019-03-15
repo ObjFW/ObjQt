@@ -38,8 +38,9 @@
 @property (readonly, nonatomic) OFString *sessionID;
 @property (readonly, nonatomic) OFString *sessionKey;
 
-- initWithQCoreApplication: (QCoreApplication *)qCoreApplication OF_UNAVAILABLE;
-- initWithQGuiApplication: (QGuiApplication *)qGuiApplication
+- (instancetype)initWithQCoreApplication: (QCoreApplication *)qCoreApplication
+    OF_UNAVAILABLE;
+- (instancetype)initWithQGuiApplication: (QGuiApplication *)qGuiApplication
     OF_DESIGNATED_INITIALIZER;
 - (double)devicePixelRatio;
 - (bool)isSavingSession;
@@ -61,7 +62,7 @@ toOF(QGuiApplication *qGuiApplication)
 static OF_INLINE QGuiApplication *
 toQt(QtGUIApplication *GUIApplication)
 {
-	return [GUIApplication qGuiApplication];
+	return GUIApplication.qGuiApplication;
 }
 
 }

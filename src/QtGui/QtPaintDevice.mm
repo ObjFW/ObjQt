@@ -31,7 +31,7 @@ using ObjQt::toQt;
 
 - (QPaintDevice *)qPaintDevice
 {
-	return dynamic_cast<QPaintDevice *>([self qObject]);
+	return dynamic_cast<QPaintDevice *>(self.qObject);
 }
 
 - (int)colorCount
