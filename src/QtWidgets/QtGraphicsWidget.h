@@ -35,22 +35,22 @@
 @property (readonly, nonatomic) QGraphicsWidget *qGraphicsWidget;
 @property (nonatomic) bool autoFillBackground;
 @property (nonatomic) Qt::FocusPolicy focusPolicy;
-@property (nonatomic) of_rectangle_t geometry;
+@property (nonatomic) OFRect geometry;
 @property (nonatomic) QGraphicsLayout *layout;
 @property (nonatomic) Qt::LayoutDirection layoutDirection;
-@property (nonatomic) of_dimension_t maximumSize;
-@property (nonatomic) of_dimension_t minimumSize;
+@property (nonatomic) OFSize maximumSize;
+@property (nonatomic) OFSize minimumSize;
 @property (nonatomic) QPalette palette;
-@property (nonatomic) of_dimension_t preferredSize;
-@property (readonly, nonatomic) of_dimension_t size;
+@property (nonatomic) OFSize preferredSize;
+@property (readonly, nonatomic) OFSize size;
 @property (nonatomic) QSizePolicy sizePolicy;
 @property (nonatomic) Qt::WindowFlags windowFlags;
 @property (copy, nonatomic) OFString *windowTitle;
 @property (readonly, nonatomic) OFArray OF_GENERIC(QtAction *) *actions;
 @property (readonly, nonatomic) bool isActiveWindow;
 @property (nonatomic) QStyle *style;
-@property (readonly, nonatomic) of_rectangle_t windowFrameGeometry;
-@property (readonly, nonatomic) of_rectangle_t windowFrameRect;
+@property (readonly, nonatomic) OFRect windowFrameGeometry;
+@property (readonly, nonatomic) OFRect windowFrameRect;
 
 - (instancetype)initWithQObject: (QObject *)qObject OF_UNAVAILABLE;
 - (instancetype)initWithQGraphicsWidget: (QGraphicsWidget *)qGraphicsWidget
@@ -76,9 +76,8 @@
 			     widget: (QtWidget *)widget;
 - (void)releaseShortcut: (int)ID;
 - (void)removeAction: (QtAction *)action;
-- (void)resizeTo: (of_dimension_t)size;
-- (void)setAttribute: (Qt::WidgetAttribute)attribute
-		  to: (bool)on;
+- (void)resizeTo: (OFSize)size;
+- (void)setAttribute: (Qt::WidgetAttribute)attribute to: (bool)on;
 - (void)setContentsMarginsWithLeft: (qreal)left
 			       top: (qreal)top
 			     right: (qreal)right

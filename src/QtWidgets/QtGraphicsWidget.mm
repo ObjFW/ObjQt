@@ -68,12 +68,12 @@ using ObjQt::toQt;
 	toQt(self)->setFocusPolicy(focusPolicy);
 }
 
-- (of_rectangle_t)geometry
+- (OFRect)geometry
 {
 	return toOF(toQt(self)->geometry());
 }
 
-- (void)setGeometry: (of_rectangle_t)geometry
+- (void)setGeometry: (OFRect)geometry
 {
 	toQt(self)->setGeometry(toQt(geometry));
 }
@@ -98,22 +98,22 @@ using ObjQt::toQt;
 	toQt(self)->setLayoutDirection(layoutDirection);
 }
 
-- (of_dimension_t)maximumSize
+- (OFSize)maximumSize
 {
 	return toOF(toQt(self)->maximumSize());
 }
 
-- (void)setMaximumSize: (of_dimension_t)maximumSize
+- (void)setMaximumSize: (OFSize)maximumSize
 {
 	toQt(self)->setMaximumSize(toQt(maximumSize));
 }
 
-- (of_dimension_t)minimumSize
+- (OFSize)minimumSize
 {
 	return toOF(toQt(self)->minimumSize());
 }
 
-- (void)setMinimumSize: (of_dimension_t)minimumSize
+- (void)setMinimumSize: (OFSize)minimumSize
 {
 	toQt(self)->setMinimumSize(toQt(minimumSize));
 }
@@ -128,17 +128,17 @@ using ObjQt::toQt;
 	toQt(self)->setPalette(palette);
 }
 
-- (of_dimension_t)preferredSize
+- (OFSize)preferredSize
 {
 	return toOF(toQt(self)->preferredSize());
 }
 
-- (void)setPreferredSize: (of_dimension_t)preferredSize
+- (void)setPreferredSize: (OFSize)preferredSize
 {
 	toQt(self)->setPreferredSize(toQt(preferredSize));
 }
 
-- (of_dimension_t)size
+- (OFSize)size
 {
 	return toOF(toQt(self)->size());
 }
@@ -205,12 +205,12 @@ using ObjQt::toQt;
 	toQt(self)->setStyle(style);
 }
 
-- (of_rectangle_t)windowFrameGeometry
+- (OFRect)windowFrameGeometry
 {
 	return toOF(toQt(self)->windowFrameGeometry());
 }
 
-- (of_rectangle_t)windowFrameRect
+- (OFRect)windowFrameRect
 {
 	return toOF(toQt(self)->windowFrameRect());
 }
@@ -290,13 +290,12 @@ using ObjQt::toQt;
 	toQt(self)->removeAction(toQt(action));
 }
 
-- (void)resizeTo: (of_dimension_t)size
+- (void)resizeTo: (OFSize)size
 {
 	toQt(self)->resize(toQt(size));
 }
 
-- (void)setAttribute: (Qt::WidgetAttribute)attribute
-		  to: (bool)on
+- (void)setAttribute: (Qt::WidgetAttribute)attribute to: (bool)on
 {
 	toQt(self)->setAttribute(attribute, on);
 }

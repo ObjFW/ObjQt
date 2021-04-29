@@ -74,12 +74,12 @@ using ObjQt::toQt;
 	toQt(self)->setDoubleClickInterval(doubleClickInterval);
 }
 
-- (of_dimension_t)globalStrut
+- (OFSize)globalStrut
 {
 	return toOF(toQt(self)->globalStrut());
 }
 
-- (void)setGlobalStrut: (of_dimension_t)globalStrut
+- (void)setGlobalStrut: (OFSize)globalStrut
 {
 	toQt(self)->setGlobalStrut(toQt(globalStrut).toSize());
 }

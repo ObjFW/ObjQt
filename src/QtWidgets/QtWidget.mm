@@ -95,17 +95,17 @@ using ObjQt::toQt;
 	toQt(self)->setAutoFillBackground(autoFillBackground);
 }
 
-- (of_dimension_t)baseSize
+- (OFSize)baseSize
 {
 	return toOF(toQt(self)->baseSize());
 }
 
-- (void)setBaseSize: (of_dimension_t)baseSize
+- (void)setBaseSize: (OFSize)baseSize
 {
 	toQt(self)->setBaseSize(toQt(baseSize).toSize());
 }
 
-- (of_rectangle_t)childrenRect
+- (OFRect)childrenRect
 {
 	return toOF(toQt(self)->childrenRect());
 }
@@ -175,12 +175,12 @@ using ObjQt::toQt;
 	toQt(self)->setFont(font);
 }
 
-- (of_rectangle_t)frameGeometry
+- (OFRect)frameGeometry
 {
 	return toOF(toQt(self)->frameGeometry());
 }
 
-- (of_dimension_t)frameSize
+- (OFSize)frameSize
 {
 	return toOF(toQt(self)->frameSize());
 }
@@ -190,12 +190,12 @@ using ObjQt::toQt;
 	return toQt(self)->isFullScreen();
 }
 
-- (of_rectangle_t)geometry
+- (OFRect)geometry
 {
 	return toOF(toQt(self)->geometry());
 }
 
-- (void)setGeometry: (of_rectangle_t)geometry
+- (void)setGeometry: (OFRect)geometry
 {
 	toQt(self)->setGeometry(toQt(geometry).toRect());
 }
@@ -265,12 +265,12 @@ using ObjQt::toQt;
 	toQt(self)->setMaximumHeight(maximumHeight);
 }
 
-- (of_dimension_t)maximumSize
+- (OFSize)maximumSize
 {
 	return toOF(toQt(self)->maximumSize());
 }
 
-- (void)setMaximumSize: (of_dimension_t)maximumSize
+- (void)setMaximumSize: (OFSize)maximumSize
 {
 	toQt(self)->setMaximumSize(toQt(maximumSize).toSize());
 }
@@ -300,17 +300,17 @@ using ObjQt::toQt;
 	toQt(self)->setMinimumHeight(minimumHeight);
 }
 
-- (of_dimension_t)minimumSize
+- (OFSize)minimumSize
 {
 	return toOF(toQt(self)->minimumSize());
 }
 
-- (void)setMinimumSize: (of_dimension_t)minimumSize
+- (void)setMinimumSize: (OFSize)minimumSize
 {
 	toQt(self)->setMinimumSize(toQt(minimumSize).toSize());
 }
 
-- (of_dimension_t)minimumSizeHint
+- (OFSize)minimumSizeHint
 {
 	return toOF(toQt(self)->minimumSizeHint());
 }
@@ -340,7 +340,7 @@ using ObjQt::toQt;
 	toQt(self)->setMouseTracking(mouseTracking);
 }
 
-- (of_rectangle_t)normalGeometry
+- (OFRect)normalGeometry
 {
 	return toOF(toQt(self)->normalGeometry());
 }
@@ -355,42 +355,42 @@ using ObjQt::toQt;
 	toQt(self)->setPalette(palette);
 }
 
-- (of_point_t)pos
+- (OFPoint)pos
 {
 	return toOF(toQt(self)->pos());
 }
 
-- (void)moveToPosition: (of_point_t)pos
+- (void)moveToPosition: (OFPoint)pos
 {
 	toQt(self)->move(toQt(pos));
 }
 
-- (of_rectangle_t)rect
+- (OFRect)rect
 {
 	return toOF(toQt(self)->rect());
 }
 
-- (of_dimension_t)size
+- (OFSize)size
 {
 	return toOF(toQt(self)->size());
 }
 
-- (void)resizeTo: (of_dimension_t)size
+- (void)resizeTo: (OFSize)size
 {
 	toQt(self)->resize(toQt(size).toSize());
 }
 
-- (of_dimension_t)sizeHint
+- (OFSize)sizeHint
 {
 	return toOF(toQt(self)->sizeHint());
 }
 
-- (of_dimension_t)sizeIncrement
+- (OFSize)sizeIncrement
 {
 	return toOF(toQt(self)->sizeIncrement());
 }
 
-- (void)setSizeIncrement: (of_dimension_t)sizeIncrement
+- (void)setSizeIncrement: (OFSize)sizeIncrement
 {
 	toQt(self)->setSizeIncrement(toQt(sizeIncrement).toSize());
 }
@@ -612,7 +612,7 @@ using ObjQt::toQt;
 	return toQt(self)->backingStore();
 }
 
-- (QtWidget *)childAt: (of_point_t)point
+- (QtWidget *)childAt: (OFPoint)point
 {
 	return toOF(toQt(self)->childAt(toQt(point)));
 }
@@ -632,7 +632,7 @@ using ObjQt::toQt;
 	return toQt(self)->contentsMargins();
 }
 
-- (of_rectangle_t)contentsRect
+- (OFRect)contentsRect
 {
 	return toOF(toQt(self)->contentsRect());
 }
@@ -672,7 +672,7 @@ using ObjQt::toQt;
 	return toQt(self)->foregroundRole();
 }
 
-- (QPixmap)grabRectangle: (of_rectangle_t)rectangle
+- (QPixmap)grabRectangle: (OFRect)rectangle
 {
 	return toQt(self)->grab(toQt(rectangle).toRect());
 }
@@ -788,34 +788,32 @@ using ObjQt::toQt;
 	return toQt(self)->isWindow();
 }
 
-- (of_point_t)mapPosition: (of_point_t)pos
-		     from: (QtWidget *)parent
+- (OFPoint)mapPosition: (OFPoint)pos from: (QtWidget *)parent
 {
 	return toOF(toQt(self)->mapFrom(toQt(parent), toQt(pos)));
 }
 
-- (of_point_t)mapPositionFromGlobal: (of_point_t)pos
+- (OFPoint)mapPositionFromGlobal: (OFPoint)pos
 {
 	return toOF(toQt(self)->mapFromGlobal(toQt(pos)));
 }
 
-- (of_point_t)mapPositionFromParent: (of_point_t)pos
+- (OFPoint)mapPositionFromParent: (OFPoint)pos
 {
 	return toOF(toQt(self)->mapFromParent(toQt(pos)));
 }
 
-- (of_point_t)mapPosition: (of_point_t)pos
-		       to: (QtWidget *)parent
+- (OFPoint)mapPosition: (OFPoint)pos to: (QtWidget *)parent
 {
 	return toOF(toQt(self)->mapTo(toQt(parent), toQt(pos)));
 }
 
-- (of_point_t)mapPositionToGlobal: (of_point_t)pos
+- (OFPoint)mapPositionToGlobal: (OFPoint)pos
 {
 	return toOF(toQt(self)->mapToGlobal(toQt(pos)));
 }
 
-- (of_point_t)mapPositionToParent: (of_point_t)pos
+- (OFPoint)mapPositionToParent: (OFPoint)pos
 {
 	return toOF(toQt(self)->mapToParent(toQt(pos)));
 }
@@ -871,7 +869,7 @@ using ObjQt::toQt;
 }
 
 - (void)renderIntoPaintDevice: (QtObject <QtPaintDevice> *)target
-		 targetOffset: (of_point_t)targetOffset
+		 targetOffset: (OFPoint)targetOffset
 		 sourceRegion: (QRegion)sourceRegion
 {
 	toQt(self)->render([target qPaintDevice], toQt(targetOffset),
@@ -879,7 +877,7 @@ using ObjQt::toQt;
 }
 
 - (void)renderIntoPaintDevice: (QtObject <QtPaintDevice> *)target
-		 targetOffset: (of_point_t)targetOffset
+		 targetOffset: (OFPoint)targetOffset
 		 sourceRegion: (QRegion)sourceRegion
 			flags: (QWidget::RenderFlags)renderFlags
 {
@@ -888,14 +886,14 @@ using ObjQt::toQt;
 }
 
 - (void)renderIntoPainter: (QPainter *)target
-	     targetOffset: (of_point_t)targetOffset
+	     targetOffset: (OFPoint)targetOffset
 	     sourceRegion: (QRegion)sourceRegion
 {
 	toQt(self)->render(target, toQt(targetOffset), sourceRegion);
 }
 
 - (void)renderIntoPainter: (QPainter *)target
-	     targetOffset: (of_point_t)targetOffset
+	     targetOffset: (OFPoint)targetOffset
 	     sourceRegion: (QRegion)sourceRegion
 		    flags: (QWidget::RenderFlags)renderFlags
 {
@@ -903,7 +901,7 @@ using ObjQt::toQt;
 	    renderFlags);
 }
 
-- (void)repaintInRectangle: (of_rectangle_t)rect
+- (void)repaintInRectangle: (OFRect)rect
 {
 	toQt(self)->repaint(toQt(rect).toRect());
 }
@@ -923,21 +921,17 @@ using ObjQt::toQt;
 	return toOF(toQt(self)->saveGeometry());
 }
 
-- (void)scrollRight: (int)dx
-	       down: (int)dy
+- (void)scrollRight: (int)dx down: (int)dy
 {
 	toQt(self)->scroll(dx, dy);
 }
 
-- (void)scrollRight: (int)dx
-	       down: (int)dy
-	inRectangle: (of_rectangle_t)rect
+- (void)scrollRight: (int)dx down: (int)dy inRectangle: (OFRect)rect
 {
 	toQt(self)->scroll(dx, dy, toQt(rect).toRect());
 }
 
-- (void)setAttribute: (Qt::WidgetAttribute)attribute
-		  to: (bool)on
+- (void)setAttribute: (Qt::WidgetAttribute)attribute to: (bool)on
 {
 	toQt(self)->setAttribute(attribute, on);
 }
@@ -954,7 +948,7 @@ using ObjQt::toQt;
 	toQt(self)->setFixedHeight(height);
 }
 
-- (void)setFixedSize: (of_dimension_t)size
+- (void)setFixedSize: (OFSize)size
 {
 	toQt(self)->setFixedSize(toQt(size).toSize());
 }
@@ -1062,7 +1056,7 @@ using ObjQt::toQt;
 	toQt(self)->ungrabGesture(gesture);
 }
 
-- (void)updateInRectangle: (of_rectangle_t)rect
+- (void)updateInRectangle: (OFRect)rect
 {
 	toQt(self)->update(toQt(rect).toRect());
 }

@@ -54,13 +54,13 @@
 
 - (void)takeOwnership
 {
-	OF_ENSURE(!_ownsEvent);
+	OFEnsure(!_ownsEvent);
 	_ownsEvent = true;
 }
 
 - (void)giveUpOwnership
 {
-	OF_ENSURE(_ownsEvent);
+	OFEnsure(_ownsEvent);
 	_ownsEvent = false;
 }
 

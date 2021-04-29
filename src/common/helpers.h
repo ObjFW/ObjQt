@@ -34,55 +34,54 @@
 
 namespace ObjQt {
 
-static OF_INLINE of_point_t
+static OF_INLINE OFPoint
 toOF(const QPoint &qPoint)
 {
-	return of_point(qPoint.x(), qPoint.y());
+	return OFPointMake(qPoint.x(), qPoint.y());
 }
 
 static OF_INLINE QPoint
-toQt(const of_point_t &point)
+toQt(const OFPoint &point)
 {
 	return QPoint(point.x, point.y);
 }
 
-static OF_INLINE of_dimension_t
+static OF_INLINE OFSize
 toOF(const QSize &qSize)
 {
-	return of_dimension(qSize.width(), qSize.height());
+	return OFSizeMake(qSize.width(), qSize.height());
 }
 
-static OF_INLINE of_dimension_t
+static OF_INLINE OFSize
 toOF(const QSizeF &qSizeF)
 {
-	return of_dimension(qSizeF.width(), qSizeF.height());
+	return OFSizeMake(qSizeF.width(), qSizeF.height());
 }
 
 static OF_INLINE QSizeF
-toQt(const of_dimension_t &dimension)
+toQt(const OFSize &dimension)
 {
 	return QSizeF(dimension.width, dimension.height);
 }
 
-static OF_INLINE of_rectangle_t
+static OF_INLINE OFRect
 toOF(const QRect &qRect)
 {
-	return of_rectangle(qRect.x(), qRect.y(),
-	    qRect.width(), qRect.height());
+	return OFRectMake(qRect.x(), qRect.y(), qRect.width(), qRect.height());
 }
 
-static OF_INLINE of_rectangle_t
+static OF_INLINE OFRect
 toOF(const QRectF &qRectF)
 {
-	return of_rectangle(qRectF.x(), qRectF.y(),
+	return OFRectMake(qRectF.x(), qRectF.y(),
 	    qRectF.width(), qRectF.height());
 }
 
 static OF_INLINE QRectF
-toQt(const of_rectangle_t &rectangle)
+toQt(const OFRect &rect)
 {
-	return QRectF(rectangle.origin.x, rectangle.origin.y,
-	    rectangle.size.width, rectangle.size.height);
+	return QRectF(rect.origin.x, rect.origin.y,
+	    rect.size.width, rect.size.height);
 }
 
 }

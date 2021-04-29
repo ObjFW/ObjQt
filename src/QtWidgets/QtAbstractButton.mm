@@ -124,12 +124,12 @@ using ObjQt::toQt;
 	toQt(self)->setIcon(icon);
 }
 
-- (of_dimension_t)iconSize
+- (OFSize)iconSize
 {
 	return toOF(toQt(self)->iconSize());
 }
 
-- (void)setIconSize: (of_dimension_t)iconSize
+- (void)setIconSize: (OFSize)iconSize
 {
 	toQt(self)->setIconSize(toQt(iconSize).toSize());
 }

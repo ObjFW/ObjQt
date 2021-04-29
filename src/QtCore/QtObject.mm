@@ -58,13 +58,13 @@ using ObjQt::toQt;
 
 - (void)takeOwnership
 {
-	OF_ENSURE(!_ownsObject);
+	OFEnsure(!_ownsObject);
 	_ownsObject = true;
 }
 
 - (void)giveUpOwnership
 {
-	OF_ENSURE(_ownsObject);
+	OFEnsure(_ownsObject);
 	_ownsObject = false;
 }
 
@@ -241,7 +241,7 @@ using ObjQt::toQt;
 
 - (void)deleteLater
 {
-	OF_ENSURE(!_ownsObject);
+	OFEnsure(!_ownsObject);
 	_qObject->deleteLater();
 }
 @end

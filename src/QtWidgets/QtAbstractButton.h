@@ -34,7 +34,7 @@
 @property (nonatomic, getter=isChecked) bool checked;
 @property (nonatomic, getter=isDown) bool down;
 @property (nonatomic) QIcon icon;
-@property (nonatomic) of_dimension_t iconSize;
+@property (nonatomic) OFSize iconSize;
 @property (nonatomic) QKeySequence shortcut;
 @property (nonatomic, copy) OFString *text;
 @property (readonly, nonatomic) QButtonGroup *group;
